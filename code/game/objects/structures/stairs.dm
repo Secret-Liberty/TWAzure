@@ -13,6 +13,7 @@
 	anchored = TRUE
 	layer = 2
 	nomouseover = TRUE
+	plane = FLOOR_PLANE
 
 /obj/structure/stairs/stone
 	name = "stone stairs"
