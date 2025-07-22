@@ -269,6 +269,7 @@
 	REMOVE_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, XYLIX_LUCK_TRAIT)
 	qdel(owner.particles)
 	owner.particles = null
+	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/astrata_favor
 	name = "Одолжение Астраты"
@@ -289,6 +290,7 @@
 
 /datum/status_effect/noc_favor/on_remove()
 	owner.alpha = 255
+	. = ..()
 
 /atom/movable/screen/alert/status_effect/buff/noc_favor
 	name = "Одолжение Нок"
