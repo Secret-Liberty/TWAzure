@@ -10,7 +10,7 @@
 
 /datum/time_of_day/sunrise
 	name = "Sunrise"
-	color = "#F598AB"
+	color = list("#F598AB","#e26d6d", "#e96e4f")
 	start = 9.5 HOURS  //9:30:00 AM
 
 /datum/time_of_day/daytime
@@ -30,7 +30,7 @@
 
 /datum/time_of_day/midnight
 	name = "Midnight"
-	color = list("#100a18", "#0c0412", "#0f0012")
+	color = "#000000"
 	start = 16 HOURS //4:00:00 PM
 
 GLOBAL_VAR_INIT(GLOBAL_LIGHT_RANGE, 3)
