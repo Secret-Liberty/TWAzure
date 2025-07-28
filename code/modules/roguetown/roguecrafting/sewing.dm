@@ -570,7 +570,7 @@
 
 /datum/crafting_recipe/roguetown/sewing/chaperon/noble
     name = "noble's chaperon (1 fibers, 4 cloth)"
-    result = list(/obj/item/clothing/head/roguetown/chaperon)
+    result = list(/obj/item/clothing/head/roguetown/chaperon/noble)
     reqs = list(/obj/item/natural/cloth = 4,
                 /obj/item/natural/fibers = 2)
     craftdiff = 4
