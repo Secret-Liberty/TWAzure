@@ -131,7 +131,7 @@
 #define HE_HIM_F		"he/him (Femme Clothes)"
 #define SHE_HER_M		"she/her (Masc Clothes)"
 
-GLOBAL_LIST_INIT(pronouns_list, list(HE_HIM, SHE_HER, THEY_THEM, THEY_THEM_F, IT_ITS, HE_HIM_F, SHE_HER_M))
+GLOBAL_LIST_INIT(pronouns_list, list(HE_HIM, SHE_HER, IT_ITS))
 
 // Voice types (LETHALSTONE)
 
