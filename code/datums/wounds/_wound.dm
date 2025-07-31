@@ -353,10 +353,20 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 // Blank because it'll be overridden by wound code.
 /datum/wound/dynamic
 	var/is_maxed = FALSE
+	var/is_armor_maxed = FALSE
 
 /datum/wound/dynamic/sew_wound()
 	heal_wound(whp)
 
+/datum/wound/dynamic/proc/armor_check(armor, cap)
+	if(armor)
+		if(bleed_rate >= cap && !is_armor_maxed)
+			playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
+			owner.visible_message(span_crit("The wound tears open, the armor won't let it go any further!"))
+			is_armor_maxed = TRUE
+		bleed_rate = cap
+
+/// Make sure this is called AFTER your child upgrade proc, unless you have a reason for the bleed rate to be above artery on a regular wound.
 /datum/wound/dynamic/upgrade(dam as num)
 	if(bleed_rate >= ARTERY_LIMB_BLEEDRATE)
 		if(is_maxed)

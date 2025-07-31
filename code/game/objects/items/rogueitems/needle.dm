@@ -204,6 +204,8 @@
 			var/datum/wound/dynamic/dynwound = target_wound
 			if(dynwound.is_maxed)
 				dynwound.is_maxed = FALSE
+			if(dynwound.is_armor_maxed)
+				dynwound.is_armor_maxed = FALSE
 		if(target_wound.sew_progress < target_wound.sew_threshold)
 			continue
 		if(doctor.mind)

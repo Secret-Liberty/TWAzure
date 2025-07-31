@@ -65,12 +65,16 @@
 #define SLASH_UPG_WHPRATE 0.6
 #define SLASH_UPG_SEWRATE 1
 #define SLASH_UPG_PAINRATE 0.25
+#define SLASH_UPG_CLAMP_ARMORED 2
+#define SLASH_UPG_CLAMP_RAW 5
+#define SLASH_ARMORED_BLEED_CLAMP 10
 
-/datum/wound/dynamic/slash/upgrade(dam)
+/datum/wound/dynamic/slash/upgrade(dam, armor)
 	whp += (dam * SLASH_UPG_WHPRATE)
-	bleed_rate += (dam * SLASH_UPG_BLEEDRATE)
+	bleed_rate += clamp((dam * SLASH_UPG_BLEEDRATE), 0.1, ((armor > 0) ? SLASH_UPG_CLAMP_ARMORED : SLASH_UPG_CLAMP_RAW))
 	sew_threshold += (dam * SLASH_UPG_SEWRATE)
 	woundpain += (dam * SLASH_UPG_PAINRATE)
+	armor_check(armor, SLASH_ARMORED_BLEED_CLAMP)
 	update_name()
 	..()
 
@@ -78,6 +82,9 @@
 #undef SLASH_UPG_WHPRATE
 #undef SLASH_UPG_SEWRATE
 #undef SLASH_UPG_PAINRATE
+#undef SLASH_UPG_CLAMP_ARMORED
+#undef SLASH_UPG_CLAMP_RAW
+#undef SLASH_ARMORED_BLEED_CLAMP
 
 /datum/wound/slash/disembowel
 	name = "disembowelment"
@@ -176,6 +183,22 @@
 
 // Now watch me whip, whip. Now watch me nay-nay.
 // Whip balancing: Whips have higher bleed rate and pain than sword wounds, but can't arterty/disembowl. Basically less hard-lethals, more 'death by 1000 cuts'.
+/datum/wound/lashing/dynamic
+	name = "lashing"
+	whp = 30
+	sewn_whp = 12
+	bleed_rate = 0
+	clotting_rate = 0.02
+	clotting_threshold = 0.2
+	woundpain = 10
+	mob_overlay = "cut"
+	can_sew = TRUE
+	can_cauterize = FALSE	//Ouch owie oof
+
+/datum/wound/lashing/dynamic/upgrade(dam, armor)
+
+	. = ..()
+
 /datum/wound/lashing
 	name = "lashing"
 	whp = 30

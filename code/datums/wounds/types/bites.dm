@@ -72,6 +72,3 @@
 #undef BITE_UPG_WHPRATE
 #undef BITE_UPG_SEWRATE
 #undef BITE_UPG_PAINRATE
-
-/datum/wound/bite/dynamic/sew_wound()
-	heal_wound(whp)

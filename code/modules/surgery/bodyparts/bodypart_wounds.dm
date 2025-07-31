@@ -119,7 +119,7 @@
 	return bleed_rate
 
 /// Called after a bodypart is attacked so that wounds and critical effects can be applied
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE, armor)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
 	var/do_crit = TRUE
@@ -136,7 +136,7 @@
 			do_crit = FALSE
 	testing("bodypart_attacked_by() dam [dam]")
 
-	manage_dynamic_wound(bclass, dam)
+	manage_dynamic_wound(bclass, dam, armor)
 
 	if(do_crit)
 		var/crit_attempt = try_crit(bclass, dam, user, zone_precise, silent, crit_message)
@@ -145,7 +145,7 @@
 	return TRUE
 
 
-/obj/item/bodypart/proc/manage_dynamic_wound(bclass, dam)
+/obj/item/bodypart/proc/manage_dynamic_wound(bclass, dam, armor)
 	var/woundtype
 	switch(bclass)
 		if(BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PUNCH, BCLASS_TWIST)
@@ -160,10 +160,10 @@
 			return
 	var/datum/wound/dynwound = has_wound(woundtype)
 	if(!isnull(dynwound))
-		dynwound.upgrade(dam)
+		dynwound.upgrade(dam, armor)
 	else
 		var/datum/wound/newwound = add_wound(woundtype)
-		newwound.upgrade(dam)
+		newwound.upgrade(dam, armor)
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
 /obj/item/bodypart/proc/try_crit(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)

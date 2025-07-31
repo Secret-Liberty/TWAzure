@@ -59,10 +59,6 @@
 		"lethal" = 200,
 	)
 
-
-/datum/wound/dynamic/puncture/sew_wound()
-	heal_wound(whp)
-
 #define PUNC_UPG_BLEEDRATE 0.2
 #define PUNC_UPG_WHPRATE 0.25
 #define PUNC_UPG_SEWRATE 0.5
