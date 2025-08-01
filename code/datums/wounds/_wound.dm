@@ -362,7 +362,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	if(armor)
 		if(bleed_rate >= cap && !is_armor_maxed)
 			playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
-			owner.visible_message(span_crit("The wound tears open, the armor won't let it go any further!"))
+			owner.visible_message(span_crit("The wound tears open from [bodypart_owner.owner]'s <b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>, the armor won't let it go any further!"))
 			is_armor_maxed = TRUE
 		bleed_rate = cap
 
@@ -372,6 +372,6 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 		bleed_rate = ARTERY_LIMB_BLEEDRATE
 		if(!is_maxed)
 			playsound(owner, 'sound/combat/wound_tear.ogg', 100, TRUE)
-			owner.visible_message(span_crit("The wound gushes open, nicking an artery!"))
+			owner.visible_message(span_crit("The wound gushes open from [bodypart_owner.owner]'s <b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>, nicking an artery!"))
 			is_maxed = TRUE
 	..()
