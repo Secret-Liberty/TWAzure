@@ -369,8 +369,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /// Make sure this is called AFTER your child upgrade proc, unless you have a reason for the bleed rate to be above artery on a regular wound.
 /datum/wound/dynamic/upgrade(dam as num)
 	if(bleed_rate >= ARTERY_LIMB_BLEEDRATE)
-		if(is_maxed)
-			bleed_rate = ARTERY_LIMB_BLEEDRATE
+		bleed_rate = ARTERY_LIMB_BLEEDRATE
 		if(!is_maxed)
 			playsound(owner, 'sound/combat/wound_tear.ogg', 100, TRUE)
 			owner.visible_message(span_crit("The wound gushes open, nicking an artery!"))

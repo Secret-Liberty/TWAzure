@@ -123,6 +123,15 @@
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return FALSE
 	var/do_crit = TRUE
+	var/acheck_dflag
+	switch(bclass)
+		if(BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PUNCH)
+			acheck_dflag = "blunt"
+		if(BCLASS_CHOP, BCLASS_CUT, BCLASS_LASHING)
+			acheck_dflag = "slash"
+		if(BCLASS_PICK, BCLASS_STAB)
+			acheck_dflag = "stab"
+	armor = owner.run_armor_check(bodypart_to_zone(src), acheck_dflag, damage = 0)
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.checkcritarmor(zone_precise, bclass))
@@ -154,8 +163,12 @@
 			woundtype = /datum/wound/dynamic/bite
 		if(BCLASS_CHOP, BCLASS_CUT)
 			woundtype = /datum/wound/dynamic/slash
-		if(BCLASS_STAB, BCLASS_PICK, BCLASS_PIERCE)
+		if(BCLASS_STAB, BCLASS_PIERCE)
 			woundtype = /datum/wound/dynamic/puncture
+		if(BCLASS_PICK)
+			woundtype = /datum/wound/dynamic/gouge
+		if(BCLASS_LASHING)
+			woundtype = /datum/wound/dynamic/lashing
 		else	//Wrong bclass type for wounds, skip adding this.
 			return
 	var/datum/wound/dynwound = has_wound(woundtype)

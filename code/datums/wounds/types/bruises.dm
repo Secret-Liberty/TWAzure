@@ -34,6 +34,7 @@
 	clotting_threshold = null
 	sewn_clotting_threshold = null
 	woundpain = 5
+	passive_healing = 1
 	sew_threshold = 50
 	can_sew = FALSE
 	can_cauterize = FALSE
@@ -46,20 +47,23 @@
 		"insufferable" = 200,
 	)
 
-#define BRUISE_UPG_BLEEDRATE 0.02
-#define BRUISE_UPG_WHPRATE 0.8
-#define BRUISE_UPG_PAINRATE 0.7
-#define BRUISE_UPG_PASSIVEHEAL 0.5
+//Bruise Omniwounds
+//Vaguely: Hella painful. No bleeding. No armor interactions. Every hit also increases its self heal by a little bit.
 
-/datum/wound/dynamic/bruise/upgrade(dam)
+#define BRUISE_UPG_BLEEDRATE 0.01
+#define BRUISE_UPG_WHPRATE 1
+#define BRUISE_UPG_PAINRATE 1
+#define BRUISE_UPG_SELFHEAL 1
+
+/datum/wound/dynamic/bruise/upgrade(dam, armor)
 	whp += (dam * BRUISE_UPG_WHPRATE)
-	bleed_rate += (dam * BRUISE_UPG_BLEEDRATE)
+	bleed_rate += dam * BRUISE_UPG_BLEEDRATE
 	woundpain += (dam * BRUISE_UPG_PAINRATE)
-	passive_healing += BRUISE_UPG_PASSIVEHEAL
+	passive_healing += BRUISE_UPG_SELFHEAL
 	update_name()
 	..()
 
 #undef BRUISE_UPG_BLEEDRATE
 #undef BRUISE_UPG_WHPRATE
 #undef BRUISE_UPG_PAINRATE
-#undef BRUISE_UPG_PASSIVEHEAL
+#undef BRUISE_UPG_SELFHEAL

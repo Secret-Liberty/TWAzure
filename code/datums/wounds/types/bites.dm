@@ -42,8 +42,6 @@
 	woundpain = 10
 	sew_threshold = 50
 	mob_overlay = "cut"
-
-
 	can_sew = TRUE
 	can_cauterize = TRUE
 	passive_healing = 0.5
@@ -55,16 +53,23 @@
 		"impossible" = 200,
 	)
 
-#define BITE_UPG_BLEEDRATE 0.35
-#define BITE_UPG_WHPRATE 0.05
-#define BITE_UPG_SEWRATE 0.1
-#define BITE_UPG_PAINRATE 0.5
+//Bite Omniwounds
+//Vaguely: Hella painful. Hella bleedy. Armor is very effective. Similar to lashing in this way.
 
-/datum/wound/dynamic/bite/upgrade(dam)
+#define BITE_UPG_BLEEDRATE 0.5
+#define BITE_UPG_WHPRATE 0.1
+#define BITE_UPG_SEWRATE 0.6
+#define BITE_UPG_PAINRATE 0.5
+#define BITE_UPG_CLAMP_ARMORED 5
+#define BITE_UPG_CLAMP_RAW 20
+#define BITE_ARMORED_BLEED_CLAMP 5
+
+/datum/wound/dynamic/bite/upgrade(dam, armor)
 	whp += (dam * BITE_UPG_WHPRATE)
-	bleed_rate += (dam * BITE_UPG_BLEEDRATE)
+	bleed_rate += clamp((dam * BITE_UPG_BLEEDRATE), 0.1, ((armor > 0) ? BITE_UPG_CLAMP_ARMORED : BITE_UPG_CLAMP_RAW))
 	sew_threshold += (dam * BITE_UPG_SEWRATE)
 	woundpain += (dam * BITE_UPG_PAINRATE)
+	armor_check(armor, BITE_ARMORED_BLEED_CLAMP)
 	update_name()
 	..()
 
@@ -72,3 +77,6 @@
 #undef BITE_UPG_WHPRATE
 #undef BITE_UPG_SEWRATE
 #undef BITE_UPG_PAINRATE
+#undef BITE_UPG_CLAMP_ARMORED
+#undef BITE_UPG_CLAMP_RAW
+#undef BITE_ARMORED_BLEED_CLAMP

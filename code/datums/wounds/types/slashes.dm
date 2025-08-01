@@ -61,6 +61,9 @@
 		"impossible" = 200,
 	)
 
+//Slash Omniwounds
+//Vaguely: Painful, hard to sew, hard to heal, but scales poorly through armor.
+
 #define SLASH_UPG_BLEEDRATE 0.1
 #define SLASH_UPG_WHPRATE 0.6
 #define SLASH_UPG_SEWRATE 1
@@ -181,9 +184,8 @@
 	passive_healing = 0
 	sleep_healing = 0
 
-// Now watch me whip, whip. Now watch me nay-nay.
-// Whip balancing: Whips have higher bleed rate and pain than sword wounds, but can't arterty/disembowl. Basically less hard-lethals, more 'death by 1000 cuts'.
-/datum/wound/lashing/dynamic
+
+/datum/wound/dynamic/lashing
 	name = "lashing"
 	whp = 30
 	sewn_whp = 12
@@ -195,9 +197,33 @@
 	can_sew = TRUE
 	can_cauterize = FALSE	//Ouch owie oof
 
-/datum/wound/lashing/dynamic/upgrade(dam, armor)
+//Lashing (Whip) Omniwounds
+//Vaguely: Painful, huge bleeds, but naerly nothing at all through any armor.
 
-	. = ..()
+#define LASHING_UPG_BLEEDRATE 0.25
+#define LASHING_UPG_WHPRATE 1
+#define LASHING_UPG_SEWRATE 1.5
+#define LASHING_UPG_PAINRATE 0.5
+#define LASHING_UPG_CLAMP_ARMORED 0.2
+#define LASHING_UPG_CLAMP_RAW 7	//Three unarmored hits for an artery bleed.
+#define LASHING_ARMORED_BLEED_CLAMP 2
+
+/datum/wound/dynamic/lashing/upgrade(dam, armor)
+	whp += (dam * LASHING_UPG_WHPRATE)
+	bleed_rate += clamp((dam * LASHING_UPG_BLEEDRATE), 0.1, ((armor > 0) ? LASHING_UPG_CLAMP_ARMORED : LASHING_UPG_CLAMP_RAW))
+	sew_threshold += (dam * LASHING_UPG_SEWRATE)
+	woundpain += (dam * LASHING_UPG_PAINRATE)
+	armor_check(armor, LASHING_ARMORED_BLEED_CLAMP)
+	update_name()
+	..()
+
+#undef LASHING_UPG_BLEEDRATE
+#undef LASHING_UPG_WHPRATE
+#undef LASHING_UPG_SEWRATE
+#undef LASHING_UPG_PAINRATE
+#undef LASHING_UPG_CLAMP_ARMORED
+#undef LASHING_UPG_CLAMP_RAW
+#undef LASHING_ARMORED_BLEED_CLAMP
 
 /datum/wound/lashing
 	name = "lashing"
