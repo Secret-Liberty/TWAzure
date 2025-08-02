@@ -452,4 +452,5 @@ GLOBAL_LIST_EMPTY(round_join_times)
 Medical defines
 */
 #define ARTERY_LIMB_BLEEDRATE 20	//This is used as a reference point for dynamic wounds, so it's better off as a define.
-#define CONSTITUTION_BLEEDRATE_MOD 0.05	//How much slower we'll be bleeding for every CON point. 0.05 = 5% slower.
+#define CONSTITUTION_BLEEDRATE_MOD 0.1	//How much slower we'll be bleeding for every CON point. 0.05 = 5% slower.
+#define CONSTITUTION_BLEEDRATE_CAP 15
