@@ -62,7 +62,7 @@
 //Puncture (Stab -- not Pick) Omniwounds
 //Vaguely: Not nearly as painful, higher bleed cap, easier to sew / heal. Not clamped at all.
 
-#define PUNC_UPG_BLEEDRATE 0.25
+#define PUNC_UPG_BLEEDRATE 0.2
 #define PUNC_UPG_WHPRATE 0.5
 #define PUNC_UPG_SEWRATE 0.35
 #define PUNC_UPG_PAINRATE 0.2
@@ -87,7 +87,7 @@
 #undef PUNC_UPG_CLAMP_RAW
 #undef PUNC_ARMORED_BLEED_CLAMP
 
-/datum/wound/dynamic/puncture
+/datum/wound/dynamic/gouge
 	name = "gouge"
 	whp = 1
 	sewn_whp = 0
