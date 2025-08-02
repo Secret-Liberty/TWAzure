@@ -1519,9 +1519,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					var/faith_input = input(user, "Choose your character's faith", "Faith") as null|anything in faiths_named
 					if(faith_input)
 						var/datum/faith/faith = faiths_named[faith_input]
-						to_chat(user, "<font color='yellow'>Faith: [faith.name]</font>")
-						to_chat(user, "Background: [faith.desc]")
-						to_chat(user, "<font color='red'>Likely Worshippers: [faith.worshippers]</font>")
+						to_chat(user, "<font color='yellow'>Вера: [faith.translated_name]</font>") //	TA EDIT
+						to_chat(user, "Описание: [faith.desc]") //										TA EDIT
+						to_chat(user, "<font color='red'>Последователи: [faith.worshippers]</font>") //	TA EDIT
 						selected_patron = GLOB.patronlist[faith.godhead] || GLOB.patronlist[pick(GLOB.patrons_by_faith[faith_input])]
 
 				if("patron")
@@ -1535,10 +1535,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					var/god_input = input(user, "Choose your character's patron god", "[current_faith.name]") as null|anything in patrons_named
 					if(god_input)
 						selected_patron = patrons_named[god_input]
-						to_chat(user, "<font color='yellow'>Patron: [selected_patron]</font>")
-						to_chat(user, "<font color='#FFA500'>Domain: [selected_patron.domain]</font>")
-						to_chat(user, "Background: [selected_patron.desc]")
-						to_chat(user, "<font color='red'>Likely Worshippers: [selected_patron.worshippers]</font>")
+						to_chat(user, "<font color='yellow'>Покровитель: [selected_patron.translated_name]</font>") //	TA EDIT
+						to_chat(user, "<font color='#FFA500'>Домены: [selected_patron.domain]</font>") //				TA EDIT
+						to_chat(user, "Описание: [selected_patron.desc]") //											TA EDIT
+						to_chat(user, "<font color='red'>Последователи: [selected_patron.worshippers]</font>") //		TA EDIT
 
 				if("bdetail")
 					var/list/loly = list("Not yet.","Work in progress.","Don't click me.","Stop clicking this.","Nope.","Be patient.","Sooner or later.")
