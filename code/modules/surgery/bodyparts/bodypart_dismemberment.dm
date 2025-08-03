@@ -79,6 +79,12 @@
 		qdel(grabbedby)
 		grabbedby = null
 
+	var/list/wounds = get_wounds()
+    if(wounds)
+        for(var/datum/wound/wound in wounds)
+            remove_wound(wound.type)
+
+
 	drop_limb()
 	if(dam_type == BURN)
 		burn()

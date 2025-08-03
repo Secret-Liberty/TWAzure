@@ -175,7 +175,7 @@
 	if(!isnull(dynwound))
 		dynwound.upgrade(dam, armor)
 	else
-		if(woundtype)
+		if(ispath(woundtype))
 			var/datum/wound/newwound = add_wound(woundtype)
 			newwound.upgrade(dam, armor)
 
