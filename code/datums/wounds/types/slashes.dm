@@ -64,7 +64,7 @@
 //Slash Omniwounds
 //Vaguely: Painful, hard to sew, hard to heal, but scales poorly through armor.
 
-#define SLASH_UPG_BLEEDRATE 0.1
+#define SLASH_UPG_BLEEDRATE 0.25
 #define SLASH_UPG_WHPRATE 0.6
 #define SLASH_UPG_SEWRATE 1
 #define SLASH_UPG_PAINRATE 0.25
