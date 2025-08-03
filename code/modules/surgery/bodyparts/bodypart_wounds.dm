@@ -175,8 +175,9 @@
 	if(!isnull(dynwound))
 		dynwound.upgrade(dam, armor)
 	else
-		var/datum/wound/newwound = add_wound(woundtype)
-		newwound.upgrade(dam, armor)
+		if(woundtype)
+			var/datum/wound/newwound = add_wound(woundtype)
+			newwound.upgrade(dam, armor)
 
 /// Behemoth of a proc used to apply a wound after a bodypart is damaged in an attack
 /obj/item/bodypart/proc/try_crit(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE)
