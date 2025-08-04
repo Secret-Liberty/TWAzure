@@ -68,8 +68,8 @@
 #define SLASH_UPG_WHPRATE 0.6
 #define SLASH_UPG_SEWRATE 1
 #define SLASH_UPG_PAINRATE 0.25
-#define SLASH_UPG_CLAMP_ARMORED 2
-#define SLASH_UPG_CLAMP_RAW 5
+#define SLASH_UPG_CLAMP_ARMORED 1.5
+#define SLASH_UPG_CLAMP_RAW 2.5
 #define SLASH_ARMORED_BLEED_CLAMP 7
 
 /datum/wound/dynamic/slash/upgrade(dam, armor)

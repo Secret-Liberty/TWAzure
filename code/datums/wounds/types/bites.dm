@@ -56,13 +56,13 @@
 //Bite Omniwounds
 //Vaguely: Hella painful. Hella bleedy. Armor is very effective. Similar to lashing in this way.
 
-#define BITE_UPG_BLEEDRATE 0.5
+#define BITE_UPG_BLEEDRATE 0.2
 #define BITE_UPG_WHPRATE 0.1
 #define BITE_UPG_SEWRATE 0.6
 #define BITE_UPG_PAINRATE 0.5
-#define BITE_UPG_CLAMP_ARMORED 5
-#define BITE_UPG_CLAMP_RAW 20
-#define BITE_ARMORED_BLEED_CLAMP 5
+#define BITE_UPG_CLAMP_ARMORED 1
+#define BITE_UPG_CLAMP_RAW 3
+#define BITE_ARMORED_BLEED_CLAMP 3
 
 /datum/wound/dynamic/bite/upgrade(dam, armor)
 	whp += (dam * BITE_UPG_WHPRATE)
