@@ -66,8 +66,8 @@
 #define PUNC_UPG_WHPRATE 0.2
 #define PUNC_UPG_SEWRATE 0.35
 #define PUNC_UPG_PAINRATE 0.05
-#define PUNC_UPG_CLAMP_ARMORED 1
-#define PUNC_UPG_CLAMP_RAW 2
+#define PUNC_UPG_CLAMP_ARMORED 2
+#define PUNC_UPG_CLAMP_RAW 3
 #define PUNC_ARMORED_BLEED_CLAMP 12
 
 /datum/wound/dynamic/puncture/upgrade(dam, armor)
@@ -117,9 +117,9 @@
 #define GOUGE_UPG_WHPRATE 0.25
 #define GOUGE_UPG_SEWRATE 0.1
 #define GOUGE_UPG_PAINRATE 0.01
-#define GOUGE_UPG_CLAMP_ARMORED 0.5
-#define GOUGE_UPG_CLAMP_RAW 1
-#define GOUGE_ARMORED_BLEED_CLAMP 5
+#define GOUGE_UPG_CLAMP_ARMORED 1
+#define GOUGE_UPG_CLAMP_RAW 2
+#define GOUGE_ARMORED_BLEED_CLAMP 7
 
 /datum/wound/dynamic/gouge/upgrade(dam, armor)
 	whp += (dam * GOUGE_UPG_WHPRATE)

@@ -364,7 +364,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 			playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
 			owner.visible_message(span_crit("The wound tears open from [bodypart_owner.owner]'s <b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>, the armor won't let it go any further!"))
 			is_armor_maxed = TRUE
-		bleed_rate = cap
+			bleed_rate = cap
 
 /// Make sure this is called AFTER your child upgrade proc, unless you have a reason for the bleed rate to be above artery on a regular wound.
 /datum/wound/dynamic/upgrade(dam as num)
