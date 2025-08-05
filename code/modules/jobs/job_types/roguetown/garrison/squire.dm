@@ -26,7 +26,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/keyring/guardcastle
+	beltl = /obj/item/storage/keyring/squire
 	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	id = /obj/item/scomstone/bad/garrison
 	job_bitflag = BITFLAG_GARRISON		//Move this role to garrison section later. Shouldn't be under youngroles for transparancy they are garrison.
