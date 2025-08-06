@@ -39,13 +39,7 @@
 	can_sew = FALSE
 	can_cauterize = FALSE
 	passive_healing = 0.5
-	severity_names = list(
-		"meager" = 20,
-		"painful" = 40,
-		"gnarly" = 80,
-		"incapacitating" = 120,
-		"insufferable" = 200,
-	)
+	severity_names = list()
 
 //Bruise Omniwounds
 //Vaguely: Hella painful. No bleeding. No armor interactions. Every hit also increases its self heal by a little bit.

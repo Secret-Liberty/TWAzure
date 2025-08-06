@@ -46,11 +46,11 @@
 	can_cauterize = TRUE
 	passive_healing = 0.5
 	severity_names = list(
-		"shallow" = 20,
-		"deep" = 40,
-		"gnarly" = 80,
-		"lethal" = 120,
-		"impossible" = 200,
+		"shallow" = 3,
+		"deep" = 8,
+		"gnarly" = 12,
+		"lethal" = 15,
+		"impossible" = 20,
 	)
 
 //Bite Omniwounds

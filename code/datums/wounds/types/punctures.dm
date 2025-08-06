@@ -52,11 +52,11 @@
 	can_sew = TRUE
 	can_cauterize = TRUE
 	severity_names = list(
-		"shallow" = 20,
-		"deep" = 40,
-		"gnarly" = 80,
-		"vicious" = 120,
-		"lethal" = 200,
+		"shallow" = 3,
+		"deep" = 6,
+		"gnarly" = 9,
+		"vicious" = 12,
+		"lethal" = 20,
 	)
 
 //Puncture (Stab -- not Pick) Omniwounds
@@ -102,11 +102,11 @@
 	can_sew = TRUE
 	can_cauterize = FALSE
 	severity_names = list(
-		"shallow" = 20,
-		"deep" = 40,
-		"gnarly" = 80,
-		"vicious" = 120,
-		"lethal" = 200,
+		"shallow" = 2,
+		"deep" = 4,
+		"gnarly" = 8,
+		"vicious" = 12,
+		"lethal" = 20,
 	)
 
 //Gouge (Pick) Omniwounds

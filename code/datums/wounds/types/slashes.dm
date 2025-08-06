@@ -54,11 +54,10 @@
 	can_sew = TRUE
 	can_cauterize = TRUE
 	severity_names = list(
-		"light" = 20,
-		"deep" = 40,
-		"gnarly" = 80,
-		"lethal" = 120,
-		"impossible" = 200,
+		"light" = 5,
+		"deep" = 10,
+		"gnarly" = 15,
+		"lethal" = 20,
 	)
 
 //Slash Omniwounds
