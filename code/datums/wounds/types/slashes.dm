@@ -64,7 +64,7 @@
 //Slash Omniwounds
 //Vaguely: Painful, hard to sew, hard to heal, but scales poorly through armor.
 
-#define SLASH_UPG_BLEEDRATE 0.25
+#define SLASH_UPG_BLEEDRATE 0.16	//Clamps out at 11-12 STR with 25 force, or at 10 STR with 30 force.
 #define SLASH_UPG_WHPRATE 0.6
 #define SLASH_UPG_SEWRATE 1
 #define SLASH_UPG_PAINRATE 0.25
@@ -198,7 +198,7 @@
 	can_cauterize = FALSE	//Ouch owie oof
 
 //Lashing (Whip) Omniwounds
-//Vaguely: Painful, huge bleeds, but naerly nothing at all through any armor.
+//Vaguely: Painful, huge bleeds, but nearly nothing at all through any armor.
 
 #define LASHING_UPG_BLEEDRATE 0.25
 #define LASHING_UPG_WHPRATE 1

@@ -60,13 +60,13 @@
 	)
 
 //Puncture (Stab -- not Pick) Omniwounds
-//Vaguely: Not nearly as painful, higher bleed cap, easier to sew / heal. Not clamped at all.
+//Vaguely: Not nearly as painful, higher bleed cap, easier to sew / heal.
 
-#define PUNC_UPG_BLEEDRATE 0.15
+#define PUNC_UPG_BLEEDRATE 0.5	//Caps out at 12 STR and penetrative damage if clamp is 3
 #define PUNC_UPG_WHPRATE 0.2
 #define PUNC_UPG_SEWRATE 0.35
 #define PUNC_UPG_PAINRATE 0.05
-#define PUNC_UPG_CLAMP_ARMORED 2
+#define PUNC_UPG_CLAMP_ARMORED 3
 #define PUNC_UPG_CLAMP_RAW 3
 #define PUNC_ARMORED_BLEED_CLAMP 12
 
