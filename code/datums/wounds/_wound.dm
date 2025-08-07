@@ -346,7 +346,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/newname
 	if(length(severity_names))
 		for(var/sevname in severity_names)
-			if(severity_names[sevname] >= bleed_rate)
+			if(severity_names[sevname] <= bleed_rate)
 				newname = sevname
 	name = "[newname  ? "[newname] " : ""][initial(name)]"	//[adjective] [name], aka, "gnarly slash" or "slash"
 
