@@ -13,6 +13,9 @@ var/global/list/colorlist = list(
 	"MAGENTA"="#962e5c"	// AN ALBANIAN
 	)
 
+var/global/list/pridelist = list(
+	"RAINBOW" = "#fcfcfc"
+)
 
 // DYE BIN
 
@@ -31,7 +34,9 @@ var/global/list/colorlist = list(
 			/obj/item/clothing,
 			/obj/item/storage,
 			/obj/item/bedroll,
-			/obj/item/flowercrown
+			/obj/item/flowercrown,
+			/obj/item/legwears,
+			/obj/item/undies
 			)
 	var/list/used_colors
 	var/list/extra_colors = list(
@@ -134,7 +139,8 @@ var/global/list/colorlist = list(
 	menu.open()
 
 /obj/machinery/gear_painter/Topic(href, href_list)
-	if(!(. = ..()))
+	. = ..()
+	if(.)
 		return
 
 	add_fingerprint(usr)

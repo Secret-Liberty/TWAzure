@@ -1,6 +1,7 @@
 // Lesser miracle
 /obj/effect/proc_holder/spell/invoked/lesser_heal
 	name = "Miracle"
+	desc = "Heals target over time, causes damage if something is embedded in target. Burns undead instead of healing them if you worship the Ten.<br>Does not work on those worshipping the dead god."
 	overlay_state = "lesserheal"
 	releasedrain = 30
 	chargedrain = 0
@@ -104,7 +105,7 @@
 				message_self = span_notice("I'm sewn back together by sacred medicine!")
 				// pestra always heals a little more toxin damage and restores a bit more blood
 				target.adjustToxLoss(-situational_bonus)
-				target.blood_volume += BLOOD_VOLUME_SURVIVE/2
+				target.blood_volume += BLOOD_VOLUME_SURVIVE/3
 			if(/datum/patron/divine/malum)
 				message_out = span_info("A tempering heat is discharged out of [target]!")
 				message_self = span_info("I feel the heat of a forge soothing my pains!")
@@ -204,6 +205,7 @@
 // Miracle
 /obj/effect/proc_holder/spell/invoked/heal
 	name = "Fortify"
+	desc = "Improves the targets ability to receive healing, buffing all healing done on them by 50%<br>Burns undead instead of healing them if you worship the Ten."
 	overlay_state = "astrata"
 	releasedrain = 30
 	chargedrain = 0
@@ -249,6 +251,7 @@
 
 /obj/effect/proc_holder/spell/invoked/regression
 	name = "Regression"
+	desc = "Rewinds the target wounds, Healing them over time. If target is under Stasis heals them twice as much."
 	overlay_state = "regression"
 	releasedrain = 30
 	chargedrain = 0
@@ -279,6 +282,7 @@
 
 /obj/effect/proc_holder/spell/invoked/convergence
 	name = "Convergence"
+	desc = "Converges the targets past and present, causing them to heal 50% more."
 	overlay_state = "convergence"
 	releasedrain = 30
 	chargedrain = 0
@@ -316,7 +320,7 @@
 
 /obj/effect/proc_holder/spell/invoked/stasis
 	name = "Stasis"
-	desc = "You capture your target's current state in time, reverting them to such a state several seconds later."
+	desc = "You capture your target's current state in time, reverting them to such a state several seconds later. If under Convergence  when expiring, your target will keep any healing they receive."
 	releasedrain = 35
 	chargedrain = 1
 	chargetime = 30
@@ -413,3 +417,82 @@
 	qdel(appearance)
 	update_icon()
 	return
+
+/obj/effect/proc_holder/spell/invoked/wound_heal
+	name = "Wound Miracle"
+	desc = "Heals all wounds on a targeted limb."
+	overlay_icon = 'icons/mob/actions/genericmiracles.dmi'
+	overlay_state = "woundheal"
+	action_icon_state = "woundheal"
+	action_icon = 'icons/mob/actions/genericmiracles.dmi'
+	releasedrain = 30
+	chargedrain = 0
+	chargetime = 30
+	range = 1
+	ignore_los = FALSE
+	warnie = "sydwarning"
+	movement_interrupt = TRUE
+	chargedloop = /datum/looping_sound/invokeholy
+	sound = 'sound/magic/woundheal.ogg'
+	invocation_type = "none"
+	associated_skill = /datum/skill/magic/holy
+	antimagic_allowed = FALSE
+	recharge_time = 2 MINUTES
+	miracle = TRUE
+	devotion_cost = 200
+
+/obj/effect/proc_holder/spell/invoked/wound_heal/cast(list/targets, mob/user = usr)
+	if(ishuman(targets[1]))
+		var/mob/living/carbon/human/target = targets[1]
+		var/def_zone = check_zone(user.zone_selected)
+		var/obj/item/bodypart/affecting = target.get_bodypart(def_zone)
+		if(!affecting)
+			revert_cast()
+			return FALSE
+		var/foundwound = FALSE
+		if(length(affecting.wounds))
+			for(var/datum/wound/wound in affecting.wounds)
+				if(!isnull(wound))	//I'm not adding to that runtime fiesta
+					wound.heal_wound(wound.whp)
+					foundwound = TRUE
+					user.visible_message(span_greenteamradio("[capitalize(wound.name)] oozes a clear fluid and closes shut!"))
+			if(foundwound)
+				playsound(target, 'sound/magic/woundheal_crunch.ogg', 100, TRUE)
+			return TRUE
+		else
+			to_chat(user, span_warning("The limb is free of wounds."))
+			revert_cast()
+			return FALSE
+			
+
+/obj/effect/proc_holder/spell/invoked/blood_heal
+	name = "Bloodheal Miracle"
+	desc = "Restores the blood of the target with divine magycks. Scales with holy skill."
+	overlay_icon = 'icons/mob/actions/genericmiracles.dmi'
+	overlay_state = "bloodheal"
+	action_icon_state = "bloodheal"
+	action_icon = 'icons/mob/actions/genericmiracles.dmi'
+	releasedrain = 30
+	chargedrain = 0
+	chargetime = 0
+	range = 1
+	ignore_los = FALSE
+	warnie = "sydwarning"
+	movement_interrupt = TRUE
+	sound = 'sound/magic/bloodheal.ogg'
+	invocation_type = "none"
+	associated_skill = /datum/skill/magic/holy
+	antimagic_allowed = FALSE
+	recharge_time = 30 SECONDS
+	miracle = TRUE
+	devotion_cost = 80
+
+/obj/effect/proc_holder/spell/invoked/blood_heal/cast(list/targets, mob/user = usr)
+	if(ishuman(targets[1]))
+		var/mob/living/carbon/human/target = targets[1]
+		var/mob/living/L = user
+		target.apply_status_effect(/datum/status_effect/buff/bloodheal, L.get_skill_level(associated_skill))
+		return TRUE
+	else
+		revert_cast()
+		return FALSE

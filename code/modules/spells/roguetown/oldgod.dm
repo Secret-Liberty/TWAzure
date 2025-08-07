@@ -82,6 +82,7 @@
 
 /obj/effect/proc_holder/spell/self/psydonrespite
 	name = "RESPITE"
+	desc = "Stand still to focus on mending your injuries."
 	overlay_state = "RESPITE"
 	releasedrain = 20
 	chargedrain = 0

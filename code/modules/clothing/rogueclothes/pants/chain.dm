@@ -31,18 +31,39 @@
 	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
-	anvilrepair = /datum/skill/craft/blacksmithing
+	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
 	r_sleeve_status = SLEEVE_NOMOD
 	l_sleeve_status = SLEEVE_NOMOD
-	armor_class = ARMOR_CLASS_MEDIUM
+	armor_class = ARMOR_CLASS_LIGHT//Steel version of splint leggings
 	w_class = WEIGHT_CLASS_NORMAL
-	resistance_flags = FIRE_PROOF
+	//resistance_flags = FIRE_PROOF // these ones should be burning since is cloth + metal
 	sewrepair = FALSE
+	smeltresult = /obj/item/ingot/steel
 
 /obj/item/clothing/under/roguetown/splintlegs/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_COAT_STEP)
+
+/obj/item/clothing/under/roguetown/splintlegs/iron
+	name = "splinted leggings"
+	desc = "A pair of leather pants backed with iron splints, offering superior protection while remaining lightweight."
+	icon_state = "ironsplintlegs"
+	item_state = "ironsplintlegs"
+	max_integrity = ARMOR_INT_LEG_IRON_CHAIN
+	armor = ARMOR_PANTS_BRIGANDINE
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	blocksound = SOFTHIT
+	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
+	anvilrepair = /datum/skill/craft/armorsmithing
+	smeltresult = /obj/item/ingot/iron
+	r_sleeve_status = SLEEVE_NOMOD
+	l_sleeve_status = SLEEVE_NOMOD
+	armor_class = ARMOR_CLASS_LIGHT//splint leggings
+	w_class = WEIGHT_CLASS_NORMAL
+	//resistance_flags = FIRE_PROOF // these ones should be burning since is cloth + metal
+	sewrepair = FALSE
+	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/under/roguetown/brayette
 	name = "brayette"
@@ -90,15 +111,17 @@
 
 /obj/item/clothing/under/roguetown/chainlegs/kilt/aalloy
 	name = "decrepit chain kilt"
-	desc = "A decrepit old kilt. Aeon's grasp is upon it."
+	desc = "Frayed bronze rings, linked together with bindings of rotting leather to form a waist's drape. The maille jingles with every step, singing the hymn to a cadence once savored by marching legionnaires."
 	icon_state = "achainkilt"
 	sleevetype = "achainkilt"
-	smeltresult = /obj/item/ingot/aalloy
 	max_integrity = ARMOR_INT_LEG_DECREPIT_CHAIN
+	color = "#bb9696"
+	smeltresult = /obj/item/ingot/aaslag
+	anvilrepair = null
 
 /obj/item/clothing/under/roguetown/chainlegs/kilt/paalloy
 	name = "ancient chain kilt"
-	desc = "A kilt formed out of ancient alloys. Aeon's grasp lifted from it."
+	desc = "Polished gilbranze rings, linked together with bindings of silk to form a waist's vestment. These undying legionnaires once marched for Vheslyn, and again for Zizo; but now, they are utterly beholden to the whims of their resurrector."
 	icon_state = "achainkilt"
 	smeltresult = /obj/item/ingot/aaslag
 

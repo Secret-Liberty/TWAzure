@@ -20,7 +20,7 @@
 	max_pq = null
 	round_contrib_points = 2
 	advjob_examine = TRUE
-	cmode_music = 'sound/music/combat_bard.ogg'
+	cmode_music = 'sound/music/cmode/towner/combat_towner.ogg'
 
 /datum/job/roguetown/servant/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
@@ -82,7 +82,6 @@
 	head = /obj/item/clothing/head/roguetown/armingcap
 	armor = /obj/item/clothing/suit/roguetown/shirt/dress/gen/black
 	shoes = /obj/item/clothing/shoes/roguetown/simpleshoes
-	pants = pick(/obj/item/clothing/under/roguetown/tights/stockings/black, /obj/item/clothing/under/roguetown/tights/stockings/white) 
 	cloak = /obj/item/clothing/cloak/apron/waist
 	backl = /obj/item/storage/backpack/rogue/satchel
 	belt = /obj/item/storage/belt/rogue/leather

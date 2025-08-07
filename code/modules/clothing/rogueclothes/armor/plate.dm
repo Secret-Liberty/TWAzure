@@ -25,22 +25,25 @@
 /obj/item/clothing/suit/roguetown/armor/plate/iron
 	name = "iron half-plate"
 	desc = "A basic half-plate of iron, protective and moderately durable."
-	icon_state = "ihalfplate"
-	item_state = "ihalfplate"
+	icon_state = "ironplate"
+	item_state = "ironplate"
+	boobed = FALSE	//the armor just looks better with this, makes sense and is 8 sprites less
 	max_integrity = ARMOR_INT_CHEST_PLATE_IRON
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/suit/roguetown/armor/plate/aalloy
 	name = "decrepit half-plate"
-	desc = "Worn out and decrepit halfplate. Aeon's grasp is upon it."
+	desc = "Frayed bronze layers, bolted into plate armor. Once, the hauberk of a rising champion; now, nothing more than a fool's tomb."
 	icon_state = "ancientplate"
 	item_state = "ancientplate"
 	max_integrity = ARMOR_INT_CHEST_PLATE_DECREPIT
-	smeltresult = /obj/item/ingot/aalloy
+	color = "#bb9696"
+	smeltresult = /obj/item/ingot/aaslag
+	anvilrepair = null
 
 /obj/item/clothing/suit/roguetown/armor/plate/paalloy
 	name = "ancient half-plate"
-	desc = "Plate formed out of ancient alloys. Aeon's grasp has been lifted from it."
+	desc = "Polished gilbronze layers, magewelded into plate armor. Let none impede the march of progress, and let Her champions bring the unenlightened masses to kneel."
 	icon_state = "ancientplate"
 	item_state = "ancientplate"
 	smeltresult = /obj/item/ingot/aaslag
@@ -83,11 +86,12 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate/equipped(mob/living/user, slot)
 	. = ..()
-	user.apply_status_effect(/datum/status_effect/buff/psydonic_endurance)
+	if(slot == SLOT_ARMOR)
+		user.apply_status_effect(/datum/status_effect/buff/psydonic_endurance)
 
-/obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate/dropped(mob/living/carbon/human/user)
+/obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate/dropped(mob/living/carbon/human/user)
 	. = ..()
-	if(istype(user) && user.wear_armor == src)
+	if(istype(user) && user?.wear_armor == src)
 		user.remove_status_effect(/datum/status_effect/buff/psydonic_endurance)
 
 // Full plate armor
@@ -129,26 +133,14 @@
 	var/traited = FALSE
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate/equipped(mob/living/user, slot)
-	..()
-	if(slot != SLOT_ARMOR)
-		return
-	user.change_stat("endurance", 1)
-	user.change_stat("constitution", 1)
-	to_chat(user, span_notice("Endure til' inevitability."))
-	if (!HAS_TRAIT(user, TRAIT_MEDIUMARMOR))
-		return
-	if (HAS_TRAIT(user, TRAIT_HEAVYARMOR))
-		traited = TRUE
-		return
-	ADD_TRAIT(user, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	. = ..()
+	if(slot == SLOT_ARMOR)
+		user.apply_status_effect(/datum/status_effect/buff/psydonic_endurance)
 
-/obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate/dropped(mob/living/user)
-	..()
-	user.change_stat("endurance", -1)
-	user.change_stat("constitution", -1)
-	to_chat(user, span_notice("Trust in thyself."))
-	if (!traited)
-		REMOVE_TRAIT(user, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+/obj/item/clothing/suit/roguetown/armor/plate/full/fluted/ornate/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(istype(user) && user?.wear_armor == src)
+		user.remove_status_effect(/datum/status_effect/buff/psydonic_endurance)
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/matthios
 	name = "gilded fullplate"
@@ -168,7 +160,7 @@
 	qdel(src)
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/zizo
-	name = "darksteel fullplate"
+	name = "avantyne fullplate"
 	desc = "Full plate. Called forth from the edge of what should be known. In Her name."
 	icon_state = "zizoplate"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
@@ -316,23 +308,25 @@
 /obj/item/clothing/suit/roguetown/armor/plate/half/fencer
 	name = "fencer's cuirass"
 	desc = "An expertly smithed form-fitting steel cuirass that is much lighter and agile, but breaks with much more ease. It's thinner, but backed with silk and leather."
-	armor = ARMOR_LIGHTCUIRASS
+	armor = ARMOR_CUIRASS		// Experimental.
 	armor_class = ARMOR_CLASS_LIGHT
-	max_integrity = ARMOR_INT_CHEST_FENCER_STEEL
+	max_integrity = ARMOR_INT_CHEST_LIGHT_STEEL
 	smelt_bar_num = 1
 	icon_state = "fencercuirass"
 	item_state = "fencercuirass"
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/aalloy
 	name = "decrepit cuirass"
-	desc = "A withered cuirass. Aeon's grasp is upon its form."
+	desc = "Frayed bronze, pounded into a breastplate. It feels more like a corset than a cuirass; there's barely enough width to let those aching lungs breathe."
 	icon_state = "ancientcuirass"
-	smeltresult = /obj/item/ingot/aalloy
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_DECREPIT
+	color = "#bb9696"
+	smeltresult = /obj/item/ingot/aaslag
+	anvilrepair = null
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/paalloy
 	name = "ancient cuirass"
-	desc = "A cuirass of ancient alloys. Aeon's grasp lifted from its form."
+	desc = "Polished gilbranze, curved into a breastplate. It is not for the heart that beats no more, but for the spirit that flows through luxless marrow; one of Her many gifts."
 	icon_state = "ancientcuirass"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -354,6 +348,7 @@
 	name = "iron breastplate"
 	desc = "A basic cuirass of iron, protective and moderately durable."
 	icon_state = "ibreastplate"
+	boobed = FALSE	//the armor just looks better with this, makes sense and is 8 sprites less
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_IRON
 	smeltresult = /obj/item/ingot/iron
 	smelt_bar_num = 2

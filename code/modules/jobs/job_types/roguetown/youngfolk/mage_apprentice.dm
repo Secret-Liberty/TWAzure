@@ -20,7 +20,7 @@
 	min_pq = 0
 	max_pq = null
 	round_contrib_points = 2
-	cmode_music = 'sound/music/combat_bandit_mage.ogg'
+	cmode_music = 'sound/music/cmode/nobility/combat_courtmage.ogg'
 	advjob_examine = TRUE // So that Court Magicians can know if they're teachin' a Apprentice or if someone's a bit more advanced of a player. Just makes the title show up as the advjob's name.
 
 /datum/outfit/job/roguetown/wapprentice
@@ -75,8 +75,8 @@
 		H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 		H.change_stat("speed", -1)
 		H.change_stat("intelligence", 1)
-		H?.mind.adjust_spellpoints(6)
-	H?.mind.adjust_spellpoints(21)
+		H.mind?.adjust_spellpoints(6)
+	H.mind?.adjust_spellpoints(21)
 	ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ARCYNE_T3, TRAIT_GENERIC)
 	H.change_stat("intelligence", 3)
@@ -84,7 +84,7 @@
 	H.change_stat("speed", 1)
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/zizo)
-			H.cmode_music = 'sound/music/combat_cult.ogg'
+			H.cmode_music = 'sound/music/combat_heretic.ogg'
 
 /datum/advclass/wapprentice/alchemist
 	name = "Alchemist Associate"
@@ -121,7 +121,7 @@
 		H.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
 		H.change_stat("perception", -1)
 		H.change_stat("intelligence", 1)
-	H?.mind.adjust_spellpoints(18)
+	H.mind?.adjust_spellpoints(18)
 	ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ARCYNE_T3, TRAIT_GENERIC)
 	H.change_stat("intelligence", 3)
@@ -130,7 +130,7 @@
 	ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/zizo)
-			H.cmode_music = 'sound/music/combat_cult.ogg'
+			H.cmode_music = 'sound/music/combat_heretic.ogg'
 
 /datum/advclass/wapprentice/apprentice
 	name = "Magician's Apprentice"
@@ -144,7 +144,7 @@
 		/obj/item/roguegem/amethyst = 1, 
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/recipe_book/magic = 1,
-    	/obj/item/spellbook_unfinished/pre_arcyne = 1,
+		/obj/item/spellbook_unfinished/pre_arcyne = 1,
 		/obj/item/chalk = 1,
 		)
 	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
@@ -152,7 +152,7 @@
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-	H?.mind.adjust_spellpoints(18)
+	H.mind?.adjust_spellpoints(18)
 	ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_ARCYNE_T3, TRAIT_GENERIC)
 	H.change_stat("intelligence", 4)
@@ -164,7 +164,7 @@
 		H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 		H.change_stat("speed", -1)
 		H.change_stat("intelligence", 1)
-		H?.mind.adjust_spellpoints(3)
+		H.mind?.adjust_spellpoints(3)
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/zizo)
-			H.cmode_music = 'sound/music/combat_cult.ogg'
+			H.cmode_music = 'sound/music/combat_heretic.ogg'

@@ -100,6 +100,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Nun Veil"
 	path = /obj/item/clothing/head/roguetown/nun
 
+/datum/loadout_item/papakha
+	name = "Papakha"
+	path = /obj/item/clothing/head/roguetown/papakha
+
 //CLOAKS
 /datum/loadout_item/tabard
 	name = "Tabard"
@@ -243,6 +247,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Tunic"
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic
 
+/datum/loadout_item/stripedtunic
+	name = "Striped Tunic"
+	path = /obj/item/clothing/suit/roguetown/armor/workervest
+
 /datum/loadout_item/dress
 	name = "Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/gen
@@ -287,6 +295,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	name = "Silky Dress"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/silkydress
 
+/datum/loadout_item/noblecoat
+	name = "Fancy Coat"
+	path = /obj/item/clothing/suit/roguetown/shirt/tunic/noblecoat
+
 /datum/loadout_item/leathervest
 	name = "Leather Vest"
 	path = /obj/item/clothing/suit/roguetown/armor/leather/vest
@@ -328,17 +340,6 @@ GLOBAL_LIST_EMPTY(loadout_items)
 	path = /obj/item/clothing/under/roguetown/skirt
 
 //ACCESSORIES
-/datum/loadout_item/stockings
-	name = "Stockings"
-	path = /obj/item/clothing/under/roguetown/tights/stockings
-
-/datum/loadout_item/silkstockings
-	name = "Silk Stockings"
-	path = /obj/item/clothing/under/roguetown/tights/stockings/silk
-
-/datum/loadout_item/fishnet
-	name = "Fishnet Stockings"
-	path = /obj/item/clothing/under/roguetown/tights/stockings/fishnet
 
 /datum/loadout_item/wrappings
 	name = "Handwraps"
@@ -451,6 +452,10 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/psicross/eora
 	name = "Amulet of Eora"
 	path = /obj/item/clothing/neck/roguetown/psicross/eora
+
+/datum/loadout_item/wedding_band
+	name = "silver wedding band"
+	path = /obj/item/clothing/ring/band
 
 /datum/loadout_item/chaperon
     name = "Chaperon (Normal)"

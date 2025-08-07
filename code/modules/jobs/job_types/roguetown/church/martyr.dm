@@ -10,7 +10,7 @@
 	var/next_activation = 0
 	var/end_activation = 0
 	var/ignite_chance = 2
-	var/traits_applied = list(TRAIT_NOPAIN, TRAIT_NOPAINSTUN, TRAIT_NOMOOD, TRAIT_NOHUNGER, TRAIT_NOBREATH, TRAIT_BLOODLOSS_IMMUNE, TRAIT_LONGSTRIDER, TRAIT_STRONGBITE, TRAIT_STRENGTH_UNCAPPED)
+	var/traits_applied = list(TRAIT_NOPAIN, TRAIT_NOPAINSTUN, TRAIT_NOMOOD, TRAIT_NOHUNGER, TRAIT_NOBREATH, TRAIT_BLOODLOSS_IMMUNE, TRAIT_LONGSTRIDER, TRAIT_STRONGBITE, TRAIT_STRENGTH_UNCAPPED, TRAIT_GRABIMMUNE)
 	var/stat_bonus_martyr = 3
 	var/mob/living/current_holder
 	var/is_active = FALSE
@@ -176,7 +176,7 @@
 				H.dropItemToGround(parent)
 				return
 			var/datum/job/J = SSjob.GetJob(H.mind?.assigned_role)
-			if(!J.title == "Martyr" && !J.title == "Priest")		//Can't be a Martyr if you're not a Martyr. Or a Priest.
+			if(!J.title == "Martyr" && !J.title == "Bishop")		//Can't be a Martyr if you're not a Martyr. Or a Bishop.
 				to_chat(H, span_warn("It slips from my grasp. I can't get a hold."))
 				H.dropItemToGround(parent)
 				return
@@ -185,7 +185,7 @@
 				current_holder = user
 			if(J.title == "Martyr")
 				to_chat(user, span_warning("The blade binds to you."))
-			if(J.title == "Priest")
+			if(J.title == "Bishop")
 				to_chat(user, span_warning("You feel the shocking sensation as the sword attempts to bind to you. You know it will kill you. You can still drop it, and leave it for the Oathed."))
 	else
 		RegisterSignal(user, COMSIG_CLICK_ALT, PROC_REF(altclick), override = TRUE)
@@ -298,6 +298,9 @@
 		REMOVE_TRAIT(parent, TRAIT_NODROP, TRAIT_GENERIC)	//The weapon can be moved by the Priest again (or used, I suppose)
 	is_active = FALSE
 	I.damtype = BRUTE
+	I.possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike)
+	I.gripped_intents = list(/datum/intent/sword/cut, /datum/intent/sword/thrust, /datum/intent/sword/strike, /datum/intent/sword/chop)
+	current_holder.update_a_intents()
 	I.force = initial(I.force)
 	I.force_wielded = initial(I.force_wielded)
 	I.max_integrity = initial(I.max_integrity)
@@ -360,6 +363,9 @@
 		flash_lightning(user)
 		var/obj/item/I = parent
 		I.damtype = BURN	//Changes weapon damage type to fire
+		I.possible_item_intents = list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr)
+		I.gripped_intents = list(/datum/intent/sword/cut/martyr, /datum/intent/sword/thrust/martyr, /datum/intent/sword/strike/martyr, /datum/intent/sword/chop/martyr)
+		user.update_a_intents()
 		I.slot_flags = null	//Can't sheathe a burning sword
 
 		ADD_TRAIT(parent, TRAIT_NODROP, TRAIT_GENERIC)	//You're committed, now.
@@ -481,6 +487,7 @@
 	H.adjust_skillrank(/datum/skill/craft/cooking, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 1, TRUE)
+	H.grant_language(/datum/language/grenzelhoftian)
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
@@ -523,9 +530,23 @@
 	thrown_bclass = BCLASS_CUT
 	dropshrink = 1
 	smeltresult = /obj/item/ingot/gold
-	is_silver = FALSE
+	is_silver = TRUE
 	toggle_state = null
 	is_important = TRUE
+
+/datum/intent/sword/cut/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_CUT
+/datum/intent/sword/thrust/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_PICK // so our armor-piercing attacks in ult mode can do crits(against most armors, not having crit)
+/datum/intent/sword/strike/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_SMASH
+/datum/intent/sword/chop/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_CHOP
+
 
 /obj/item/rogueweapon/sword/long/martyr/Initialize()
 	AddComponent(/datum/component/martyrweapon)
@@ -535,7 +556,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/datum/job/J = SSjob.GetJob(H.mind?.assigned_role)
-		if(J.title == "Priest" || J.title == "Martyr")
+		if(J.title == "Bishop" || J.title == "Martyr")
 			return ..()
 		else if (H.job in GLOB.church_positions)
 			to_chat(user, span_warning("You feel a jolt of holy energies just for a split second, and then the sword slips from your grasp! You are not devout enough."))
@@ -621,6 +642,7 @@
 	desc = "Branded by the Holy See, these helms are worn by it's chosen warriors. A bastion of hope in the dark nite."
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/martyrbascinet.dmi'
+	bloody_icon = 'icons/effects/blood64.dmi'
 	adjustable = CAN_CADJUST
 	emote_environment = 3
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDESNOUT

@@ -6,6 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/wretch/necromancer
 	category_tags = list(CTAG_WRETCH)
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_OUTLANDER, TRAIT_ZOMBIE_IMMUNE, TRAIT_MAGEARMOR, TRAIT_GRAVEROBBER, TRAIT_OUTLAW, TRAIT_ARCYNE_T3, TRAIT_HERESIARCH)
+	maximum_possible_slots = 3 //Onutsio said 2 was stupid
 
 
 /datum/outfit/job/roguetown/wretch/necromancer/pre_equip(mob/living/carbon/human/H)
@@ -40,10 +41,10 @@
 	H.adjust_skillrank(/datum/skill/craft/alchemy, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/magic/arcane, 4, TRUE)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
-	H.cmode_music = 'sound/music/combat_cult.ogg'
+	H.cmode_music = 'sound/music/combat_heretic.ogg'
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-		H?.mind.adjust_spellpoints(6)
+		H.mind?.adjust_spellpoints(6)
 	H.change_stat("intelligence", 4) // Necromancer get the most +4 Int, +2 Perception just like Sorc (Adv Mage), and a bit of endurance / speed
 	H.change_stat("perception", 2)
 	H.change_stat("endurance", 1)
@@ -55,5 +56,5 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/minion_order)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/gravemark)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/raise_lesser_undead/necromancer)
-	H?.mind.adjust_spellpoints(18)
+		H.mind.adjust_spellpoints(18)
 	wretch_select_bounty(H)

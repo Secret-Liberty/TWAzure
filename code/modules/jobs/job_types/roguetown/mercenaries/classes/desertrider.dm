@@ -55,7 +55,8 @@
 				/obj/item/rogueweapon/huntingknife/idagger/navaja,
 				/obj/item/clothing/neck/roguetown/shalal,
 				/obj/item/flashlight/flare/torch,
-				/obj/item/rogueweapon/scabbard/sheath
+				/obj/item/rogueweapon/scabbard/sheath,
+				/obj/item/storage/belt/rogue/pouch/coins/poor
 				)
 			H.grant_language(/datum/language/celestial)
 			var/weapons = list("Heavy Mace","Shamshir and Shield","Spear and Shield")
@@ -68,7 +69,6 @@
 				if("Shamshir and Shield")
 					H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 					r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
-					beltr = /obj/item/rogueweapon/scabbard/sword
 					backl = /obj/item/rogueweapon/shield/tower/raneshen
 				if("Spear and Shield")
 					H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
@@ -111,7 +111,8 @@
 				/obj/item/rogueweapon/huntingknife/idagger/navaja,
 				/obj/item/rogueweapon/scabbard/sheath,
 				/obj/item/clothing/neck/roguetown/shalal,
-				/obj/item/flashlight/flare/torch
+				/obj/item/flashlight/flare/torch,
+				/obj/item/storage/belt/rogue/pouch/coins/poor
 				)
 			H.grant_language(/datum/language/celestial)
 			var/weapons = list("Shamshir and Javelin","Whips and Knives", "Recurve Bow")
@@ -121,7 +122,6 @@
 				if("Shamshir and Javelin")
 					H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 					r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
-					beltr = /obj/item/rogueweapon/scabbard/sword
 					backl = /obj/item/quiver/javelin/iron
 				if("Whips and Knives")	///They DO enslave people after all
 					H.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
@@ -150,7 +150,6 @@
 			H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 			H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-			H.mind.adjust_spellpoints(15)
 			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_ARCYNE_T2, TRAIT_GENERIC)
 			H.change_stat("perception", -1)
@@ -162,6 +161,7 @@
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/repulse)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/airblade)
+				H.mind.adjust_spellpoints(15)
 			head = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/raneshen
 			neck = /obj/item/clothing/neck/roguetown/gorget/copper
 			mask = /obj/item/clothing/mask/rogue/facemask/copper
@@ -178,14 +178,17 @@
 				/obj/item/clothing/neck/roguetown/shalal,
 				/obj/item/spellbook_unfinished/pre_arcyne,
 				/obj/item/flashlight/flare/torch,
+				/obj/item/storage/belt/rogue/pouch/coins/poor
 				)
 			H.grant_language(/datum/language/celestial)
 
 	shoes = /obj/item/clothing/shoes/roguetown/shalal
 	belt = /obj/item/storage/belt/rogue/leather/shalal
-	beltr = /obj/item/storage/belt/rogue/pouch/coins/poor
-	beltl = /obj/item/rogueweapon/scabbard
+	beltl = /obj/item/rogueweapon/scabbard/sword
+	beltr = /obj/item/rogueweapon/scabbard/sword
 	l_hand = /obj/item/rogueweapon/sword/sabre/shamshir
+	
+	H.merctype = 4
 
 
 

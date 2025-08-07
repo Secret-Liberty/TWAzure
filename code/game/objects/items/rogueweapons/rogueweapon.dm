@@ -18,7 +18,6 @@
 	can_parry = TRUE
 	wlength = WLENGTH_NORMAL
 	sellprice = 1
-	has_inspect_verb = TRUE
 	parrysound = list('sound/combat/parry/parrygen.ogg')
 	break_sound = 'sound/foley/breaksound.ogg'
 	anvilrepair = /datum/skill/craft/weaponsmithing
@@ -143,6 +142,8 @@
 	desc = "you should not see this"
 	icon = 'icons/roguetown/misc/shafts.dmi'
 	icon_state = "woodshaft"
+	grid_height = 32
+	grid_width = 32
 
 /obj/item/shaft/wood
 	name = "wood shaft"

@@ -8,7 +8,6 @@
 /datum/supply_pack/rogue/armor_steel
 	group = "Armor (Steel)"
 	crate_name = "merchant guild's crate"
-	mandated_public_profit = 1 // 100% Mandatory Profit Margin on top
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 // Steel Armor Section. Massive selection here so I am not going to include everything
@@ -34,12 +33,12 @@
 
 /datum/supply_pack/rogue/armor_steel/fullplate
 	name = "Full Plate"
-	cost = 180 // 4 Steel, 1 Cured Leather 
+	cost = 350 // 4 Steel, 1 Cured Leather - x2 cuz it is the best armor
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full)
 
 /datum/supply_pack/rogue/armor_steel/fullplate_fluted
 	name = "Full Plate, Fluted"
-	cost = 210 // 4 Steel, 1 Iron, 1 Cured Leather
+	cost = 380 // 4 Steel, 1 Iron, 1 Cured Leather - x2 cuz it is the best armor
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full/fluted)
 
 /datum/supply_pack/rogue/armor_steel/coatplates
@@ -62,6 +61,11 @@
 	cost = 100 // 2 Steel, 2 Cloth
 	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine)
 
+/datum/supply_pack/rogue/armor_steel/brigandine_light
+	name = "Brigandine, Light"
+	cost = 55 //1 Steel, 1 Leather
+	contains = list(/obj/item/clothing/suit/roguetown/armor/brigandine/light)
+
 /datum/supply_pack/rogue/armor_steel/chaincoif_steel
 	name = "Chain Coif"
 	cost = 50 // 1 Steel
@@ -82,6 +86,11 @@
 	cost = 50 // 1 Steel
 	contains = list(/obj/item/clothing/gloves/roguetown/plate)
 
+/datum/supply_pack/rogue/armor_steel/chausses_brigandine
+	name = "Chausses, Brigandine"
+	cost = 60 //1 Steel, 2 Leather
+	contains = list(/obj/item/clothing/under/roguetown/splintlegs)
+
 /datum/supply_pack/rogue/armor_steel/chainleg_steel
 	name = "Chausses, Chain"
 	cost = 50 // 1 Steel
@@ -91,6 +100,16 @@
 	name = "Chausses, Plate"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/under/roguetown/platelegs)
+	
+/datum/supply_pack/rogue/armor_steel/chainkilt
+	name = "Chain Kilt"
+	cost = 50 // 1 Steel
+	contains = list(/obj/item/clothing/under/roguetown/chainlegs/kilt)
+
+/datum/supply_pack/rogue/armor_steel/rearbraces
+	name = "Bracers, Brigandine"
+	cost = 55 // 1 Steel, 1 Leather
+	contains = list(/obj/item/clothing/wrists/roguetown/splintarms)
 
 /datum/supply_pack/rogue/armor_steel/bracers_plate
 	name = "Bracers, Plate"

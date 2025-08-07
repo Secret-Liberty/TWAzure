@@ -1,4 +1,4 @@
-
+#define SEARCHTIME 12 // Standard search cooldown = 1.2 seconds
 //newtree
 
 /obj/structure/flora/roguetree
@@ -359,7 +359,7 @@
 		var/mob/living/L = user
 		user.changeNext_move(CLICK_CD_INTENTCAP)
 		playsound(src.loc, "plantcross", 50, FALSE, -1)
-		if(do_after(L, rand(1,5), target = src))
+		if(do_after(L, SEARCHTIME, target = src))
 			if(!looty.len && (world.time > res_replenish))
 				loot_replenish()
 			if(prob(50) && looty.len)
@@ -479,8 +479,10 @@
 	pixel_x = -16
 	layer = 4.81
 	attacked_sound = 'sound/misc/woodhit.ogg'
-	destroy_sound = 'sound/misc/woodhit.ogg'
+	destroy_sound = 'sound/misc/treefall.ogg'
 	static_debris = list( /obj/item/grown/log/tree/small = 1)
+	layer = ABOVE_ALL_MOB_LAYER
+	plane = GAME_PLANE_UPPER
 	dir = SOUTH
 
 /obj/structure/flora/rogueshroom/attack_right(mob/user)
@@ -548,13 +550,16 @@
 	climb_time = 0
 	density = TRUE
 	icon = 'icons/roguetown/misc/foliagetall.dmi'
+	plane = GAME_PLANE
 	layer = TABLE_LAYER
-	blade_dulling = DULLING_PICK
+	blade_dulling = DULLING_CUT
 	static_debris = null
 	debris = null
 	alpha = 255
 	pixel_x = -16
 	climb_offset = 14
+	attacked_sound = 'sound/misc/woodhit.ogg'
+	destroy_sound = 'sound/misc/treefall.ogg'
 
 /obj/structure/flora/shroomstump/Initialize()
 	. = ..()
@@ -638,7 +643,7 @@
 		var/mob/living/L = user
 		user.changeNext_move(CLICK_CD_INTENTCAP)
 		playsound(src.loc, "plantcross", 80, FALSE, -1)
-		if(do_after(L, rand(1,5), target = src))
+		if(do_after(L, SEARCHTIME, target = src))
 			if(!looty.len && (world.time > res_replenish))
 				loot_replenish2()
 			if(prob(50) && looty.len)
@@ -687,7 +692,7 @@
 		var/mob/living/L = user
 		user.changeNext_move(CLICK_CD_INTENTCAP)
 		playsound(src.loc, "plantcross", 80, FALSE, -1)
-		if(do_after(L, rand(1,5), target = src))
+		if(do_after(L, SEARCHTIME, target = src))
 			if(!looty.len && (world.time > res_replenish))
 				loot_replenish3()
 			if(prob(50) && looty.len)

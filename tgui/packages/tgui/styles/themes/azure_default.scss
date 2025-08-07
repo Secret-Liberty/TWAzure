@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Pterra';
-  src: url('../assets/azure_default/pterra.ttf');
+  src: url('~roguefont/pterra.ttf');
 }
 
 .theme-azure_default:root {
@@ -70,4 +70,7 @@
     margin-bottom: 2px;
     transition: all 0.5s;
   }
+
+  // Input
+  --input-border-color: #56853e;
 }

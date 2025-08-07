@@ -69,6 +69,7 @@
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
+		/datum/customizer/bodypart_feature/legwear,
 		/datum/customizer/organ/horns/anthro,
 		/datum/customizer/organ/tail/tiefling,
 		/datum/customizer/organ/testicles/anthro,
@@ -83,6 +84,7 @@
 		/datum/body_marking_set/bellysocks,
 		/datum/body_marking_set/tiger,
 		/datum/body_marking_set/tiger_dark,
+		/datum/body_marking_set/gradient,
 	)
 	body_markings = list(
 		/datum/body_marking/flushed_cheeks,

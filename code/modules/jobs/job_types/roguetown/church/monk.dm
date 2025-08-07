@@ -10,7 +10,7 @@
 	allowed_patrons = ALL_DIVINE_PATRONS 
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/monk
-	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble acolyte is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Priest in their daily tasks, maybe today will be the day something interesting happens."
+	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble acolyte is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Bishop in their daily tasks, maybe today will be the day something interesting happens."
 
 	display_order = JDO_MONK
 	give_bank_account = TRUE
@@ -27,7 +27,6 @@
 	job_bitflag = BITFLAG_CHURCH
 	allowed_patrons = list(/datum/patron/divine/pestra, /datum/patron/divine/astrata, /datum/patron/divine/eora, /datum/patron/divine/noc, /datum/patron/divine/necra, /datum/patron/divine/abyssor, /datum/patron/divine/malum, /datum/patron/divine/ravox, /datum/patron/divine/xylix) // The whole Ten. Probably could delete this now, actually.
 
-
 /datum/outfit/job/roguetown/monk/pre_equip(mob/living/carbon/human/H)
 	..()
 	belt = /obj/item/storage/belt/rogue/leather/rope
@@ -35,7 +34,7 @@
 	beltl = /obj/item/storage/keyring/churchie
 	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(/obj/item/ritechalk)
-	H.cmode_music = 'sound/music/combat_holy.ogg'
+	H.cmode_music = 'sound/music/cmode/church/combat_acolyte.ogg' // has to be defined here for the selection below to work. sm1 please rewrite cmusic to apply pre-equip. 
 	switch(H.patron?.type)
 		if(/datum/patron/divine/astrata)
 			head = /obj/item/clothing/head/roguetown/roguehood/astrata
@@ -56,12 +55,12 @@
 			pants = /obj/item/clothing/under/roguetown/tights
 			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
-			head = /obj/item/clothing/head/roguetown/roguehood/abyssor		
+			head = /obj/item/clothing/head/roguetown/roguehood/abyssor
 		if(/datum/patron/divine/dendor) //Dendorites all busted. Play Druid.
 			head = /obj/item/clothing/head/roguetown/dendormask
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
-			H.cmode_music = 'sound/music/combat_druid.ogg'
+			H.cmode_music = 'sound/music/cmode/garrison/combat_warden.ogg'
 		if(/datum/patron/divine/necra)
 			head = /obj/item/clothing/head/roguetown/necrahood
 			neck = /obj/item/clothing/neck/roguetown/psicross/necra
@@ -123,23 +122,29 @@
 	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/magic/holy, 5, TRUE)
+	H.grant_language(/datum/language/grenzelhoftian)
+	if(H.mind)
+		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/divineblast)
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 	// -- Start of section for god specific bonuses --
 	if(H.patron?.type == /datum/patron/divine/astrata) // Light and Guidance - Like ravox, they probably can endure seeing some shit.
 		H.adjust_skillrank(/datum/skill/magic/holy, 1, TRUE)
 		ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
+		H.cmode_music = 'sound/music/cmode/church/combat_astrata.ogg'
 	if(H.patron?.type == /datum/patron/divine/noc) // Arcyne and Knowledge - Probably good at reading and the other arcyne adjacent stuff.
 		H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE) // Really good at reading... does this really do anything? No. BUT it's soulful.
 		H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE) // for their arcane spells, very little CDR and cast speed.
 	if(H.patron?.type == /datum/patron/divine/abyssor) // The Sea and Weather - probably would be good at fishing
 		H.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
+		H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
 		ADD_TRAIT(H, TRAIT_WATERBREATHING, TRAIT_GENERIC)
 	if(H.patron?.type == /datum/patron/divine/necra) // Death and Moving on - grave diggers.
 		ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_SOUL_EXAMINE, TRAIT_GENERIC)
 		H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE) // digging graves and carrying bodies builds muscles probably.
+		H.cmode_music = 'sound/music/cmode/church/combat_necra.ogg'
 	if(H.patron?.type == /datum/patron/divine/pestra) // Medicine and Healing - better surgeons and alchemists
 		H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
@@ -147,6 +152,7 @@
 	if(H.patron?.type == /datum/patron/divine/eora) // Beauty and Love - beautiful and can read people pretty well.
 		ADD_TRAIT(H, TRAIT_BEAUTIFUL, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
+		H.cmode_music = 'sound/music/cmode/church/combat_eora.ogg'
 	if(H.patron?.type == /datum/patron/divine/malum) // Craft and Creativity - they can make stuff.
 		H.adjust_skillrank(/datum/skill/craft/blacksmithing, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/armorsmithing, 2, TRUE)

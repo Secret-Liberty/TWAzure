@@ -60,9 +60,10 @@
 			H.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_ARCYNE_T3, TRAIT_GENERIC)
+			H.cmode_music = 'sound/music/cmode/adventurer/combat_outlander4.ogg'
 			switch(H.patron?.type)
 				if(/datum/patron/inhumen/zizo)
-					H.cmode_music = 'sound/music/combat_cult.ogg'
+					H.cmode_music = 'sound/music/combat_heretic.ogg'
 		if("Spellblade") // They get a unique spell of air slash
 			to_chat(H, span_warning("You are skilled in both the arcyne art and the art of the blade. But you are not a master of either nor could you channel your magick in armor."))
 			head = /obj/item/clothing/head/roguetown/bucklehat
@@ -81,6 +82,7 @@
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/airblade)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/conjure_weapon)
+				H.mind.adjust_spellpoints(12)
 			H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
@@ -94,8 +96,7 @@
 			H.change_stat("intelligence", 1)
 			H.change_stat("constitution", 1)
 			H.change_stat("endurance", 1)
-			H?.mind.adjust_spellpoints(12)
-			H.cmode_music = 'sound/music/combat_bard.ogg'
+			H.cmode_music = 'sound/music/cmode/adventurer/combat_outlander3.ogg'
 			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_ARCYNE_T2, TRAIT_GENERIC)
 			var/weapons = list("Bastard Sword", "Falchion & Wooden Shield", "Messer & Wooden Shield", "Foreign Straight Sword") // Much smaller selection with only three swords. You will probably want to upgrade.
@@ -123,7 +124,7 @@
 					armor = /obj/item/clothing/suit/roguetown/armor/basiceast
 			switch(H.patron?.type)
 				if(/datum/patron/inhumen/zizo)
-					H.cmode_music = 'sound/music/combat_cult.ogg'
+					H.cmode_music = 'sound/music/combat_heretic.ogg'
 		if("Spellsinger")
 			to_chat(H, span_warning("You belong to a school of bards renowned for their study of both the arcane and the arts."))
 			head = /obj/item/clothing/head/roguetown/spellcasterhat
@@ -145,6 +146,7 @@
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mockery)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/conjure_weapon)
+				H.mind.adjust_spellpoints(12)
 			H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 			H.adjust_skillrank(/datum/skill/misc/music, 4, TRUE)
 			H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
@@ -157,15 +159,14 @@
 			H.change_stat("intelligence", 2)
 			H.change_stat("endurance", 1)
 			H.change_stat("speed", 2)
-			H?.mind.adjust_spellpoints(12)
-			H.cmode_music = 'sound/music/combat_bard.ogg'
+			H.cmode_music = 'sound/music/cmode/adventurer/combat_outlander3.ogg'
 			ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_ARCYNE_T2, TRAIT_GENERIC)
 			switch(H.patron?.type)
 				if(/datum/patron/inhumen/zizo)
-					H.cmode_music = 'sound/music/combat_cult.ogg'
+					H.cmode_music = 'sound/music/combat_heretic.ogg'
 			var/weapons = list("Harp","Lute","Accordion","Guitar","Hurdy-Gurdy","Viola","Vocal Talisman")
 			var/weapon_choice = input("Choose your instrument.", "TAKE UP ARMS") as anything in weapons
 			H.set_blindness(0)

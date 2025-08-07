@@ -209,14 +209,42 @@
 	if(lay)
 		layer = lay
 
+/obj/structure/fluff/railing/border/north
+	dir = 1
+
+/obj/structure/fluff/railing/border/east
+	dir = 4
+
+/obj/structure/fluff/railing/border/west
+	dir = 8
+
 /obj/structure/fluff/railing/corner
-	icon_state = "railing_corner"
+	icon_state = "border"
 	density = FALSE
+	dir = 9
+
+/obj/structure/fluff/railing/corner/north_east
+	dir = 5
+
+/obj/structure/fluff/railing/corner/south_west
+	dir = 10
+
+/obj/structure/fluff/railing/corner/south_east
+	dir = 6
 
 /obj/structure/fluff/railing/wood
 	icon_state = "woodrailing"
 	blade_dulling = DULLING_BASHCHOP
 	layer = ABOVE_MOB_LAYER
+
+/obj/structure/fluff/railing/wood/north
+	dir = 1
+
+/obj/structure/fluff/railing/wood/east
+	dir = 4
+
+/obj/structure/fluff/railing/wood/west
+	dir = 8
 
 /obj/structure/fluff/railing/stonehedge
 	icon_state = "stonehedge"
@@ -566,6 +594,19 @@
 	destroy_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
 	attacked_sound = 'sound/combat/hits/onglass/glasshit.ogg'
 	pixel_y = 32
+
+/obj/structure/fluff/wallclock/attack_right(mob/user)
+	if(user.mind && isliving(user))
+		if(user.mind.special_items && user.mind.special_items.len)
+			var/item = input(user, "What will I take?", "STASH") as null|anything in user.mind.special_items
+			if(item)
+				if(user.Adjacent(src))
+					if(user.mind.special_items[item])
+						var/path2item = user.mind.special_items[item]
+						user.mind.special_items -= item
+						var/obj/item/I = new path2item(user.loc)
+						user.put_in_hands(I)
+			return
 
 /obj/structure/fluff/wallclock/Destroy()
 	if(soundloop)
@@ -963,6 +1004,12 @@
 		/obj/item/ingot/blacksteel,
 		/obj/item/clothing/neck/roguetown/psicross,
 		/obj/item/reagent_containers/glass/cup,
+		/obj/item/candle/candlestick/silver,
+		/obj/item/candle/candlestick/gold,
+		/obj/item/kitchen/fork/silver,
+		/obj/item/kitchen/fork/gold,
+        /obj/item/kitchen/spoon/silver,
+		/obj/item/kitchen/spoon/gold,
 		/obj/item/roguestatue,
 		/obj/item/riddleofsteel,
 		/obj/item/listenstone,
@@ -981,6 +1028,9 @@
 	var/donatedamnt = W.get_real_price()
 	if(user.mind)
 		if(user)
+			if(W.flags_1 & HOARDMASTER_SPAWNED_1)
+				to_chat(user, span_warning("This item is from the Hoard!"))
+				return
 			if(W.sellprice <= 0)
 				to_chat(user, span_warning("This item is worthless."))
 				return
@@ -1018,7 +1068,6 @@
 	layer = BELOW_MOB_LAYER
 	max_integrity = 100
 	sellprice = 40
-	flags_1 = HEAR_1
 	var/chance2hear = 30
 	buckleverb = "crucifie"
 	can_buckle = 1
@@ -1029,6 +1078,14 @@
 	buckle_prevents_pull = 1
 	var/divine = TRUE
 	obj_flags = UNIQUE_RENAME | CAN_BE_HIT
+
+/obj/structure/fluff/psycross/Initialize()
+	. = ..()
+	become_hearing_sensitive()
+
+/obj/structure/fluff/psycross/Destroy()
+	lose_hearing_sensitivity()
+	return ..()
 
 /obj/structure/fluff/psycross/post_buckle_mob(mob/living/M)
 	..()
@@ -1097,7 +1154,7 @@
 
 /obj/structure/fluff/psycross/attackby(obj/item/W, mob/user, params)
 	if(user.mind)
-		if(user.mind.assigned_role == "Priest")
+		if(user.mind.assigned_role == "Bishop")
 			if(istype(W, /obj/item/reagent_containers/food/snacks/grown/apple))
 				if(!istype(get_area(user), /area/rogue/indoors/town/church/chapel))
 					to_chat(user, span_warning("I need to do this in the chapel."))

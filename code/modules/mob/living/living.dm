@@ -397,7 +397,6 @@
 //				to_chat(src, span_notice("I pull [AM] from [AM.pulledby]'s grip!"))
 //			log_combat(AM, AM.pulledby, "pulled from", src)
 //			AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
-
 	if(AM != src)
 		pulling = AM
 		AM.pulledby = src
@@ -412,6 +411,14 @@
 			M.LAssailant = usr
 
 		M.update_damage_hud()
+
+		if(HAS_TRAIT(M, TRAIT_GRABIMMUNE) && M.stat == CONSCIOUS) // Grab immunity check
+			if(M.cmode)
+				M.visible_message(span_warning("[M] breaks from [src]'s grip effortlessly!"), \
+						span_warning("I breaks from [src]'s grab effortlesly!"))
+				log_combat(src, M, "tried grabbing", addition="passive grab")
+				stop_pulling()
+				return
 
 		// Makes it so people who recently broke out of grabs cannot be grabbed again
 		if(TIMER_COOLDOWN_RUNNING(M, "broke_free") && M.stat == CONSCIOUS)
@@ -1134,6 +1141,9 @@
 		combat_modifier -= 0.3
 	if(agg_grab)
 		combat_modifier -= 0.3
+	for(var/obj/item/grabbing/G in grabbedby)
+		if(G.chokehold == TRUE)
+			combat_modifier -= 0.15
 
 	resist_chance += max((wrestling_diff * 10), -20)
 	resist_chance += (STACON - (agg_grab ? L.STASTR : L.STAEND)) * 5

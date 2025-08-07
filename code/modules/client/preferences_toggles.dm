@@ -71,6 +71,17 @@
 		else
 			to_chat(src, "You will now hear animal sound emotes.")
 
+/client/verb/autoconsume()
+	set category = "Options"
+	set name = "Toggle AutoConsume"
+	if(prefs)
+		prefs.autoconsume = !prefs.autoconsume
+		prefs.save_preferences()
+		if(prefs.autoconsume)
+			to_chat(src, "You will now try to repeatedly consume/feed food/drinks")
+		else
+			to_chat(src, "You will no longer try to repeatedly consume/feed food/drinks")
+
 /client/verb/toggle_ERP() // Alters if other people can use the ERP panel ON you.
 	set category = "Options"
 	set name = "Toggle ERP Panel"

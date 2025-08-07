@@ -51,11 +51,8 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// asset_cache
 	var/asset_cache_job
 	if(href_list["asset_cache_confirm_arrival"])
-		asset_cache_job = round(text2num(href_list["asset_cache_confirm_arrival"]))
-		//because we skip the limiter, we have to make sure this is a valid arrival and not somebody tricking us
-		//	into letting append to a list without limit.
-		if (asset_cache_job > 0 && asset_cache_job <= last_asset_job && !(asset_cache_job in completed_asset_jobs))
-			completed_asset_jobs += asset_cache_job
+		asset_cache_job = asset_cache_confirm_arrival(href_list["asset_cache_confirm_arrival"])
+		if(!asset_cache_job)
 			return
 
 	var/mtl = CONFIG_GET(number/minute_topic_limit)
@@ -93,14 +90,20 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
 		return
+	if(href_list["reload_tguipanel"])
+		nuke_chat()
 	//Logs all hrefs, except chat pings
 	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
 		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, span_danger("An error has been detected in how my client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
+		to_chat(src, span_danger("An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)"))
 		src << browse("...", "window=asset_cache_browser")
+		return
+	if (href_list["asset_cache_preload_data"])
+		asset_cache_preload_data(href_list["asset_cache_preload_data"])
+		return
 
 	// Keypress passthrough
 	if(href_list["__keydown"])
@@ -152,8 +155,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 			return
 		if("vars")
 			return view_var_Topic(href,href_list,hsrc)
-		if("chat")
-			return chatOutput.Topic(href, href_list)
 
 	switch(href_list["action"])
 		if("openLink")
@@ -349,9 +350,9 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += "<font color='#DC143C'><span class='bold'>Tieflings:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS]]<br>"
 	data += "<font color='#228B22'><span class='bold'>Half-Orcs & Goblins:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_HALF_ORCS] + GLOB.azure_round_stats[STATS_ALIVE_GOBLINS]]<br>"
 	data += "<font color='#CD853F'><span class='bold'>Kobolds & Verminvolk:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_KOBOLDS] + GLOB.azure_round_stats[STATS_ALIVE_VERMINFOLK]]<br>"
-	data += "<font color='#FFD700'><span class='bold'>Sisseans & Dracon:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_LIZARDS] + GLOB.azure_round_stats[STATS_ALIVE_DRACON]]<br>"
+	data += "<font color='#FFD700'><span class='bold'>Zardmen & Dracon:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_LIZARDS] + GLOB.azure_round_stats[STATS_ALIVE_DRACON]]<br>"
 	data += "<font color='#d49d7c'><span class='bold'>Half & Wildkins:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_HALFKIN] + GLOB.azure_round_stats[STATS_ALIVE_WILDKIN]]<br>"
-	data += "<font color='#99dfd5'><span class='bold'>Lupians, Vulpkin & Tabaxi:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_LUPIANS] + GLOB.azure_round_stats[STATS_ALIVE_VULPS] + GLOB.azure_round_stats[STATS_ALIVE_TABAXI]]<br>"
+	data += "<font color='#99dfd5'><span class='bold'>Lupians/Venardines & Tabaxi:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_LUPIANS] + GLOB.azure_round_stats[STATS_ALIVE_VULPS] + GLOB.azure_round_stats[STATS_ALIVE_TABAXI]]<br>"
 	data += "<font color='#c0c6c7'><span class='bold'>Constructs:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_CONSTRUCTS]]<br>"
 	data += "<font color='#9ACD32'><span class='bold'>Fluvian & Axians:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_MOTHS] + GLOB.azure_round_stats[STATS_ALIVE_AXIAN]]<br>"
 	data += "</div>"
@@ -729,7 +730,6 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 /client/New(TopicData)
 	var/tdata = TopicData //save this for later use
-	chatOutput = new /datum/chatOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
@@ -782,9 +782,8 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	fps = prefs.clientfps
 
-	if(prefs.prefer_old_chat == FALSE)
-		spawn() // Goonchat does some non-instant checks in start()
-			chatOutput.start()
+	// Instantiate tgui panel
+	tgui_panel = new(src, "browseroutput")
 
 	if(fexists(roundend_report_file()))
 		verbs += /client/proc/show_previous_roundend_report
@@ -860,6 +859,8 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(alert_mob_dupe_login)
 		spawn()
 			alert(mob, "You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
+
+	tgui_panel.initialize()
 
 	connection_time = world.time
 	connection_realtime = world.realtime
@@ -970,17 +971,11 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(CONFIG_GET(flag/autoconvert_notes))
 		convert_notes_sql(ckey)
 
-
-
 	add_patreon_verbs()
-
-
 	to_chat(src, get_message_output("message", ckey))
 
-
-
-//	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
-//		to_chat(src, span_warning("Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you."))
+	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
+		to_chat(src, span_warning("Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you."))
 
 	update_ambience_pref()
 
@@ -1051,7 +1046,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	GLOB.ahelp_tickets.ClientLogout(src)
 	GLOB.directory -= ckey
 	GLOB.clients -= src
-	QDEL_NULL(chatOutput)
+	QDEL_NULL(tgui_panel)
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 	if(movingmob != null)
 		movingmob.client_mobs_in_contents -= mob
@@ -1449,31 +1444,29 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		return inactivity
 	return FALSE
 
-//send resources to the client. It's here in its own proc so we can move it around easiliy if need be
+/// Send resources to the client.
+/// Sends both game resources and browser assets.
 /client/proc/send_resources()
 #if (PRELOAD_RSC == 0)
 	var/static/next_external_rsc = 0
-	if(GLOB.external_rsc_urls && GLOB.external_rsc_urls.len)
-		next_external_rsc = WRAP(next_external_rsc+1, 1, GLOB.external_rsc_urls.len+1)
-		preload_rsc = GLOB.external_rsc_urls[next_external_rsc]
+	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
+	if(length(external_rsc_urls))
+		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		preload_rsc = external_rsc_urls[next_external_rsc]
 #endif
-	//get the common files
-	getFiles(
-		'html/search.js',
-		'html/panels.css',
-		'html/browser/common.css',
-		'html/browser/scannernew.css',
-		'html/browser/playeroptions.css',
-		)
-	spawn (10) //removing this spawn causes all clients to not get verbs.
+
+	spawn (10) //removing this spawn causes all clients to not get verbs. (this can't be addtimer because these assets may be needed before the mc inits)
+
+		//load info on what assets the client has
+		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
+
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
-		getFilesSlow(src, SSassets.preload, register_asset = FALSE)
-//		#if (PRELOAD_RSC == 0)
-//		for (var/name in GLOB.vox_sounds)
-//			var/file = GLOB.vox_sounds[name]
-//			Export("##action=load_rsc", file)
-//			stoplag()
-//		#endif
+		if (CONFIG_GET(flag/asset_simple_preload))
+			addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
+
+		#if (PRELOAD_RSC == 0)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/client, preload_vox)), 1 MINUTES)
+		#endif
 
 //Hook, override it to run code when dir changes
 //Like for /atoms, but clients are their own snowflake FUCK
@@ -1549,6 +1542,18 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 /client/proc/show_character_previews(mutable_appearance/MA)
 	var/pos = 0
+
+	var/atom/movable/screen/char_preview/background = LAZYACCESS(char_render_holders, "bg")
+	if(background)
+		screen -= background
+		char_render_holders -= background
+		qdel(background)
+	background = new()
+	LAZYSET(char_render_holders, "bg", background)
+	screen += background
+	background.screen_loc = "character_preview_map:0,0 to 3,3"
+
+	// not cardinal anymore, makes taurs more clear
 	for(var/D in GLOB.cardinals)
 		pos++
 		var/atom/movable/screen/char_preview/O = LAZYACCESS(char_render_holders, "[D]")
@@ -1563,13 +1568,13 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		O.dir = D
 		switch(pos)
 			if(1)
-				O.screen_loc = "character_preview_map:1:2,2:-18"
+				O.screen_loc = "character_preview_map:2,2"
 			if(2)
-				O.screen_loc = "character_preview_map:0:2,2:-18"
+				O.screen_loc = "character_preview_map:1,2"
 			if(3)
-				O.screen_loc = "character_preview_map:1:2,0:10"
+				O.screen_loc = "character_preview_map:1,1"
 			if(4)
-				O.screen_loc = "character_preview_map:0:2,0:10"
+				O.screen_loc = "character_preview_map:2,1"
 
 /client/proc/clear_character_previews()
 	for(var/atom/movable/screen/S in char_render_holders)

@@ -38,6 +38,8 @@
 	var/glow_intensity = 0 // How much does the user glow when using the ability
 	var/glow_color = null // The color of the glow
 	var/hide_charge_effect = FALSE // If true, will not show the spell's icon when charging 
+	/// This spell holder's cooldown does not scale with any stat
+	var/is_cdr_exempt = FALSE
 	var/obj/effect/mob_charge_effect = null
 
 /obj/effect/proc_holder/Initialize()
@@ -267,6 +269,10 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		to_chat(user, span_warning("I can't cast spells!"))
 		return FALSE
 
+	if(HAS_TRAIT(user, TRAIT_CURSE_NOC))
+		to_chat(user, span_warning("My magicka has left me..."))
+		return FALSE
+
 	if(!antimagic_allowed)
 		var/antimagic = user.anti_magic_check(TRUE, FALSE, FALSE, 0, TRUE)
 		if(antimagic)
@@ -401,7 +407,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	return TRUE
 
 /obj/effect/proc_holder/spell/proc/start_recharge()
-	if(ranged_ability_user)
+	if(ranged_ability_user && !is_cdr_exempt)
 		if(ranged_ability_user.STAINT > SPELL_SCALING_THRESHOLD)
 			var/diff = min(ranged_ability_user.STAINT, SPELL_POSITIVE_SCALING_THRESHOLD) - SPELL_SCALING_THRESHOLD
 			recharge_time = initial(recharge_time) - (initial(recharge_time) * diff * COOLDOWN_REDUCTION_PER_INT)

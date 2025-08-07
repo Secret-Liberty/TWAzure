@@ -414,7 +414,7 @@
 	lockid = "church"
 
 /obj/item/roguekey/priest
-	name = "priest's key"
+	name = "Bishop's key"
 	desc = "This is the master key of the church."
 	icon_state = "cheesekey"
 	lockid = "priest"
@@ -461,6 +461,41 @@
 	desc = "Why, a mercenary would not kick doors down."
 	icon_state = "greenkey"
 	lockid = "merc"
+
+/obj/item/roguekey/mercenary/bedrooms
+	name = "mercenary bunk i key"
+	desc = "Why, a mercenary would not kick doors down."
+	icon_state = "greenkey"
+	lockid = "merc_bunk_i"
+
+/obj/item/roguekey/mercenary/bedrooms/ii
+	name = "mercenary bunk ii key"
+	lockid = "merc_bunk_ii"
+
+/obj/item/roguekey/mercenary/bedrooms/iii
+	name = "mercenary bunk iii key"
+	lockid = "merc_bunk_iii"
+
+
+/obj/item/roguekey/mercenary/bedrooms/iv
+	name = "mercenary bunk iv key"
+	lockid = "merc_bunk_iv"
+
+/obj/item/roguekey/mercenary/bedrooms/v
+	name = "mercenary bunk v key"
+	lockid = "merc_bunk_v"
+
+/obj/item/roguekey/mercenary/bedrooms/vi
+	name = "mercenary bunk vi key"
+	lockid = "merc_bunk_vi"
+
+/obj/item/roguekey/mercenary/bedrooms/vii
+	name = "mercenary bunk vii key"
+	lockid = "merc_bunk_vii"
+
+/obj/item/roguekey/mercenary/bedrooms/viii
+	name = "mercenary bunk viii key"
+	lockid = "merc_bunk_viii"
 
 /obj/item/roguekey/physician
 	name = "physician key"

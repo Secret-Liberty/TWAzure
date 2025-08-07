@@ -31,17 +31,16 @@
 
 // MEDIUM
 #define ARMOR_INT_CHEST_MEDIUM_STEEL 300
-#define ARMOR_INT_CHEST_MEDIUM_BRIGANDINE 225 
 #define ARMOR_INT_CHEST_MEDIUM_HATANGA 250
 #define ARMOR_INT_CHEST_MEDIUM_IRON 225
 #define ARMOR_INT_CHEST_MEDIUM_SCALE 200 // More coverage, less integrity
-#define ARMOR_INT_CHEST_FENCER_STEEL 170
 #define ARMOR_INT_CHEST_MEDIUM_DECREPIT 150
 
 // LIGHT
 #define ARMOR_INT_CHEST_LIGHT_MASTER 300 // High tier cloth / leather armor
 #define ARMOR_INT_CHEST_LIGHT_MEDIUM 250 // Medium tier cloth / leather armor
 #define ARMOR_INT_CHEST_LIGHT_BASE 200
+#define ARMOR_INT_CHEST_LIGHT_STEEL 180
 #define ARMOR_INT_CHEST_CIVILIAN 100
 
 // LEG PIECES - Leg Armor
@@ -83,7 +82,6 @@
 #define ARMOR_PADDED_GOOD list("blunt" = 80, "slash" = 50, "stab" = 50, "piercing" = 80, "fire" = 0, "acid" = 0)
 #define ARMOR_PADDED list("blunt" = 60, "slash" = 40, "stab" = 30, "piercing" = 50, "fire" = 0, "acid" = 0)
 #define ARMOR_PADDED_BAD list("blunt" = 40, "slash" = 30, "stab" = 20, "piercing" = 40, "fire" = 0, "acid" = 0)
-#define ARMOR_LIGHTCUIRASS list("blunt" = 30, "slash" = 70, "stab" = 70, "piercing" = 20, "fire" = 0, "acid" = 0)	
 
 #define ARMOR_LEATHER list("blunt" = 60, "slash" = 50, "stab" = 40, "piercing" = 20, "fire" = 0, "acid" = 0)
 #define ARMOR_LEATHER_GOOD list("blunt" = 100, "slash" = 70, "stab" = 50, "piercing" = 30, "fire" = 0, "acid" = 0)
@@ -107,7 +105,7 @@
 // Glove Armor
 #define ARMOR_GLOVES_LEATHER list("blunt" = 60, "slash" = 10, "stab" = 20, "piercing" = 0, "fire" = 0, "acid" = 0)
 #define ARMOR_GLOVES_LEATHER_GOOD list("blunt" = 60, "slash" = 25, "stab" = 40, "piercing" = 10, "fire" = 0, "acid" = 0)
-#define ARMOR_GLOVES_CHAIN list("blunt" = 20, "slash" = 100, "stab" = 80, "piercing" = 20, "fire" = 0, "acid" = 0)
+#define ARMOR_GLOVES_CHAIN list("blunt" = 20, "slash" = 100, "stab" = 70, "piercing" = 20, "fire" = 0, "acid" = 0)
 #define ARMOR_GLOVES_PLATE list("blunt" = 5, "slash" = 100, "stab" = 80, "piercing" = 40, "fire" = 0, "acid" = 0)
 #define ARMOR_GLOVES_PLATE_GOOD list("blunt" = 20, "slash" = 100, "stab" = 80, "piercing" = 50, "fire" = 0, "acid" = 0)
 
@@ -276,6 +274,7 @@
 	/datum/species/anthromorphsmall,\
 	/datum/species/demihuman,\
 	/datum/species/halforc,\
+	/datum/species/orc,\
 	/datum/species/kobold,\
 	/datum/species/goblinp,\
 	/datum/species/construct/metal,\
@@ -429,7 +428,6 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define CTAG_GUILDSMASTER 	"CAT_GUILDSMASTER"	// Guildsmaster class - Handles Guildsmaster class selector 
 #define CTAG_GUILDSMEN 		"CAT_GUILDSMEN"		// Guildsmen class - Handles Guildsmen class selector
 #define CTAG_NIGHTMAIDEN	"CAT_NIGHTMAIDEN"	// Bathhouse Attendant's aesthetic choices.
-
 /*
 	Defines for the triumph buy datum categories
 */

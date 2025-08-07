@@ -158,6 +158,26 @@
 	else
 		to_chat(current, span_warning("I feel like I've become worse at [lowertext(S.name)]!"))
 
+	if(ishuman(current))
+		var/mob/living/carbon/human/H = current
+		if(H.adaptive_name)
+			var/str
+			var/list/jobnames = list()
+			for(var/skillt in SSskills.all_skills)
+				var/datum/skill/sk = GetSkillRef(skillt)
+				if(current.get_skill_level(sk.type) >= SKILL_LEVEL_EXPERT)
+					jobnames.Add(initial(sk.expert_name))
+			if(length(jobnames))
+				if(length(jobnames) == 1)
+					current.advjob = jobnames[1]
+				else
+					for(var/i in 1 to length(jobnames))
+						if(i == 1)
+							str += "[jobnames[i]]"
+						else
+							str += "-[jobnames[i]]"
+					current.advjob = str
+
 /datum/skill_holder/proc/get_skill_speed_modifier(skill)
 	var/datum/skill/S = GetSkillRef(skill)
 	return S.get_skill_speed_modifier(known_skills[S] || SKILL_LEVEL_NONE)
@@ -178,12 +198,13 @@
 		return
 	var/msg = ""
 	msg += span_info("*---------*\n")
-	for(var/datum/skill/i in shown_skills)
+	var/list/sorted_skills = sortList(shown_skills, GLOBAL_PROC_REF(cmp_skills_for_display))
+	for(var/datum/skill/i in sorted_skills)
 		var/can_advance_post = current?.mind?.sleep_adv.enough_sleep_xp_to_advance(i.type, 1)
 		var/capped_post = current?.mind?.sleep_adv.enough_sleep_xp_to_advance(i.type, 2)
-		var/rankup_postfix = capped_post ? span_nicegreen(" <b>(!!)</b>") : can_advance_post ? span_nicegreen(" <b>(!)</b>") : ""
-		msg += "[i] - [SSskills.level_names[known_skills[i]]][rankup_postfix]"
-		msg += span_info(" <a href='?src=[REF(i)];skill_detail=1'>{?}</a>\n")
+		var/rankup_postfix = capped_post ? span_nicegreen(" ★ ") : can_advance_post ? span_nicegreen(" ☆ ") : ""
+		var/skill_name = "<span style='color: [i.color]'>[i]</span>"
+		msg += "[skill_name] - [SSskills.level_names[known_skills[i]]][rankup_postfix] <a href='?src=[REF(i)];skill_detail=1' style='font-size: 0.5em;'>{?}</a>\n"
 	msg += "</span>"
 
 	to_chat(user, msg)
