@@ -19,7 +19,7 @@
 	return TRUE
 
 /datum/sex_action/masturbate_other_vagina_finger/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] ласкает киску пальчиками [target]..."))
+	user.visible_message(span_warning("[user] ласкает киску [target] своими пальчиками ..."))
 
 /datum/sex_action/masturbate_other_vagina_finger/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] забегает пальчиками в вагину [target]..."))
