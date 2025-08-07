@@ -438,7 +438,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += "</div>"
 
 	data += "<div style='border-top: 1px solid #444; margin: 12px 0 8px 0;'></div>"
-	data += "<div style='text-align: center;'>Влияния в итоге: [get_colored_influence_value(psydon_influence)]</div>"
+	data += "<div style='text-align: center;'>Суммарное влияние: [get_colored_influence_value(psydon_influence)]</div>"
 	data += "</div></div></div>"
 
 	// The Ten Section
@@ -502,7 +502,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		Зелий сварено: [GLOB.azure_round_stats[STATS_POTIONS_BREWED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(pestra_storyteller, STATS_POTIONS_BREWED))])<br>\
 		Ран зашито: [GLOB.azure_round_stats[STATS_WOUNDS_SEWED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(pestra_storyteller, STATS_WOUNDS_SEWED))])<br>\
 		Еды сгнило: [GLOB.azure_round_stats[STATS_FOOD_ROTTED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(pestra_storyteller, STATS_FOOD_ROTTED))])<br>\
-		Гнили убрано: [GLOB.azure_round_stats[STATS_ROT_CURED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(pestra_storyteller, STATS_ROT_CURED))])", pestra_storyteller)
+		Исцелено от гнили: [GLOB.azure_round_stats[STATS_ROT_CURED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(pestra_storyteller, STATS_ROT_CURED))])", pestra_storyteller)
 
 	// Dendor
 	data += god_ui_block("ДЕНДОР", "#442200", "#ccaa88", "\
@@ -521,7 +521,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		Число последователей: [ravox_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(ravox_storyteller))])<br>\
 		Боевых навыков получено: [GLOB.azure_round_stats[STATS_COMBAT_SKILLS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_COMBAT_SKILLS))])<br>\
 		Парирования: [GLOB.azure_round_stats[STATS_PARRIES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_PARRIES))])<br>\
-		Боевые кличи: [GLOB.azure_round_stats[STATS_WARCRIES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_WARCRIES))])<br>\
+		Боевых кличей: [GLOB.azure_round_stats[STATS_WARCRIES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_WARCRIES))])<br>\
 		Сдалось: [GLOB.azure_round_stats[STATS_YIELDS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_YIELDS))])", ravox_storyteller)
 
 	// Xylix
@@ -579,7 +579,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Zizo
 	data += god_ui_block("ЗИЗО", "#660000", "#ffcccc", "\
 		Число последователей: [zizo_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(zizo_storyteller))])<br>\
-		Нежити восстало: [GLOB.azure_round_stats[STATS_DEADITES_WOKEN_UP]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_DEADITES_WOKEN_UP))])<br>\
+		Нежити поднято: [GLOB.azure_round_stats[STATS_DEADITES_WOKEN_UP]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_DEADITES_WOKEN_UP))])<br>\
 		Пыток сделано: [GLOB.azure_round_stats[STATS_TORTURES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_TORTURES))])<br>\
 		Дворян убито: [GLOB.azure_round_stats[STATS_NOBLE_DEATHS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_NOBLE_DEATHS))])<br>\
 		Церковников убито: [GLOB.azure_round_stats[STATS_CLERGY_DEATHS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_CLERGY_DEATHS))])", zizo_storyteller)
