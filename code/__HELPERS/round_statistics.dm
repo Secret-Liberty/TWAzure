@@ -280,89 +280,89 @@ GLOBAL_LIST_EMPTY(patron_follower_counts)
 
 GLOBAL_LIST_INIT(featured_stats, list(
 	FEATURED_STATS_TREE_FELLERS = list(
-		"name" = "TOP 10 Lumberjacks",
+		"name" = "ТОП 10 ЛЕСОРУБОВ",
 		"color" = "#9b6937",
 		"entries" = list()
 	),
 	FEATURED_STATS_TAX_PAYERS = list(
-		"name" = "TOP 10 Tax Payers",
+		"name" = "ТОП 10 НАЛОГОПЛАТЕЛЬЩИКОВ",
 		"color" = "#f1e35d",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRIMINALS = list(
-		"name" = "TOP 10 Criminals",
+		"name" = "ТОП 10 НЕГОДЯЕВ",
 		"color" = "#bb6976",
 		"entries" = list()
 	),
 	FEATURED_STATS_SPEAKERS = list(
-		"name" = "TOP 10 Speakers",
+		"name" = "ТОП 10 БОЛТУНОВ",
 		"color" = "#93cabe",
 		"entries" = list()
 	),
 	FEATURED_STATS_MINERS = list(
-		"name" = "TOP 10 Miners",
+		"name" = "ТОП 10 ШАХТЁРОВ",
 		"color" = "#bd8e60",
 		"entries" = list()
 	),
 	FEATURED_STATS_ALCHEMISTS = list(
-		"name" = "TOP 10 Alchemists",
+		"name" = "ТОП 10 АЛХИМИКОВ",
 		"color" = "#3bac5d",
 		"entries" = list()
 	),
 	FEATURED_STATS_STORYTELLERS = list(
-		"name" = "TOP 10 Reigning Gods",
+		"name" = "ТОП 10 ПРАВЯЩИХ БОГОВ",
 		"color" = "#eeca2c",
 		"entries" = list()
 	),
 	FEATURED_STATS_GOURMETS = list(
-		"name" = "TOP 10 Gourmets",
+		"name" = "ТОП 10 ГУРМАНОВ",
 		"color" = "#6765cf",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRAFTED_ITEMS = list(
-		"name" = "TOP 10 Crafted Items",
+		"name" = "ТОП 10 СОЗДАНЫХ ВЕЩЕЙ",
 		"color" = "#a5953a",
 		"entries" = list(),
 		"object_stat" = TRUE
 	),
 	FEATURED_STATS_FISHERS = list(
-		"name" = "TOP 10 Fishers",
+		"name" = "ТОП 10 РЫБАКОВ",
 		"color" = "#559bbb",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRAFTERS = list(
-		"name" = "TOP 10 Crafters",
+		"name" = "ТОП 10 РЕМЕСЛЕННИКОВ",
 		"color" = "#a8a24e",
 		"entries" = list()
 	),
 	FEATURED_STATS_FARMERS = list(
-		"name" = "TOP 10 Farmers",
+		"name" = "ТОП 10 ФЕРМЕРОВ",
 		"color" = "#50eb77",
 		"entries" = list()
 	),
 	FEATURED_STATS_DRINKS = list(
-		"name" = "TOP 10 Beverages",
+		"name" = "ТОП 10 НАПИТКОВ",
 		"color" = "#5487c0",
 		"entries" = list(),
 		"object_stat" = TRUE
 	),
 	FEATURED_STATS_SCREAMERS = list(
-		"name" = "TOP 10 Screamers",
+		"name" = "ТОП 10 КРИКУНОВ",
 		"color" = "#d34747",
 		"entries" = list()
 	),
 	FEATURED_STATS_THIEVES = list(
-		"name" = "TOP 10 Thieves",
+		"name" = "ТОП 10 ВОРОВ",
 		"color" = "#6e4a25",
 		"entries" = list()
 	),
 	FEATURED_STATS_ALCOHOLICS = list(
-		"name" = "TOP 10 Alcoholics",
+		"name" = "ТОП 10 АЛКОГОЛИКОВ",
 		"color" = "#945d96",
 		"entries" = list()
 	),
 	FEATURED_STATS_MAGES = list(
-		"name" = "TOP 10 Mages",
+		"name" = "ТОП 10 МАГОВ",
 		"color" = "#9eaceb",
 		"entries" = list()
 	),
@@ -371,7 +371,7 @@ GLOBAL_LIST_INIT(featured_stats, list(
 /proc/format_top_ten(stat_category)
 	var/list/stat_data = GLOB.featured_stats[stat_category]
 	if(!stat_data || !stat_data["entries"])
-		return "Nobody"
+		return "Никого"
 
 	var/list/entries = list()
 	for(var/key in stat_data["entries"])
@@ -423,7 +423,7 @@ GLOBAL_LIST_INIT(featured_stats, list(
 			job_title = " ([user.mind.assigned_role])"
 	else if(user.mind?.special_role)
 		job_title = " ([user.mind.special_role])"
-	else if(user.job && user.job != "Unassigned")
+	else if(user.job && user.job != "Не назначен")
 		job_title = " ([user.job])"
 
 	var/key = "[user.real_name][job_title]"

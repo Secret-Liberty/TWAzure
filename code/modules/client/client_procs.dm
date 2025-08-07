@@ -366,7 +366,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Confessions section
 	data += "<div style='text-align: center; margin: 25px auto; padding: 15px 0; border-top: 1.5px solid #444; width: 80%; max-width: 800px;'>"
 	if(GLOB.confessors.len)
-		data += "<font color='#93cac7'><span class='bold'>Конфессий:</span></font> "
+		data += "<font color='#93cac7'><span class='bold'>Конфессии:</span></font> "
 		for(var/x in GLOB.confessors)
 			data += "[x]"
 	else
