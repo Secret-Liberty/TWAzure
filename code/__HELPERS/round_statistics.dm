@@ -423,7 +423,7 @@ GLOBAL_LIST_INIT(featured_stats, list(
 			job_title = " ([user.mind.assigned_role])"
 	else if(user.mind?.special_role)
 		job_title = " ([user.mind.special_role])"
-	else if(user.job && user.job != "Не назначен")
+	else if(user.job && user.job != "Без роли")
 		job_title = " ([user.job])"
 
 	var/key = "[user.real_name][job_title]"
