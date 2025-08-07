@@ -218,7 +218,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 	if(max_influence <= 0 && max_chosen <= 0)
 		data += "<div style='font-size: 1.2em; font-weight: bold; margin-bottom: 12px;'>"
-		data += "Нет <span style='color: #bd1717;'>Богов</span>, Нет <span style='color: #bd1717;'>Правителей</span>"
+		data += "Ни <span style='color: #bd1717;'>Богов</span>, Ни <span style='color: #bd1717;'>Господ</span>"
 		data += "</div>"
 	else
 		if(most_influential == most_frequent && max_influence > 0)

@@ -310,7 +310,7 @@ GLOBAL_LIST_INIT(featured_stats, list(
 		"entries" = list()
 	),
 	FEATURED_STATS_STORYTELLERS = list(
-		"name" = "ЛУЧШИЕ ПРАВЯЩИЕ БОГОВ",
+		"name" = "ЛУЧШИЕ ПРАВЯЩИЕ БОГИ",
 		"color" = "#eeca2c",
 		"entries" = list()
 	),
