@@ -1,5 +1,5 @@
 /datum/sex_action/rub_body
-	name = "Облапать"
+	name = "Гладить"
 	check_same_tile = FALSE
 
 /datum/sex_action/rub_body/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -18,7 +18,7 @@
 	user.visible_message(span_warning("[user] размещает ладони на теле [target]..."))
 
 /datum/sex_action/rub_body/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] лапает тело [target]..."))
+	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] гладит тело [target]..."))
 	user.make_sucking_noise()
 
 	user.sexcon.perform_sex_action(target, 0.5, 0, TRUE)
