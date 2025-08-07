@@ -280,89 +280,89 @@ GLOBAL_LIST_EMPTY(patron_follower_counts)
 
 GLOBAL_LIST_INIT(featured_stats, list(
 	FEATURED_STATS_TREE_FELLERS = list(
-		"name" = "ТОП 10 ЛЕСОРУБОВ",
+		"name" = "ЛУЧШИЕ ЛЕСОРУБЫ",
 		"color" = "#9b6937",
 		"entries" = list()
 	),
 	FEATURED_STATS_TAX_PAYERS = list(
-		"name" = "ТОП 10 НАЛОГОПЛАТЕЛЬЩИКОВ",
+		"name" = "ЛУЧШИЕ НАЛОГОПЛАТЕЛЬЩИКИ",
 		"color" = "#f1e35d",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRIMINALS = list(
-		"name" = "ТОП 10 НЕГОДЯЕВ",
+		"name" = "ЛУЧШИЕ НЕГОДЯИ",
 		"color" = "#bb6976",
 		"entries" = list()
 	),
 	FEATURED_STATS_SPEAKERS = list(
-		"name" = "ТОП 10 БОЛТУНОВ",
+		"name" = "ЛУЧШИЕ БОЛТУНЫ",
 		"color" = "#93cabe",
 		"entries" = list()
 	),
 	FEATURED_STATS_MINERS = list(
-		"name" = "ТОП 10 ШАХТЁРОВ",
+		"name" = "ЛУЧШИЕ ШАХТЁРЫ",
 		"color" = "#bd8e60",
 		"entries" = list()
 	),
 	FEATURED_STATS_ALCHEMISTS = list(
-		"name" = "ТОП 10 АЛХИМИКОВ",
+		"name" = "ЛУЧШИЕ АЛХИМИКИ",
 		"color" = "#3bac5d",
 		"entries" = list()
 	),
 	FEATURED_STATS_STORYTELLERS = list(
-		"name" = "ТОП 10 ПРАВЯЩИХ БОГОВ",
+		"name" = "ЛУЧШИЕ ПРАВЯЩИЕ БОГОВ",
 		"color" = "#eeca2c",
 		"entries" = list()
 	),
 	FEATURED_STATS_GOURMETS = list(
-		"name" = "ТОП 10 ГУРМАНОВ",
+		"name" = "ЛУЧШИЕ0 ГУРМАНЫ",
 		"color" = "#6765cf",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRAFTED_ITEMS = list(
-		"name" = "ТОП 10 СОЗДАНЫХ ВЕЩЕЙ",
+		"name" = "ЛУЧШИЕ СОЗДАНЫЕ ВЕЩИ",
 		"color" = "#a5953a",
 		"entries" = list(),
 		"object_stat" = TRUE
 	),
 	FEATURED_STATS_FISHERS = list(
-		"name" = "ТОП 10 РЫБАКОВ",
+		"name" = "ЛУЧШИЕ РЫБАКИ",
 		"color" = "#559bbb",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRAFTERS = list(
-		"name" = "ТОП 10 РЕМЕСЛЕННИКОВ",
+		"name" = "ЛУЧШИЕ РЕМЕСЛЕННИКИ",
 		"color" = "#a8a24e",
 		"entries" = list()
 	),
 	FEATURED_STATS_FARMERS = list(
-		"name" = "ТОП 10 ФЕРМЕРОВ",
+		"name" = "ЛУЧШИЕ ФЕРМЕРЫ",
 		"color" = "#50eb77",
 		"entries" = list()
 	),
 	FEATURED_STATS_DRINKS = list(
-		"name" = "ТОП 10 НАПИТКОВ",
+		"name" = "ЛУЧШИЕ НАПИТКИ",
 		"color" = "#5487c0",
 		"entries" = list(),
 		"object_stat" = TRUE
 	),
 	FEATURED_STATS_SCREAMERS = list(
-		"name" = "ТОП 10 КРИКУНОВ",
+		"name" = "ЛУЧШИЕ КРИКУНЫ",
 		"color" = "#d34747",
 		"entries" = list()
 	),
 	FEATURED_STATS_THIEVES = list(
-		"name" = "ТОП 10 ВОРОВ",
+		"name" = "ЛУЧШИЕ ВОРЫ",
 		"color" = "#6e4a25",
 		"entries" = list()
 	),
 	FEATURED_STATS_ALCOHOLICS = list(
-		"name" = "ТОП 10 АЛКОГОЛИКОВ",
+		"name" = "ЛУЧШИЕ АЛКОГОЛИКИ",
 		"color" = "#945d96",
 		"entries" = list()
 	),
 	FEATURED_STATS_MAGES = list(
-		"name" = "ТОП 10 МАГОВ",
+		"name" = "ЛУЧШИЕ МАГИ",
 		"color" = "#9eaceb",
 		"entries" = list()
 	),
