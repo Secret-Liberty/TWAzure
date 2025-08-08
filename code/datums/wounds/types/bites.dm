@@ -58,10 +58,10 @@
 
 #define BITE_UPG_BLEEDRATE 0.2
 #define BITE_UPG_WHPRATE 0.1
-#define BITE_UPG_SEWRATE 0.6
-#define BITE_UPG_PAINRATE 0.5
+#define BITE_UPG_SEWRATE 1
+#define BITE_UPG_PAINRATE 1
 #define BITE_UPG_CLAMP_ARMORED 1
-#define BITE_UPG_CLAMP_RAW 4
+#define BITE_UPG_CLAMP_RAW 3
 #define BITE_ARMORED_BLEED_CLAMP 5
 
 /datum/wound/dynamic/bite/upgrade(dam, armor)

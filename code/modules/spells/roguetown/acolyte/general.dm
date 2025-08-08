@@ -440,6 +440,7 @@
 	recharge_time = 2 MINUTES
 	miracle = TRUE
 	devotion_cost = 200
+	is_cdr_exempt = TRUE
 
 /obj/effect/proc_holder/spell/invoked/wound_heal/cast(list/targets, mob/user = usr)
 	if(ishuman(targets[1]))

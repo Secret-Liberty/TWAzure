@@ -65,7 +65,7 @@
 
 #define SLASH_UPG_BLEEDRATE 0.16	//Clamps out at 11-12 STR with 25 force, or at 10 STR with 30 force.
 #define SLASH_UPG_WHPRATE 0.6
-#define SLASH_UPG_SEWRATE 1
+#define SLASH_UPG_SEWRATE 2
 #define SLASH_UPG_PAINRATE 0.25
 #define SLASH_UPG_CLAMP_ARMORED 2
 #define SLASH_UPG_CLAMP_RAW 5
@@ -201,7 +201,7 @@
 
 #define LASHING_UPG_BLEEDRATE 0.25
 #define LASHING_UPG_WHPRATE 1
-#define LASHING_UPG_SEWRATE 1.5
+#define LASHING_UPG_SEWRATE 2.5
 #define LASHING_UPG_PAINRATE 0.5
 #define LASHING_UPG_CLAMP_ARMORED 0.2
 #define LASHING_UPG_CLAMP_RAW 7	//Three unarmored hits for an artery bleed.
