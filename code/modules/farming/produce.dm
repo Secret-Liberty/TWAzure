@@ -388,6 +388,7 @@
 	tastes = list("tastes like a burning coal and fire" = 1)
 	bitesize = 1
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin/fyritiusnectar = 5)
+	grind_results = list(/datum/reagent/toxin/fyritiusnectar = 10)
 	dropshrink = 0.8
 	rotprocess = null
 	w_class = WEIGHT_CLASS_TINY
