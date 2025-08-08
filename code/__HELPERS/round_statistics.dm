@@ -315,7 +315,7 @@ GLOBAL_LIST_INIT(featured_stats, list(
 		"entries" = list()
 	),
 	FEATURED_STATS_GOURMETS = list(
-		"name" = "ЛУЧШИЕ0 ГУРМАНЫ",
+		"name" = "ЛУЧШИЕ ГУРМАНЫ",
 		"color" = "#6765cf",
 		"entries" = list()
 	),
