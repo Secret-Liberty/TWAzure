@@ -176,11 +176,12 @@
 		conbonus = CONSTITUTION_BLEEDRATE_CAP - 10
 	else if(STACON != 10)
 		conbonus = STACON - 10
-	amt -= amt * (conbonus * CONSTITUTION_BLEEDRATE_MOD)
-	if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
-		amt = amt / 2
-	if(HAS_TRAIT(src, TRAIT_CRITICAL_WEAKNESS))
-		amt = amt * 2
+	if(mind)
+		amt -= amt * (conbonus * CONSTITUTION_BLEEDRATE_MOD)
+		if(HAS_TRAIT(src, TRAIT_CRITICAL_RESISTANCE))
+			amt = amt / 2
+		if(HAS_TRAIT(src, TRAIT_CRITICAL_WEAKNESS))
+			amt = amt * 2
 	blood_volume = max(blood_volume - amt, 0)
 	GLOB.azure_round_stats[STATS_BLOOD_SPILT] += amt
 	if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
