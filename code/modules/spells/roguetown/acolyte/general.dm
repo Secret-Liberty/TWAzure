@@ -540,3 +540,5 @@
 				UH.visible_message(span_warning("Severs the bloodlink from [target]!"))
 				bloodbeam.End()
 				return TRUE
+		bloodbeam.End()
+		return TRUE
