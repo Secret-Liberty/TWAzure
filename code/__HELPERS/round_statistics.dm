@@ -280,7 +280,7 @@ GLOBAL_LIST_EMPTY(patron_follower_counts)
 
 GLOBAL_LIST_INIT(featured_stats, list(
 	FEATURED_STATS_TREE_FELLERS = list(
-		"name" = "ЛУЧШИЕ ЛЕСОРУБЫ",
+		"name" = "Лесорубы",
 		"color" = "#9b6937",
 		"entries" = list()
 	),
