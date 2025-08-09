@@ -285,7 +285,7 @@ GLOBAL_LIST_INIT(featured_stats, list(
 		"entries" = list()
 	),
 	FEATURED_STATS_TAX_PAYERS = list(
-		"name" = "ЛУЧШИЕ НАЛОГОПЛАТЕЛЬЩИКИ",
+		"name" = "Уплаченные налоги",
 		"color" = "#f1e35d",
 		"entries" = list()
 	),
