@@ -68,7 +68,7 @@
 #define PUNC_UPG_PAINRATE 0.05
 #define PUNC_UPG_CLAMP_ARMORED 3
 #define PUNC_UPG_CLAMP_RAW 3
-#define PUNC_ARMORED_BLEED_CLAMP 12
+#define PUNC_ARMORED_BLEED_CLAMP 9
 
 /datum/wound/dynamic/puncture/upgrade(dam, armor)
 	whp += (dam * PUNC_UPG_WHPRATE)
