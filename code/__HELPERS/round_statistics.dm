@@ -295,7 +295,7 @@ GLOBAL_LIST_INIT(featured_stats, list(
 		"entries" = list()
 	),
 	FEATURED_STATS_SPEAKERS = list(
-		"name" = "ЛУЧШИЕ БОЛТУНЫ",
+		"name" = "Болтуны",
 		"color" = "#93cabe",
 		"entries" = list()
 	),
