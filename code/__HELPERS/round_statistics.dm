@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(featured_stats, list(
 		"entries" = list()
 	),
 	FEATURED_STATS_CRIMINALS = list(
-		"name" = "ЛУЧШИЕ НЕГОДЯИ",
+		"name" = "Преступники",
 		"color" = "#bb6976",
 		"entries" = list()
 	),
