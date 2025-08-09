@@ -300,69 +300,69 @@ GLOBAL_LIST_INIT(featured_stats, list(
 		"entries" = list()
 	),
 	FEATURED_STATS_MINERS = list(
-		"name" = "ЛУЧШИЕ ШАХТЁРЫ",
+		"name" = "Рудокопы",
 		"color" = "#bd8e60",
 		"entries" = list()
 	),
 	FEATURED_STATS_ALCHEMISTS = list(
-		"name" = "ЛУЧШИЕ АЛХИМИКИ",
+		"name" = "Алхимики",
 		"color" = "#3bac5d",
 		"entries" = list()
 	),
 	FEATURED_STATS_STORYTELLERS = list(
-		"name" = "ЛУЧШИЕ ПРАВЯЩИЕ БОГИ",
+		"name" = "Правление богов",
 		"color" = "#eeca2c",
 		"entries" = list()
 	),
 	FEATURED_STATS_GOURMETS = list(
-		"name" = "ЛУЧШИЕ ГУРМАНЫ",
+		"name" = "Гурманы",
 		"color" = "#6765cf",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRAFTED_ITEMS = list(
-		"name" = "ЛУЧШИЕ СОЗДАНЫЕ ВЕЩИ",
+		"name" = "Созданные предметы",
 		"color" = "#a5953a",
 		"entries" = list(),
 		"object_stat" = TRUE
 	),
 	FEATURED_STATS_FISHERS = list(
-		"name" = "ЛУЧШИЕ РЫБАКИ",
+		"name" = "Рыбаки",
 		"color" = "#559bbb",
 		"entries" = list()
 	),
 	FEATURED_STATS_CRAFTERS = list(
-		"name" = "ЛУЧШИЕ РЕМЕСЛЕННИКИ",
+		"name" = "Ремесленники",
 		"color" = "#a8a24e",
 		"entries" = list()
 	),
 	FEATURED_STATS_FARMERS = list(
-		"name" = "ЛУЧШИЕ ФЕРМЕРЫ",
+		"name" = "Фермеры",
 		"color" = "#50eb77",
 		"entries" = list()
 	),
 	FEATURED_STATS_DRINKS = list(
-		"name" = "ЛУЧШИЕ НАПИТКИ",
+		"name" = "Любимые напитки",
 		"color" = "#5487c0",
 		"entries" = list(),
 		"object_stat" = TRUE
 	),
 	FEATURED_STATS_SCREAMERS = list(
-		"name" = "ЛУЧШИЕ КРИКУНЫ",
+		"name" = "Крикуны",
 		"color" = "#d34747",
 		"entries" = list()
 	),
 	FEATURED_STATS_THIEVES = list(
-		"name" = "ЛУЧШИЕ ВОРЫ",
+		"name" = "Воры",
 		"color" = "#6e4a25",
 		"entries" = list()
 	),
 	FEATURED_STATS_ALCOHOLICS = list(
-		"name" = "ЛУЧШИЕ АЛКОГОЛИКИ",
+		"name" = "Алкоголики",
 		"color" = "#945d96",
 		"entries" = list()
 	),
 	FEATURED_STATS_MAGES = list(
-		"name" = "ЛУЧШИЕ МАГИ",
+		"name" = "Колдуны",
 		"color" = "#9eaceb",
 		"entries" = list()
 	),

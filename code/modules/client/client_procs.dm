@@ -223,7 +223,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	else
 		if(most_influential == most_frequent && max_influence > 0)
 			data += "<div style='font-size: 1.2em; font-weight: bold; margin-bottom: 12px;'>"
-			data += "Доминирующее божество <span style='color:[most_influential.color_theme];'>[most_influential.name]</span>"
+			data += "Доминирующее божество - <span style='color:[most_influential.color_theme];'>[most_influential.name]</span>"
 			data += "</div>"
 		else
 			if(max_influence > 0)
@@ -284,14 +284,14 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Left column
 	data += "<div style='display: table-cell; width: 50%; vertical-align: top; border-left: 1px solid #444; padding: 0 10px;'>"
 	data += "<font color='#9b6937'><span class='bold'>Смертей:</span></font> [GLOB.azure_round_stats[STATS_DEATHS]]<br>"
-	data += "<font color='#6b5ba1'><span class='bold'>Дворян погибло:</span></font> [GLOB.azure_round_stats[STATS_NOBLE_DEATHS]]<br>"
+	data += "<font color='#6b5ba1'><span class='bold'>Смертей дворян:</span></font> [GLOB.azure_round_stats[STATS_NOBLE_DEATHS]]<br>"
 	data += "<font color='#e6b327'><span class='bold'>Возрождений:</span></font> [GLOB.azure_round_stats[STATS_ASTRATA_REVIVALS]]<br>"
-	data += "<font color='#2dc5bd'><span class='bold'>Возрождений флюксом:</span></font> [GLOB.azure_round_stats[STATS_LUX_REVIVALS]]<br>"
-	data += "<font color='#825b1c'><span class='bold'>Упавших в пропасть:</span></font> [GLOB.azure_round_stats[STATS_MOAT_FALLERS]]<br>"
-	data += "<font color='#ac5d5d'><span class='bold'>Сломаных ножек:</span></font> [GLOB.azure_round_stats[STATS_ANKLES_BROKEN]]<br>"
+	data += "<font color='#2dc5bd'><span class='bold'>Возрождений люксом:</span></font> [GLOB.azure_round_stats[STATS_LUX_REVIVALS]]<br>"
+	data += "<font color='#825b1c'><span class='bold'>Падений:</span></font> [GLOB.azure_round_stats[STATS_MOAT_FALLERS]]<br>"
+	data += "<font color='#ac5d5d'><span class='bold'>Разбилось с высоты:</span></font> [GLOB.azure_round_stats[STATS_ANKLES_BROKEN]]<br>"
 	data += "<font color='#e6d927'><span class='bold'>Отлучено:</span></font> [GLOB.azure_round_stats[STATS_PEOPLE_SMITTEN]]<br>"
 	data += "<font color='#50aeb4'><span class='bold'>Утонуло:</span></font> [GLOB.azure_round_stats[STATS_PEOPLE_DROWNED]]<br>"
-	data += "<font color='#8f816b'><span class='bold'>Своровано вещей:</span></font> [GLOB.azure_round_stats[STATS_ITEMS_PICKPOCKETED]]<br>"
+	data += "<font color='#8f816b'><span class='bold'>Успешных краж:</span></font> [GLOB.azure_round_stats[STATS_ITEMS_PICKPOCKETED]]<br>"
 	data += "<font color='#c24bc2'><span class='bold'>Снюхано:</span></font> [GLOB.azure_round_stats[STATS_DRUGS_SNORTED]]<br>"
 	data += "<font color='#90a037'><span class='bold'>Смеха было:</span></font> [GLOB.azure_round_stats[STATS_LAUGHS_MADE]]<br>"
 	data += "<font color='#f5c02e'><span class='bold'>Налогов собрано:</span></font> [GLOB.azure_round_stats[STATS_TAXES_COLLECTED]]<br>"
@@ -300,17 +300,17 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Right column
 	data += "<div style='display: table-cell; width: 50%; vertical-align: top; padding: 0 10px;'>"
 	data += "<font color='#36959c'><span class='bold'>Триумфов получено:</span></font> [GLOB.azure_round_stats[STATS_TRIUMPHS_AWARDED]]<br>"
-	data += "<font color='#a02fa4'><span class='bold'>Триумфов отнято:</span></font> [GLOB.azure_round_stats[STATS_TRIUMPHS_STOLEN] * -1]<br>"
-	data += "<font color='#d7da2f'><span class='bold'>Молитв было:</span></font> [GLOB.azure_round_stats[STATS_PRAYERS_MADE]]<br>"
+	data += "<font color='#a02fa4'><span class='bold'>Триумфов потеряно:</span></font> [GLOB.azure_round_stats[STATS_TRIUMPHS_STOLEN] * -1]<br>"
+	data += "<font color='#d7da2f'><span class='bold'>Прочитано молитв:</span></font> [GLOB.azure_round_stats[STATS_PRAYERS_MADE]]<br>"
 	data += "<font color='#9c3e46'><span class='bold'>Разумной нежити:</span></font> [GLOB.azure_round_stats[STATS_DEADITES_ALIVE]]<br>"
 	data += "<font color='#0f555c'><span class='bold'>Бород сбрито:</span></font> [GLOB.azure_round_stats[STATS_BEARDS_SHAVED]]<br>"
-	data += "<font color='#6e7c81'><span class='bold'>Навыков поднято:</span></font> [GLOB.azure_round_stats[STATS_SKILLS_LEARNED]]<br>"
+	data += "<font color='#6e7c81'><span class='bold'>Навыков улучшено:</span></font> [GLOB.azure_round_stats[STATS_SKILLS_LEARNED]]<br>"
 	data += "<font color='#23af4d'><span class='bold'>Растений собрано:</span></font> [GLOB.azure_round_stats[STATS_PLANTS_HARVESTED]]<br>"
-	data += "<font color='#4492a5'><span class='bold'>Рыбы выловлено:</span></font> [GLOB.azure_round_stats[STATS_FISH_CAUGHT]]<br>"
+	data += "<font color='#4492a5'><span class='bold'>Рыбы поймано:</span></font> [GLOB.azure_round_stats[STATS_FISH_CAUGHT]]<br>"
 	data += "<font color='#836033'><span class='bold'>Деревьев срублено:</span></font> [GLOB.azure_round_stats[STATS_TREES_CUT]]<br>"
 	data += "<font color='#af2323'><span class='bold'>Органов съедено:</span></font> [GLOB.azure_round_stats[STATS_ORGANS_EATEN]]<br>"
 	data += "<font color='#afa623'><span class='bold'>Замков взломано:</span></font> [GLOB.azure_round_stats[STATS_LOCKS_PICKED]]<br>"
-	data += "<font color='#af2379'><span class='bold'>Поцелуйчиков:</span></font> [GLOB.azure_round_stats[STATS_KISSES_MADE]]<br>"
+	data += "<font color='#af2379'><span class='bold'>Поцелуев:</span></font> [GLOB.azure_round_stats[STATS_KISSES_MADE]]<br>"
 	data += "</div>"
 	data += "</div></div>"
 	data += "</div>"
@@ -318,7 +318,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Census Section (33%)
 	data += "<div style='display: table-cell; width: 33%; vertical-align: top;'>"
 	data += "<div style='height: 38px; text-align: center;'>"
-	data += "<span style='font-weight: bold; color: #bd1717;'>Ценз</span>"
+	data += "<span style='font-weight: bold; color: #bd1717;'>Население</span>"
 	data += "</div>"
 	data += "<div style='border-top: 1px solid #444; width: 80%; margin: 0 auto 15px auto;'></div>"
 	data += "<div style='display: table; width: 100%;'>"
@@ -327,10 +327,10 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Left column
 	data += "<div style='display: table-cell; width: 50%; vertical-align: top; border-left: 1px solid #444; padding: 0 10px;'>"
 	data += "<font color='#8f1dc0'<span class='bold'>Вера правителя:</span></font> [GLOB.azure_round_stats[STATS_MONARCH_PATRON]]<br>"
-	data += "<font color='#4682B4'><span class='bold'>Народу было:</span></font> [GLOB.azure_round_stats[STATS_TOTAL_POPULATION]]<br>"
-	data += "<font color='#ce4646'><span class='bold'>Дворян:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_NOBLES]]<br>"
+	data += "<font color='#4682B4'><span class='bold'>Население Оси:</span></font> [GLOB.azure_round_stats[STATS_TOTAL_POPULATION]]<br>"
+	data += "<font color='#ce4646'><span class='bold'>Дворяне:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_NOBLES]]<br>"
 	data += "<font color='#556B2F'><span class='bold'>Гарнизон:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_GARRISON]]<br>"
-	data += "<font color='#DAA520'><span class='bold'>Церковь:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_CLERGY]]<br>"
+	data += "<font color='#DAA520'><span class='bold'>Духовенство:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_CLERGY]]<br>"
 	data += "<font color='#D2691E'><span class='bold'>Мещане:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_TRADESMEN]]<br>"
 	data += "<font color='#8B4513'><span class='bold'>Людей:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_NORTHERN_HUMANS]]<br>"	//Here to save space, should be other column
 	data += "<font color='#6b89e0'><span class='bold'>Мужчин:</span></font> [GLOB.azure_round_stats[STATS_MALE_POPULATION]]<br>"
@@ -355,7 +355,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += "<font color='#99dfd5'><span class='bold'>Люпиан и табакси:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_LUPIANS] + GLOB.azure_round_stats[STATS_ALIVE_VULPS] + GLOB.azure_round_stats[STATS_ALIVE_TABAXI]]<br>"
 	data += "<font color='#c0c6c7'><span class='bold'>Конструктов:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_CONSTRUCTS]]<br>"
 	data += "<font color='#9ACD32'><span class='bold'>Молей и аксиан:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_MOTHS] + GLOB.azure_round_stats[STATS_ALIVE_AXIAN]]<br>"
-	data += "<font color='#882660'><span class='bold'>Ау ра:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_AURA]]<br>"
+	data += "<font color='#882660'><span class='bold'>Ау Ра:</span></font> [GLOB.azure_round_stats[STATS_ALIVE_AURA]]<br>"
 	data += "</div>"
 
 	data += "</div></div>"
@@ -366,11 +366,11 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Confessions section
 	data += "<div style='text-align: center; margin: 25px auto; padding: 15px 0; border-top: 1.5px solid #444; width: 80%; max-width: 800px;'>"
 	if(GLOB.confessors.len)
-		data += "<font color='#93cac7'><span class='bold'>Конфессии:</span></font> "
+		data += "<font color='#93cac7'><span class='bold'>Исповеданий:</span></font> "
 		for(var/x in GLOB.confessors)
 			data += "[x]"
 	else
-		data += "<font color='#93cac7'><span class='bold'>Не было конфессий!</span></font>"
+		data += "<font color='#93cac7'><span class='bold'>Никто не исповедался!</span></font>"
 	data += "</div>"
 
 	src.mob << browse(null, "window=vanderlin_influences")
@@ -421,24 +421,24 @@ GLOBAL_LIST_EMPTY(respawncounts)
 
 	data += "<div style='flex: 1; padding-right: 10px;'>"
 	data += "Число последователей: [psydon_followers] ([get_colored_influence_value(psydon_followers * 20)])<br>"
-	data += "Людей с крестиком: [GLOB.azure_round_stats[STATS_PSYCROSS_USERS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_PSYCROSS_USERS] * 10)])<br>"
-	data += "Число конфессий: [GLOB.confessors.len] ([get_colored_influence_value(GLOB.confessors.len * 20)])<br>"
-	data += "Самая большая вера: [largest_religion ? "ДА" : "НЕТ"] ([get_colored_influence_value(largest_religion ? 500 : -250)])<br>"
-	data += "Монарх псидонит: [psydonite_monarch ? "ДА" : "НЕТ"] ([get_colored_influence_value((psydonite_monarch ? (psydonite_monarch * 500) : -250))])<br>"
+	data += "Носили крест: [GLOB.azure_round_stats[STATS_PSYCROSS_USERS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_PSYCROSS_USERS] * 10)])<br>"
+	data += "Исповедей: [GLOB.confessors.len] ([get_colored_influence_value(GLOB.confessors.len * 20)])<br>"
+	data += "Крупнейшая вера: [largest_religion ? "ДА" : "НЕТ"] ([get_colored_influence_value(largest_religion ? 500 : -250)])<br>"
+	data += "Монарх-Псайдонит: [psydonite_monarch ? "ДА" : "НЕТ"] ([get_colored_influence_value((psydonite_monarch ? (psydonite_monarch * 500) : -250))])<br>"
 	data += "</div>"
 
 	data += "<div style='flex: 1; padding-left: 60px;'>"
-	data += "Число апостатов: [apostasy_followers] ([get_colored_influence_value(apostasy_followers * -20)])<br>"
-	data += "Людских смертей: [GLOB.azure_round_stats[STATS_HUMEN_DEATHS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_HUMEN_DEATHS] * -10)])<br>"
-	data += "Собрано флюкса: [GLOB.azure_round_stats[STATS_LUX_HARVESTED]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_LUX_HARVESTED] * -50)])<br>"
-	data += "Число тифлингов: [GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS] * -20)])<br>"
+	data += "Отступников: [apostasy_followers] ([get_colored_influence_value(apostasy_followers * -20)])<br>"
+	data += "Людей погибло: [GLOB.azure_round_stats[STATS_HUMEN_DEATHS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_HUMEN_DEATHS] * -10)])<br>"
+	data += "Извлечено люкса: [GLOB.azure_round_stats[STATS_LUX_HARVESTED]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_LUX_HARVESTED] * -50)])<br>"
+	data += "Живых тифлингов: [GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS] * -20)])<br>"
 	data += "ПСАЙДОН: [psydonite_user ? "ЖИВ" : "МЁРТВ"] ([get_colored_influence_value(psydonite_user ? 10000 : -10000)])<br>"
 	data += "</div>"
 
 	data += "</div>"
 
 	data += "<div style='border-top: 1px solid #444; margin: 12px 0 8px 0;'></div>"
-	data += "<div style='text-align: center;'>Суммарное влияние: [get_colored_influence_value(psydon_influence)]</div>"
+	data += "<div style='text-align: center;'>Всего влияния: [get_colored_influence_value(psydon_influence)]</div>"
 	data += "</div></div></div>"
 
 	// The Ten Section
@@ -474,7 +474,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += god_ui_block("АСТРАТА", "#ffd700", "#333300", "\
 		Число последователей: [astrata_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(astrata_storyteller))])<br>\
 		Возрождено Астратой: [GLOB.azure_round_stats[STATS_ASTRATA_REVIVALS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(astrata_storyteller, STATS_ASTRATA_REVIVALS))])<br>\
-		Благородных: [GLOB.azure_round_stats[STATS_ALIVE_NOBLES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(astrata_storyteller, STATS_ALIVE_NOBLES))])<br>\
+		Живых дворян: [GLOB.azure_round_stats[STATS_ALIVE_NOBLES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(astrata_storyteller, STATS_ALIVE_NOBLES))])<br>\
 		Дворян погибло: [GLOB.azure_round_stats[STATS_NOBLE_DEATHS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(astrata_storyteller, STATS_NOBLE_DEATHS))])<br>\
 		Законов и указов: [GLOB.azure_round_stats[STATS_LAWS_AND_DECREES_MADE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(astrata_storyteller, STATS_LAWS_AND_DECREES_MADE))])<br>\
 		Налогов собрано: [GLOB.azure_round_stats[STATS_TAXES_COLLECTED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(astrata_storyteller, STATS_TAXES_COLLECTED))])", astrata_storyteller)
@@ -485,7 +485,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		Книг написано: [GLOB.azure_round_stats[STATS_BOOKS_PRINTED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(noc_storyteller, STATS_BOOKS_PRINTED))])<br>\
 		Обучено грамоте: [GLOB.azure_round_stats[STATS_LITERACY_TAUGHT]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(noc_storyteller, STATS_LITERACY_TAUGHT))])<br>\
 		Книг сожжено: [GLOB.azure_round_stats[STATS_BOOKS_BURNED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(noc_storyteller, STATS_BOOKS_BURNED))])<br>\
-		Улучшений навыков (отдых): [GLOB.azure_round_stats[STATS_SKILLS_DREAMED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(noc_storyteller, STATS_SKILLS_DREAMED))])", noc_storyteller)
+		Навыков улучшено во сне: [GLOB.azure_round_stats[STATS_SKILLS_DREAMED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(noc_storyteller, STATS_SKILLS_DREAMED))])", noc_storyteller)
 
 	// Necra
 	data += god_ui_block("НЕКРА", "#666666", "#dddddd", "\
@@ -520,23 +520,23 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += god_ui_block("РАВОКС", "#004400", "#aaffaa", "\
 		Число последователей: [ravox_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(ravox_storyteller))])<br>\
 		Боевых навыков получено: [GLOB.azure_round_stats[STATS_COMBAT_SKILLS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_COMBAT_SKILLS))])<br>\
-		Парирования: [GLOB.azure_round_stats[STATS_PARRIES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_PARRIES))])<br>\
+		Парирований: [GLOB.azure_round_stats[STATS_PARRIES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_PARRIES))])<br>\
 		Боевых кличей: [GLOB.azure_round_stats[STATS_WARCRIES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_WARCRIES))])<br>\
 		Сдалось: [GLOB.azure_round_stats[STATS_YIELDS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(ravox_storyteller, STATS_YIELDS))])", ravox_storyteller)
 
 	// Xylix
 	data += god_ui_block("КСАЙЛИКС", "#776161", "#aaaaaa", "\
 		Число последователей: [xylix_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(xylix_storyteller))])<br>\
-		Смеху было: [GLOB.azure_round_stats[STATS_LAUGHS_MADE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(xylix_storyteller, STATS_LAUGHS_MADE))])<br>\
+		Рассмеялось: [GLOB.azure_round_stats[STATS_LAUGHS_MADE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(xylix_storyteller, STATS_LAUGHS_MADE))])<br>\
 		Песен сыграно: [GLOB.azure_round_stats[STATS_SONGS_PLAYED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(xylix_storyteller, STATS_SONGS_PLAYED))])<br>\
-		Издевалось: [GLOB.azure_round_stats[STATS_PEOPLE_MOCKED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(xylix_storyteller, STATS_PEOPLE_MOCKED))])<br>\
+		Насмешек: [GLOB.azure_round_stats[STATS_PEOPLE_MOCKED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(xylix_storyteller, STATS_PEOPLE_MOCKED))])<br>\
 		Критических ударов: [GLOB.azure_round_stats[STATS_CRITS_MADE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(xylix_storyteller, STATS_CRITS_MADE))])", xylix_storyteller)
 
 	// Malum
 	data += god_ui_block("МАЛУМ", "#a87a4c", "#332211", "\
 		Число последователей: [malum_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(malum_storyteller))])<br>\
-		Шедевров сделано: [GLOB.azure_round_stats[STATS_MASTERWORKS_FORGED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(malum_storyteller, STATS_MASTERWORKS_FORGED))])<br>\
-		Камней выкопано: [GLOB.azure_round_stats[STATS_ROCKS_MINED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(malum_storyteller, STATS_ROCKS_MINED))])<br>\
+		Шедевральных изделий: [GLOB.azure_round_stats[STATS_MASTERWORKS_FORGED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(malum_storyteller, STATS_MASTERWORKS_FORGED))])<br>\
+		Породы вырыто: [GLOB.azure_round_stats[STATS_ROCKS_MINED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(malum_storyteller, STATS_ROCKS_MINED))])<br>\
 		Навыков ремесла получено: [GLOB.azure_round_stats[STATS_CRAFT_SKILLS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(malum_storyteller, STATS_CRAFT_SKILLS))])<br>\
 		Бород сбрито: [GLOB.azure_round_stats[STATS_BEARDS_SHAVED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(malum_storyteller, STATS_BEARDS_SHAVED))])", malum_storyteller)
 
@@ -544,18 +544,18 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += god_ui_block("АБИССОР", "#000066", "#6699ff", "\
 		Число последователей: [abyssor_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(abyssor_storyteller))])<br>\
 		Рыбы выловлено: [GLOB.azure_round_stats[STATS_FISH_CAUGHT]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(abyssor_storyteller, STATS_FISH_CAUGHT))])<br>\
-		Абиссора вспомнили: [GLOB.azure_round_stats[STATS_ABYSSOR_REMEMBERED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(abyssor_storyteller, STATS_ABYSSOR_REMEMBERED))])<br>\
+		Упоминаний Абиссора: [GLOB.azure_round_stats[STATS_ABYSSOR_REMEMBERED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(abyssor_storyteller, STATS_ABYSSOR_REMEMBERED))])<br>\
 		Воды выпито: [round(GLOB.azure_round_stats[STATS_WATER_CONSUMED], 0.1)] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(abyssor_storyteller, STATS_WATER_CONSUMED))])<br>\
-		Задыхалось в воде: [GLOB.azure_round_stats[STATS_PEOPLE_DROWNED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(abyssor_storyteller, STATS_PEOPLE_DROWNED))])<br>\
+		Утонуло: [GLOB.azure_round_stats[STATS_PEOPLE_DROWNED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(abyssor_storyteller, STATS_PEOPLE_DROWNED))])<br>\
 		Пиявок собрано: [GLOB.azure_round_stats[STATS_LEECHES_EMBEDDED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(abyssor_storyteller, STATS_LEECHES_EMBEDDED))])", abyssor_storyteller)
 
 	// Eora
 	data += god_ui_block("ЭОРА", "#663366", "#ddaaff", "\
 		Число последователей: [eora_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(eora_storyteller))])<br>\
-		Поцелуйчиков: [GLOB.azure_round_stats[STATS_KISSES_MADE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(eora_storyteller, STATS_KISSES_MADE))])<br>\
+		Поцелуев: [GLOB.azure_round_stats[STATS_KISSES_MADE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(eora_storyteller, STATS_KISSES_MADE))])<br>\
 		Оргазмов: [GLOB.azure_round_stats[STATS_PLEASURES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(eora_storyteller, STATS_PLEASURES))])<br>\
-		Обнимашек: [GLOB.azure_round_stats[STATS_HUGS_MADE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(eora_storyteller, STATS_HUGS_MADE))])<br>\
-		Прилипчевых: [GLOB.azure_round_stats[STATS_CLINGY_PEOPLE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(eora_storyteller, STATS_CLINGY_PEOPLE))])", eora_storyteller)
+		Объятий: [GLOB.azure_round_stats[STATS_HUGS_MADE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(eora_storyteller, STATS_HUGS_MADE))])<br>\
+		Прилипчивых: [GLOB.azure_round_stats[STATS_CLINGY_PEOPLE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(eora_storyteller, STATS_CLINGY_PEOPLE))])", eora_storyteller)
 
 	data += "</div></div>"
 
@@ -580,9 +580,9 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += god_ui_block("ЗИЗО", "#660000", "#ffcccc", "\
 		Число последователей: [zizo_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(zizo_storyteller))])<br>\
 		Нежити поднято: [GLOB.azure_round_stats[STATS_DEADITES_WOKEN_UP]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_DEADITES_WOKEN_UP))])<br>\
-		Пыток сделано: [GLOB.azure_round_stats[STATS_TORTURES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_TORTURES))])<br>\
+		Пыток проведено: [GLOB.azure_round_stats[STATS_TORTURES]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_TORTURES))])<br>\
 		Дворян убито: [GLOB.azure_round_stats[STATS_NOBLE_DEATHS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_NOBLE_DEATHS))])<br>\
-		Церковников убито: [GLOB.azure_round_stats[STATS_CLERGY_DEATHS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_CLERGY_DEATHS))])", zizo_storyteller)
+		Священников убито: [GLOB.azure_round_stats[STATS_CLERGY_DEATHS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(zizo_storyteller, STATS_CLERGY_DEATHS))])", zizo_storyteller)
 
 	// Graggar
 	data += god_ui_block("ГРАГГАР", "#531e1e", "#ffaaaa", "\
@@ -590,7 +590,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		Органов съедено: [GLOB.azure_round_stats[STATS_ORGANS_EATEN]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(graggar_storyteller, STATS_ORGANS_EATEN))])<br>\
 		Крови пролито: [round(GLOB.azure_round_stats[STATS_BLOOD_SPILT] / 100)] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(graggar_storyteller, STATS_BLOOD_SPILT))])<br>\
 		Число смертей: [GLOB.azure_round_stats[STATS_DEATHS]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(graggar_storyteller, STATS_DEATHS))])<br>\
-		Разорвало: [GLOB.azure_round_stats[STATS_PEOPLE_GIBBED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(graggar_storyteller, STATS_PEOPLE_GIBBED))])", graggar_storyteller)
+		Разорвано на части: [GLOB.azure_round_stats[STATS_PEOPLE_GIBBED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(graggar_storyteller, STATS_PEOPLE_GIBBED))])", graggar_storyteller)
 
 	// Baotha
 	data += god_ui_block("БАОТА", "#4a0044", "#ffbbff", "\
@@ -603,7 +603,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	// Matthios
 	data += god_ui_block("МАТТИОС", "#3d1301", "#ddbb99", "\
 		Число последователей: [matthios_followers] ([get_colored_influence_value(SSgamemode.get_follower_influence(matthios_storyteller))])<br>\
-		Вещей своровано: [GLOB.azure_round_stats[STATS_ITEMS_PICKPOCKETED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(matthios_storyteller, STATS_ITEMS_PICKPOCKETED))])<br>\
+		Предметов украдено: [GLOB.azure_round_stats[STATS_ITEMS_PICKPOCKETED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(matthios_storyteller, STATS_ITEMS_PICKPOCKETED))])<br>\
 		Замков вскрыто: [GLOB.azure_round_stats[STATS_LOCKS_PICKED]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(matthios_storyteller, STATS_LOCKS_PICKED))])<br>\
 		Сумма пожертвованная идолу: [GLOB.azure_round_stats[STATS_SHRINE_VALUE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(matthios_storyteller, STATS_SHRINE_VALUE))])<br>\
 		Жадных: [GLOB.azure_round_stats[STATS_GREEDY_PEOPLE]] ([get_colored_influence_value(SSgamemode.calculate_specific_influence(matthios_storyteller, STATS_GREEDY_PEOPLE))])", matthios_storyteller)
