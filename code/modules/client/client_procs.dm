@@ -289,7 +289,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += "<font color='#2dc5bd'><span class='bold'>Возрождений люксом:</span></font> [GLOB.azure_round_stats[STATS_LUX_REVIVALS]]<br>"
 	data += "<font color='#825b1c'><span class='bold'>Падений:</span></font> [GLOB.azure_round_stats[STATS_MOAT_FALLERS]]<br>"
 	data += "<font color='#ac5d5d'><span class='bold'>Разбилось с высоты:</span></font> [GLOB.azure_round_stats[STATS_ANKLES_BROKEN]]<br>"
-	data += "<font color='#e6d927'><span class='bold'>Отлучено:</span></font> [GLOB.azure_round_stats[STATS_PEOPLE_SMITTEN]]<br>"
+	data += "<font color='#e6d927'><span class='bold'>Наказано богами:</span></font> [GLOB.azure_round_stats[STATS_PEOPLE_SMITTEN]]<br>"
 	data += "<font color='#50aeb4'><span class='bold'>Утонуло:</span></font> [GLOB.azure_round_stats[STATS_PEOPLE_DROWNED]]<br>"
 	data += "<font color='#8f816b'><span class='bold'>Успешных краж:</span></font> [GLOB.azure_round_stats[STATS_ITEMS_PICKPOCKETED]]<br>"
 	data += "<font color='#c24bc2'><span class='bold'>Снюхано:</span></font> [GLOB.azure_round_stats[STATS_DRUGS_SNORTED]]<br>"
