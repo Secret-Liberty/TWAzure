@@ -434,7 +434,25 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += "Живых тифлингов: [GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS] * -20)])<br>"
 	data += "ПСАЙДОН: [psydonite_user ? "ЖИВ" : "МЁРТВ"] ([get_colored_influence_value(psydonite_user ? 10000 : -10000)])<br>"
 	data += "</div>"
+/*
+	data += "<div style='flex: 1; padding-right: 10px;'>"
+	data += "Число последователей: [psydon_followers] ([get_colored_influence_value(psydon_followers * 20)])<br>"
+	data += "Носили крест: [GLOB.azure_round_stats[STATS_PSYCROSS_USERS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_PSYCROSS_USERS] * 10)])<br>"
+	data += "Число исповедей: [GLOB.confessors.len] ([get_colored_influence_value(GLOB.confessors.len * 20)])<br>"
+	data += "Число обвинений: [GLOB.accused.len] ([get_colored_influence_value(GLOB.accused.len * 15)])<br>"
+	data += "People INDEXED: [GLOB.indexed.len] ([get_colored_influence_value(GLOB.indexed.len * 5)])<br>"
+	data += "Монарх-Псайдонит: [psydonite_monarch ? "ДА" : "НЕТ"] ([get_colored_influence_value((psydonite_monarch ? (psydonite_monarch * 500) : -250))])<br>"
+	data += "</div>"
 
+	data += "<div style='flex: 1; padding-left: 60px;'>"
+	data += "Отступников: [apostasy_followers] ([get_colored_influence_value(apostasy_followers * -20)])<br>"
+	data += "Людей погибло: [GLOB.azure_round_stats[STATS_HUMEN_DEATHS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_HUMEN_DEATHS] * -10)])<br>"
+	data += "Крупнейшая вера: [largest_religion ? "ДА" : "НЕТ"] ([get_colored_influence_value(largest_religion ? 500 : -250)])<br>"
+	data += "Извлечено люкса: [GLOB.azure_round_stats[STATS_LUX_HARVESTED]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_LUX_HARVESTED] * -50)])<br>"
+	data += "Сделано марок: [GLOB.azure_round_stats[STATS_MARQUES_MADE]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_MARQUES_MADE] * 1)])<br>"
+	data += "ПСАЙДОН: [psydonite_user ? "ЖИВ" : "МЁРТВ"] ([get_colored_influence_value(psydonite_user ? 10000 : -10000)])<br>"
+	data += "</div>"
+*/
 	data += "</div>"
 
 	data += "<div style='border-top: 1px solid #444; margin: 12px 0 8px 0;'></div>"
