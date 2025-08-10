@@ -443,15 +443,38 @@
 	recharge_time = 2 MINUTES
 	miracle = TRUE
 	is_cdr_exempt = TRUE
+	var/delay = 5.5 SECONDS	//Reduced to 2 seconds with Legendary
 	devotion_cost = 100
 
 /obj/effect/proc_holder/spell/invoked/wound_heal/cast(list/targets, mob/user = usr)
 	if(ishuman(targets[1]))
+	
 		var/mob/living/carbon/human/target = targets[1]
+		var/mob/living/carbon/human/HU = user
 		var/def_zone = check_zone(user.zone_selected)
 		var/obj/item/bodypart/affecting = target.get_bodypart(def_zone)
+
+		if(HAS_TRAIT(target, TRAIT_PSYDONITE))
+			target.visible_message(span_info("[target] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
+			user.playsound_local(user, 'sound/magic/PSY.ogg', 100, FALSE, -1)
+			playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
+			return FALSE
+
 		if(!affecting)
 			revert_cast()
+			return FALSE
+		if(length(affecting.embedded_objects))
+			var/no_embeds = TRUE
+			for(var/object in affecting.embedded_objects)
+				if(!istype(object, /obj/item/natural/worms/leech))	//Leeches and surgical cheeles are made an exception.
+					no_embeds = FALSE
+			if(!no_embeds)
+				to_chat(user, span_warning("We cannot seal wounds with objects inside this limb!"))
+				revert_cast()
+				return FALSE
+		if(!do_after(user, (delay - (0.5 SECONDS * HU.get_skill_level(associated_skill)))))
+			revert_cast()
+			to_chat(user, span_warning("We were interrupted!"))
 			return FALSE
 		var/foundwound = FALSE
 		if(length(affecting.wounds))
@@ -462,7 +485,7 @@
 					user.visible_message(("<font color = '#488f33'>[capitalize(wound.name)] oozes a clear fluid and closes shut!</font>"))
 			if(foundwound)
 				playsound(target, 'sound/magic/woundheal_crunch.ogg', 100, TRUE)
-			affecting.change_bodypart_status(heal_limb = TRUE)
+			affecting.change_bodypart_status(BODYPART_ORGANIC, heal_limb = TRUE)
 			affecting.update_disabled()
 			return TRUE
 		else
@@ -505,6 +528,13 @@
 			to_chat(UH, span_warning("Their lyfeblood is at capacity. There is no need."))
 			revert_cast()
 			return FALSE
+			
+		if(HAS_TRAIT(target, TRAIT_PSYDONITE))
+			target.visible_message(span_info("[target] stirs for a moment, the miracle dissipates."), span_notice("A dull warmth swells in your heart, only to fade as quickly as it arrived."))
+			user.playsound_local(user, 'sound/magic/PSY.ogg', 100, FALSE, -1)
+			playsound(target, 'sound/magic/PSY.ogg', 100, FALSE, -1)
+			return FALSE
+
 		UH.visible_message(span_warning("Tiny strands of red link between [UH] and [target], blood being transferred!"))
 		playsound(UH, 'sound/magic/bloodheal_start.ogg', 100, TRUE)
 		var/user_skill = UH.get_skill_level(associated_skill)
