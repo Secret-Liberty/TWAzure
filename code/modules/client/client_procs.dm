@@ -418,7 +418,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += "<div style='padding: 0 15px 15px 15px;'>"
 	data += "<div style='background: #0a2a33; border-radius: 4px; padding: 12px;'>"
 	data += "<div style='display: flex;'>"
-
+/*
 	data += "<div style='flex: 1; padding-right: 10px;'>"
 	data += "Число последователей: [psydon_followers] ([get_colored_influence_value(psydon_followers * 20)])<br>"
 	data += "Носили крест: [GLOB.azure_round_stats[STATS_PSYCROSS_USERS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_PSYCROSS_USERS] * 10)])<br>"
@@ -434,13 +434,13 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += "Живых тифлингов: [GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_ALIVE_TIEFLINGS] * -20)])<br>"
 	data += "ПСАЙДОН: [psydonite_user ? "ЖИВ" : "МЁРТВ"] ([get_colored_influence_value(psydonite_user ? 10000 : -10000)])<br>"
 	data += "</div>"
-/*
+*/
 	data += "<div style='flex: 1; padding-right: 10px;'>"
 	data += "Число последователей: [psydon_followers] ([get_colored_influence_value(psydon_followers * 20)])<br>"
 	data += "Носили крест: [GLOB.azure_round_stats[STATS_PSYCROSS_USERS]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_PSYCROSS_USERS] * 10)])<br>"
 	data += "Число исповедей: [GLOB.confessors.len] ([get_colored_influence_value(GLOB.confessors.len * 20)])<br>"
 	data += "Число обвинений: [GLOB.accused.len] ([get_colored_influence_value(GLOB.accused.len * 15)])<br>"
-	data += "People INDEXED: [GLOB.indexed.len] ([get_colored_influence_value(GLOB.indexed.len * 5)])<br>"
+	data += "Проверили кровь: [GLOB.indexed.len] ([get_colored_influence_value(GLOB.indexed.len * 5)])<br>"
 	data += "Монарх-Псайдонит: [psydonite_monarch ? "ДА" : "НЕТ"] ([get_colored_influence_value((psydonite_monarch ? (psydonite_monarch * 500) : -250))])<br>"
 	data += "</div>"
 
@@ -452,7 +452,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	data += "Сделано марок: [GLOB.azure_round_stats[STATS_MARQUES_MADE]] ([get_colored_influence_value(GLOB.azure_round_stats[STATS_MARQUES_MADE] * 1)])<br>"
 	data += "ПСАЙДОН: [psydonite_user ? "ЖИВ" : "МЁРТВ"] ([get_colored_influence_value(psydonite_user ? 10000 : -10000)])<br>"
 	data += "</div>"
-*/
+
 	data += "</div>"
 
 	data += "<div style='border-top: 1px solid #444; margin: 12px 0 8px 0;'></div>"
