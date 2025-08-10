@@ -96,15 +96,15 @@
 	. = ..()
 	if(isliving(firer) && (istype(fired_from, /obj/item/gun/ballistic/twilight_firearm) || istype(fired_from, /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock)))
 		var/mob/living/M = firer
-		var/obj/item/gun/G = fired_from
-		var/skill = (M?.mind ? M.get_skill_level(G.associated_skill) : 1)
+//		var/obj/item/gun/G = fired_from
+		var/skill = (M?.mind ? M.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
 		if(isliving(target))
 			var/mob/living/T = target
 			if(skill >= 1) //Exp gain from firing a gun
 				if(isanimal(T) && (T.stat != DEAD || (T.stat == DEAD && T.timeofdeath == world.time)))
-					adjust_experience(M, G.associated_skill, M.STAINT * 3)
+					adjust_experience(M, /datum/skill/combat/twilight_firearms, M.STAINT * 3)
 				else if(ishuman(T) && (T.stat != DEAD || (T.stat == DEAD && T.timeofdeath == world.time)))
-					adjust_experience(M, G.associated_skill, M.STAINT * 6)
+					adjust_experience(M, /datum/skill/combat/twilight_firearms, M.STAINT * 6)
 					var/list/screams = list("painscream", "paincrit") //Simulating paincrit on hit
 					var/check = rand(1, 20)
 					if(check > T.STACON)

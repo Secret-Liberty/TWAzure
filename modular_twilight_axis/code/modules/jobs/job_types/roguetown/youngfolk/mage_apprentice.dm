@@ -62,7 +62,7 @@
 		if("Messer & Buckler Shield")
 			beltr = /obj/item/rogueweapon/scabbard/sword
 			backr = /obj/item/rogueweapon/shield/buckler
-			r_hand = /obj/item/rogueweapon/sword/iron/messer
+			r_hand = /obj/item/rogueweapon/sword/short/messer/iron
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		if("Battle Axe")
 			beltr = /obj/item/rogueweapon/stoneaxe/battle

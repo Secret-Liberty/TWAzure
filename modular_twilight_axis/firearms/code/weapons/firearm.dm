@@ -67,7 +67,7 @@
 	smeltresult = /obj/item/ingot/steel
 	bolt_type = BOLT_TYPE_NO_BOLT
 	casing_ejector = FALSE
-	associated_skill = /datum/skill/combat/twilight_firearms
+	associated_skill = null
 	//pickup_sound = 'sound/sheath_sounds/draw_from_holster.ogg'
 	//sheathe_sound = 'sound/sheath_sounds/put_back_to_holster.ogg'
 	var/spread_num = 10
@@ -439,6 +439,20 @@
 	desc = "Пороховое оружие, стреляющее бронебойными свинцовыми пулями. Оснащена штыком для использования в ближнем бою."
 	icon = 'modular_twilight_axis/firearms/icons/arquebusbaoynet.dmi'
 	gripped_intents = list(/datum/intent/shoot/twilight_firearm, /datum/intent/arc/twilight_firearm, INTENT_GENERIC, /datum/intent/spear/thrust/militia)
+	associated_skill = /datum/skill/combat/polearms
+
+/obj/item/gun/ballistic/twilight_firearm/arquebus/bayonet/pre_attack(atom/A, mob/living/user, params)
+	if(!user.used_intent.tranged)
+		if(isliving(A))
+			var/firearm_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
+			var/polearms_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/polearms) : 1)
+			if(firearm_skill > polearms_skill)
+				src.associated_skill = /datum/skill/combat/twilight_firearms
+			else
+				src.associated_skill = /datum/skill/combat/polearms
+		else
+			src.associated_skill = /datum/skill/combat/polearms
+	. = ..()
 
 /obj/item/gun/ballistic/twilight_firearm/arquebus/decorated
 	name = "decorated arquebus rifle"
