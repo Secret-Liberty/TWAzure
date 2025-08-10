@@ -430,7 +430,7 @@
 	action_icon = 'icons/mob/actions/genericmiracles.dmi'
 	releasedrain = 15
 	chargedrain = 0
-	chargetime = 15
+	chargetime = 3
 	range = 1
 	ignore_los = FALSE
 	warnie = "sydwarning"
@@ -443,7 +443,7 @@
 	recharge_time = 2 MINUTES
 	miracle = TRUE
 	is_cdr_exempt = TRUE
-	var/delay = 5.5 SECONDS	//Reduced to 2 seconds with Legendary
+	var/delay = 4.5 SECONDS	//Reduced to 1.5 seconds with Legendary
 	devotion_cost = 100
 
 /obj/effect/proc_holder/spell/invoked/wound_heal/cast(list/targets, mob/user = usr)
