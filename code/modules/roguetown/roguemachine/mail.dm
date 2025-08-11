@@ -493,7 +493,7 @@
 				to_chat(user, span_warning("[I] is missing an INDEXER."))
 				return							
 		
-	if(istype(P, /obj/item/paper))
+	if(istype(P, /obj/item/paper) || istype(P, /obj/item/smallDelivery))
 		if(inqcoins)
 			to_chat(user, span_warning("The machine doesn't respond."))
 			return	

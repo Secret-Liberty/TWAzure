@@ -66930,6 +66930,7 @@
 "uFB" = (
 /obj/structure/bed/rogue/inn/double,
 /obj/item/bedsheet/rogue/double_pelt,
+/obj/effect/landmark/start/absolver,
 /turf/open/floor/rogue/herringbone,
 /area/rogue/indoors/inq/basement)
 "uFF" = (

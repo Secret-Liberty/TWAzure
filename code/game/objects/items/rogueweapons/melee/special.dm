@@ -325,7 +325,7 @@
 
 /obj/item/rogueweapon/katar/psydon/ComponentInitialize()
 	. = ..()							//+3 force, +50 int, +1 def, make silver
-	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
+	add_psyblessed_component(is_preblessed = FALSE, bonus_force = 3, bonus_sharpness = 0, bonus_integrity = 50, bonus_wdef = 1, make_silver = TRUE)
 
 /obj/item/rogueweapon/knuckles/psydon
 	name = "psydonian knuckles"
@@ -334,7 +334,7 @@
 
 /obj/item/rogueweapon/knuckles/psydon/ComponentInitialize()
 	. = ..()							//+3 force, +50 int, +1 def, make silver
-	AddComponent(/datum/component/psyblessed, FALSE, 3, FALSE, 50, 1, TRUE)
+	add_psyblessed_component(is_preblessed = FALSE, bonus_force = 3, bonus_sharpness = 0, bonus_integrity = 50, bonus_wdef = 1, make_silver = TRUE)
 
 /obj/item/rogueweapon/knuckles
 	name = "steel knuckles"
