@@ -84,6 +84,8 @@
 		if (ishuman(firer))
 			caster = firer
 			switch(caster.patron.type)
+				if(/datum/patron/divine/undivided)
+					damage += 15 // just more raw damage
 				if(/datum/patron/divine/astrata)
 					H.adjust_fire_stacks(2)
 					H.IgniteMob()

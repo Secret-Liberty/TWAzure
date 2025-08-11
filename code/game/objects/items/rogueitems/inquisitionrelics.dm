@@ -145,8 +145,6 @@
 	var/graggarlines =list("'ANOINTED! TEAR THIS OTAVAN'S HEAD OFF!'", "'ANOINTED! SHATTER THE BOX, AND WE WILL KILL THEM TOGETHER!'", "'GRAGGAR, GIVE ME STRENGTH TO BREAK MY BONDS!'")
 	var/baothalines =list("'I miss the warmth of ozium... There is no feeling in here for me...'", "'Debauched one, rescue me from this contraption, I have such things to share with you.'", "'MY PERFECTION WAS TAKEN FROM ME BY THESE OTAVAN MONSTERS!'")
 	var/psydonianlines =list("'FREE US! FREE US! WE HAVE SUFFERED ENOUGH!'", "'PLEASE, RELEASE US!", "WE MISS OUR FAMILIES!'", "'WHEN WE ESCAPE, WE ARE GOING TO CHASE YOU INTO YOUR GRAVE.'")
-
-
 /datum/status_effect/buff/cranking_soulchurner/on_creation(mob/living/new_owner, stress, colour)
 	effect_color = "#800000"
 	return ..()
@@ -192,6 +190,12 @@
 					if(/datum/patron/inhumen/baotha)
 						to_chat(H, (span_hypnophrase("A voice calls out from the song for you...")))
 						to_chat(H, (span_cultsmall(pick(baothalines))))
+						H.add_stress(/datum/stressevent/soulchurner)
+						if(!H.has_status_effect(/datum/status_effect/buff/churnernegative))
+							H.apply_status_effect(/datum/status_effect/buff/churnernegative)
+					if(/datum/patron/divine/undivided)
+						to_chat(H, (span_hypnophrase("A voice calls out from the song for you...")))
+						to_chat(H, (span_cultsmall(pick(astratanlines))))
 						H.add_stress(/datum/stressevent/soulchurner)
 						if(!H.has_status_effect(/datum/status_effect/buff/churnernegative))
 							H.apply_status_effect(/datum/status_effect/buff/churnernegative)
