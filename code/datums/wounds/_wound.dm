@@ -356,7 +356,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/is_maxed = FALSE
 	var/is_armor_maxed = FALSE
 	clotting_rate = 0.3
-	clotting_threshold = 1
+	clotting_threshold = 0
 
 /datum/wound/dynamic/sew_wound()
 	heal_wound(whp)
@@ -382,5 +382,11 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 				owner.visible_message(span_crit("The wound gushes open from [bodypart_owner.owner]'s <b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>, nicking an artery!"))
 				is_maxed = TRUE
 				clotting_rate = 0.01
-	clotting_rate = max(0.01, clotting_rate - 0.05)
+				clotting_threshold = 2
+		else
+			clotting_rate = max(0.01, (clotting_rate - 0.05))
+			clotting_threshold += 0.25
+	else
+		clotting_rate = max(0.01, (clotting_rate - 0.05))
+		clotting_threshold += 0.25
 	..()
