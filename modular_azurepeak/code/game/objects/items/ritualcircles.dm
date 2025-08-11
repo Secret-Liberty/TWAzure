@@ -692,7 +692,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		target.apply_status_effect(/datum/status_effect/buff/pacify)
 
 /obj/structure/ritualcircle/undivided
-	name = "Rune of Decagrammatical Divinity"
+	name = "Rune of Deca Divinity"
 	desc = "A Holy Rune of The Undivided Pantheon"
 	//icon_state = "undivided_chalky"
 

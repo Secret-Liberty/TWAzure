@@ -22,9 +22,7 @@
 		if(/datum/patron/inhumen/baotha)
 			ritechoices+="Rune of Hedonism"
 		if(/datum/patron/divine/undivided)
-			ritechoices+= "Rune of Decagrammatical Divinity"
-		if(/datum/patron/divine/undivided)
-			ritechoices+= "Rune of Decagrammatical Divinity"
+			ritechoices+= "Rune of Deca Divinity"
 		if(/datum/patron/divine/astrata)
 			ritechoices+="Rune of Sun"
 		if(/datum/patron/divine/noc)
@@ -126,13 +124,8 @@
 			if(do_after(user, 30, src))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
 				new /obj/structure/ritualcircle/psydon(step_turf)
-		if("Rune of Decagrammatical Divinity")
+		if("Rune of Deca Divinity")
 			to_chat(user,span_cultsmall("I begin inscribing the rune of the Ten Undivided"))
 			if(do_after(user, 30, src))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
-				new /obj/structure/ritualcircle/matthios(step_turf)
-		if("Rune of Decagrammatical Divinity")
-			to_chat(user,span_cultsmall("I begin inscribing the rune of the Ten Undivided"))
-			if(do_after(user, 30, src))
-				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
-				new /obj/structure/ritualcircle/matthios(step_turf)
+				new /obj/structure/ritualcircle/undivided(step_turf)
