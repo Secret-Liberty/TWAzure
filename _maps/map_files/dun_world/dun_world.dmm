@@ -2579,7 +2579,6 @@
 /obj/item/storage/keyring/priest,
 /obj/item/roguekey/church,
 /obj/item/roguekey/church,
-/obj/item/roguekey/inquisition,
 /turf/open/floor/carpet/stellar,
 /area/rogue/indoors/town/church/chapel)
 "aQI" = (
