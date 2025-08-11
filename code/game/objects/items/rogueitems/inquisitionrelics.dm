@@ -130,6 +130,7 @@
 	var/effect_color
 	var/pulse = 0
 	var/ticks_to_apply = 10
+	var/undividedlines =list("THEY HAVE TRAPPED US HERE FOR ETERNITY!", "SAVE US, CHILD OF TEN! SHATTER THIS ACCURESD MUSIC BOX!", "DEATH TO THE PSYDONIAN, FREE US!")
 	var/astratanlines =list("'HER LIGHT HAS LEFT ME! WHERE AM I?!'", "'SHATTER THIS CONTRAPTION, SO I MAY FEEL HER WARMTH ONE LAST TIME!'", "'I am royal.. Why did they do this to me...?'")
 	var/noclines =list("'Colder than moonlight...'", "'No wisdom can reach me here...'", "'Please help me, I miss the stars...'")
 	var/necralines =list("'They snatched me from her grasp, for eternal torment...'", "'Necra! Please! I am so tired! Release me!'", "'I am lost, lost in a sea of stolen ends.'")
@@ -195,7 +196,7 @@
 							H.apply_status_effect(/datum/status_effect/buff/churnernegative)
 					if(/datum/patron/divine/undivided)
 						to_chat(H, (span_hypnophrase("A voice calls out from the song for you...")))
-						to_chat(H, (span_cultsmall(pick(astratanlines))))
+						to_chat(H, (span_cultsmall(pick(undividedlines))))
 						H.add_stress(/datum/stressevent/soulchurner)
 						if(!H.has_status_effect(/datum/status_effect/buff/churnernegative))
 							H.apply_status_effect(/datum/status_effect/buff/churnernegative)
