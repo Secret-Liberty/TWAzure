@@ -201,6 +201,10 @@
 		)
 	H.cmode_music = 'sound/music/cmode/church/combat_reckoning.ogg' // this is probably awful implementation. too bad!
 	switch(H.patron?.type)
+		if(/datum/patron/divine/undivided)
+			wrists = /obj/item/clothing/neck/roguetown/psicross/undivided
+			head = /obj/item/clothing/head/roguetown/helmet/heavy/bucket
+			cloak = /obj/item/clothing/cloak/tabard/crusader/tief
 		if(/datum/patron/divine/astrata)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/astratan

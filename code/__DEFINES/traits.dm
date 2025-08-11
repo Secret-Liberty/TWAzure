@@ -99,7 +99,6 @@
 #define TRAIT_LEECHIMMUNE "Unleechable" //leeches wont attach in bog squares + dendor boon.
 #define TRAIT_LONGSTRIDER "Longstrider"
 #define TRAIT_UNDIVIDED "The Ten Undivided"
-#define TRAIT_UNDIVIDED "The Ten Undivided"
 #define TRAIT_PSYDONIAN_GRIT "Psydonian Grit" // Pain Tolerance. Through faith, ENDURE.
 #define TRAIT_PSYDONITE "Psydonite's Devotion" // Anti-Miracles on a selective basis, anastasis / cure rot still apply. Slow passive wound healing while you have blood.
 #define TRAIT_BLACKBAGGER "Apprehension Techniques" // Capable of using Garrotes and Blackbags. Apprehension techniques.
