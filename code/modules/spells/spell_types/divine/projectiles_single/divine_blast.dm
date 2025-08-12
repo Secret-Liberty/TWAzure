@@ -85,7 +85,7 @@
 			caster = firer
 			switch(caster.patron.type)
 				if(/datum/patron/divine/undivided)
-					damage += 15 // just more raw damage
+					damage += 15 // just more raw damage. As mentioned in UNDIVIDED. Our generics are better as a trade off of not having higher tier uniques.
 				if(/datum/patron/divine/astrata)
 					H.adjust_fire_stacks(2)
 					H.IgniteMob()
