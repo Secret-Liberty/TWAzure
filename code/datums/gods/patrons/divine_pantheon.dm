@@ -13,7 +13,7 @@
 					/obj/effect/proc_holder/spell/targeted/touch/darkvision/miracle	= CLERIC_T1,
 					/obj/effect/proc_holder/spell/invoked/blood_heal			= CLERIC_T1,
 					/obj/effect/proc_holder/spell/invoked/lesser_heal 			= CLERIC_T1,
-					/obj/effect/proc_holder/spell/self/divine_strike	= CLERIC_T1,
+					/obj/effect/proc_holder/spell/invoked/tug_of_war			= CLERIC_T1,
 					/obj/effect/proc_holder/spell/invoked/bless_food            = CLERIC_T1,
 					/obj/effect/proc_holder/spell/targeted/blesscrop			= CLERIC_T2,
 					/obj/effect/proc_holder/spell/invoked/avert					= CLERIC_T2,
