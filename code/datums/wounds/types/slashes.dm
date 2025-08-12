@@ -63,12 +63,12 @@
 //Slash Omniwounds
 //Vaguely: Painful, hard to sew, hard to heal, but scales poorly through armor.
 
-#define SLASH_UPG_BLEEDRATE 0.16	//Clamps out at 11-12 STR with 25 force, or at 10 STR with 30 force.
+#define SLASH_UPG_BLEEDRATE 0.16	//Clamps out at a 5 with 11-12 STR with 25 force, or at 10 STR with 30 force.
 #define SLASH_UPG_WHPRATE 0.6
-#define SLASH_UPG_SEWRATE 2
+#define SLASH_UPG_SEWRATE 1.5
 #define SLASH_UPG_PAINRATE 0.25
 #define SLASH_UPG_CLAMP_ARMORED 2
-#define SLASH_UPG_CLAMP_RAW 5
+#define SLASH_UPG_CLAMP_RAW 3
 #define SLASH_ARMORED_BLEED_CLAMP 10
 
 /datum/wound/dynamic/slash/upgrade(dam, armor)
@@ -201,10 +201,10 @@
 
 #define LASHING_UPG_BLEEDRATE 0.25
 #define LASHING_UPG_WHPRATE 1
-#define LASHING_UPG_SEWRATE 2.5
+#define LASHING_UPG_SEWRATE 1.8
 #define LASHING_UPG_PAINRATE 0.5
 #define LASHING_UPG_CLAMP_ARMORED 0.2
-#define LASHING_UPG_CLAMP_RAW 7	//Three unarmored hits for an artery bleed.
+#define LASHING_UPG_CLAMP_RAW 5	//Four unarmored hits for an artery bleed.
 #define LASHING_ARMORED_BLEED_CLAMP 2
 
 /datum/wound/dynamic/lashing/upgrade(dam, armor)
@@ -223,6 +223,49 @@
 #undef LASHING_UPG_CLAMP_ARMORED
 #undef LASHING_UPG_CLAMP_RAW
 #undef LASHING_ARMORED_BLEED_CLAMP
+
+/datum/wound/dynamic/punish
+	name = "flogging"
+	whp = 30
+	sewn_whp = 12
+	bleed_rate = 0
+	clotting_rate = 0.02
+	clotting_threshold = 0.2
+	woundpain = 10
+	mob_overlay = "cut"
+	can_sew = TRUE
+	can_cauterize = FALSE	//Ouch owie oof
+
+//Special Punish omniwounds for whip (or anything else if desired) intent.
+//Vaguely: Really very giga painful. Not very bleedy. Can still be sewn!
+
+#define PUNISH_UPG_BLEEDRATE 0.01
+#define PUNISH_UPG_WHPRATE 2
+#define PUNISH_UPG_SEWRATE 2
+#define PUNISH_UPG_PAINRATE 2
+#define PUNISH_UPG_CLAMP_ARMORED 0.1
+#define PUNISH_UPG_CLAMP_RAW 0.5
+#define PUNISH_UPG_SELFHEAL 0.25
+#define PUNISH_ARMORED_BLEED_CLAMP 0.1
+
+/datum/wound/dynamic/punish/upgrade(dam, armor)
+	whp += (dam * PUNISH_UPG_WHPRATE)
+	bleed_rate += clamp((dam * PUNISH_UPG_BLEEDRATE), 0.1, ((armor > 0) ? PUNISH_UPG_CLAMP_ARMORED : PUNISH_UPG_CLAMP_RAW))
+	sew_threshold += (dam * PUNISH_UPG_SEWRATE)
+	woundpain += (dam * PUNISH_UPG_PAINRATE)
+	passive_healing += PUNISH_UPG_SELFHEAL
+	armor_check(armor, PUNISH_ARMORED_BLEED_CLAMP)
+	update_name()
+	..()
+
+#undef PUNISH_UPG_BLEEDRATE
+#undef PUNISH_UPG_WHPRATE
+#undef PUNISH_UPG_SEWRATE
+#undef PUNISH_UPG_PAINRATE
+#undef PUNISH_UPG_CLAMP_ARMORED
+#undef PUNISH_UPG_CLAMP_RAW
+#undef PUNISH_UPG_SELFHEAL
+#undef PUNISH_ARMORED_BLEED_CLAMP
 
 /datum/wound/lashing
 	name = "lashing"

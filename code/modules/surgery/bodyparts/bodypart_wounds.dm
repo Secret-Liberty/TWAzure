@@ -169,6 +169,8 @@
 			woundtype = /datum/wound/dynamic/gouge
 		if(BCLASS_LASHING)
 			woundtype = /datum/wound/dynamic/lashing
+		if(BCLASS_PUNISH)
+			woundtype = /datum/wound/dynamic/punish
 		else	//Wrong bclass type for wounds, skip adding this.
 			return
 	var/datum/wound/dynwound = has_wound(woundtype)
