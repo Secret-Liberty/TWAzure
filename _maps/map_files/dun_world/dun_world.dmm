@@ -10543,9 +10543,6 @@
 /obj/item/reagent_containers/glass/bottle/claybottle/wine,
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/indoors/town)
-"dmL" = (
-/turf/closed,
-/area/rogue/indoors/town/garrison)
 "dmM" = (
 /obj/structure/stairs{
 	dir = 1
@@ -402537,7 +402534,7 @@ bGf
 bGf
 bGf
 bGf
-iGn
+bGf
 bGf
 bGf
 bGf
@@ -402989,7 +402986,7 @@ bGf
 bGf
 bGf
 bGf
-bsh
+bGf
 bGf
 bGf
 bGf
@@ -403441,7 +403438,7 @@ cDX
 fYu
 iGn
 bGf
-bsh
+bGf
 bGf
 bGf
 bGf
@@ -403522,7 +403519,7 @@ iVE
 srn
 srn
 iVE
-dmL
+rCV
 bGf
 bGf
 bGf
@@ -403893,7 +403890,7 @@ uBc
 bjp
 bsh
 bGf
-bsh
+bGf
 bGf
 bGf
 bGf
@@ -404345,7 +404342,7 @@ hlY
 qaH
 bsh
 bGf
-vVI
+bGf
 bGf
 bGf
 bGf
@@ -408413,7 +408410,7 @@ uya
 rsS
 uBc
 fYu
-bGf
+iGn
 bGf
 bGf
 bGf
@@ -408865,7 +408862,7 @@ dra
 dra
 pCT
 cOk
-bGf
+bsh
 bGf
 bGf
 bGf
@@ -409317,7 +409314,7 @@ gbn
 dra
 pCT
 mmf
-bGf
+bsh
 bGf
 bGf
 bGf
@@ -409769,7 +409766,7 @@ maB
 ogj
 pCT
 mmf
-bGf
+bsh
 bGf
 bGf
 bGf
@@ -410221,7 +410218,7 @@ qVA
 dra
 uBc
 pmE
-bGf
+vVI
 bGf
 bGf
 bGf
