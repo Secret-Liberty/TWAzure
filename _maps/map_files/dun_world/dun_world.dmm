@@ -49305,14 +49305,6 @@
 /obj/structure/fluff/railing/border/east,
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/beach/forest/hamlet)
-"oUt" = (
-/obj/structure/mineral_door/wood{
-	locked = 1;
-	lockid = "garrison"
-	},
-/obj/structure/bars/grille,
-/turf/open/floor/rogue/tile,
-/area/rogue/indoors/town/garrison)
 "oUv" = (
 /turf/closed/wall/mineral/rogue/decostone,
 /area/rogue/indoors/cave)
@@ -274157,9 +274149,9 @@ ibT
 pLO
 lsO
 jWw
-uYl
-oUt
-uYl
+jWw
+aMo
+jWw
 jWw
 jHV
 hYQ
@@ -275512,7 +275504,7 @@ jWw
 bvP
 ice
 tdV
-cMf
+jWw
 nZB
 kSN
 kSN
@@ -275962,9 +275954,9 @@ clw
 qyE
 jWw
 jWw
-cMf
+jWw
 vBE
-cMf
+jWw
 cYP
 kSN
 pvC
@@ -276416,7 +276408,7 @@ wtt
 jWw
 tzy
 ucO
-cMf
+jWw
 nZB
 kSN
 kSN
@@ -277320,7 +277312,7 @@ mlk
 jWw
 isZ
 kSN
-cMf
+jWw
 xFG
 kSN
 kll
