@@ -63,13 +63,13 @@
 //Slash Omniwounds
 //Vaguely: Painful, hard to sew, hard to heal, but scales poorly through armor.
 
-#define SLASH_UPG_BLEEDRATE 0.16	//Clamps out at a 5 with 11-12 STR with 25 force, or at 10 STR with 30 force.
+#define SLASH_UPG_BLEEDRATE 0.08
 #define SLASH_UPG_WHPRATE 0.6
 #define SLASH_UPG_SEWRATE 1.5
 #define SLASH_UPG_PAINRATE 0.25
 #define SLASH_UPG_CLAMP_ARMORED 2
-#define SLASH_UPG_CLAMP_RAW 3
-#define SLASH_ARMORED_BLEED_CLAMP 10
+#define SLASH_UPG_CLAMP_RAW 2.5
+#define SLASH_ARMORED_BLEED_CLAMP 9
 
 /datum/wound/dynamic/slash/upgrade(dam, armor)
 	whp += (dam * SLASH_UPG_WHPRATE)
@@ -199,12 +199,12 @@
 //Lashing (Whip) Omniwounds
 //Vaguely: Painful, huge bleeds, but nearly nothing at all through any armor.
 
-#define LASHING_UPG_BLEEDRATE 0.25
+#define LASHING_UPG_BLEEDRATE 0.1
 #define LASHING_UPG_WHPRATE 1
 #define LASHING_UPG_SEWRATE 1.8
 #define LASHING_UPG_PAINRATE 0.5
 #define LASHING_UPG_CLAMP_ARMORED 0.2
-#define LASHING_UPG_CLAMP_RAW 5	//Four unarmored hits for an artery bleed.
+#define LASHING_UPG_CLAMP_RAW 3.5
 #define LASHING_ARMORED_BLEED_CLAMP 2
 
 /datum/wound/dynamic/lashing/upgrade(dam, armor)
