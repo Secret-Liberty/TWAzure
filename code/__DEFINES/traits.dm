@@ -433,6 +433,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOSSDINDICATOR "nossdindicator" // Hides the SSD indicator. Used with scrying.
 #define TRAIT_NOSTRUGGLE "nostruggle" // Instant grabs on someone else.
 #define TRAIT_GARROTED "garroted" // Garrote-wired. Used for a snowflaked grab with item relevant tracking.
+#define TRAIT_INDEXED "indexed" // Used in Indexer-mailing to prevent false-flags.
+#define TRAIT_ACCUSED "accused" // Used in Indexer-mailing to prevent false-flags.
+#define TRAIT_CBLOOD "cursedblood"  // Used in Indexer-mailing to prevent false-flags.
+#define TRAIT_CONFESSED "confessed" // Used in Indexer-mailing to prevent false-flags. God, this is snowflakey.
 #define TRAIT_BAGGED "bagged" // Black-bagged. More snowflaking.
 #define TRAIT_IGNORESLOWDOWN	"Ignore Slow"
 #define TRAIT_IGNOREDAMAGESLOWDOWN "Ignore Damage Slowdown"

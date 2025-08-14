@@ -64,12 +64,14 @@
 
 	var/defender_skill = 0
 	var/attacker_skill = 0
+	var/obj/item/clothing/wrists/roguetown/bracers/unarmed_bracers
 
 	if(highest_defense <= (H.get_skill_level(/datum/skill/combat/unarmed) * 20))
 		defender_skill = H.get_skill_level(/datum/skill/combat/unarmed)
 		var/obj/B = H.get_item_by_slot(SLOT_WRISTS)
 		if(istype(B, /obj/item/clothing/wrists/roguetown/bracers))
-			prob2defend += (defender_skill * 30)
+			prob2defend += (defender_skill * 35)
+			unarmed_bracers = B
 		else
 			prob2defend += (defender_skill * 10)		// no bracers gonna be butts.
 		weapon_parry = FALSE
@@ -299,6 +301,16 @@
 					skill_target -= SKILL_LEVEL_NOVICE
 				if(can_train_combat_skill(H, /datum/skill/combat/unarmed, skill_target))
 					H.mind?.add_sleep_experience(/datum/skill/combat/unarmed, max(round(STAINT*exp_multi), 0), FALSE)
+			if(unarmed_bracers)
+				var/bracer_damage
+				var/d_flag = "blunt"
+				if(intenty.masteritem)
+					bracer_damage = get_complex_damage(intenty.masteritem, user)
+					d_flag = intenty.item_d_type
+				else
+					bracer_damage = U.get_punch_dmg()
+				bracer_damage = bracer_damage / 2
+				unarmed_bracers.take_damage(bracer_damage, damage_flag = d_flag, armor_penetration = 100)
 			flash_fullscreen("blackflash2")
 			return TRUE
 		else

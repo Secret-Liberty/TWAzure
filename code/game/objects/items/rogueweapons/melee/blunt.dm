@@ -379,6 +379,8 @@
 	smeltresult = /obj/item/ingot/steel
 	blade_dulling = DULLING_SHAFT_METAL
 	smelt_bar_num = 2
+	intdamage_factor = 1
+	wdefense_wbonus = 5
 
 /obj/item/rogueweapon/mace/goden/steel/paalloy
 	name = "ancient grand mace"

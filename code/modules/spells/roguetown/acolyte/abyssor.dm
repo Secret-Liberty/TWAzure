@@ -2,7 +2,8 @@
 /obj/effect/proc_holder/spell/invoked/abyssor_bends
 	name = "Depth Bends"
 	desc = "Drains the targets stamina, unless they worship Abyssor. Also makes them dizzy and blurs their screen."
-	icon = 'icons/mob/actions/abyssormiracles.dmi'
+	overlay_icon = 'icons/mob/actions/abyssormiracles.dmi'
+	action_icon = 'icons/mob/actions/abyssormiracles.dmi'
 	overlay_state = "bends"
 	releasedrain = 15
 	chargedrain = 0
@@ -40,7 +41,8 @@
 /obj/effect/proc_holder/spell/invoked/abyssor_undertow // t1 offbalance someone for 5 seconds if on land, on water, knock them down.
 	name = "Undertow"
 	desc = "Throws target down if they are on water, otherwise puts them off balance."
-	icon = 'icons/mob/actions/abyssormiracles.dmi'
+	overlay_icon = 'icons/mob/actions/abyssormiracles.dmi'
+	action_icon = 'icons/mob/actions/abyssormiracles.dmi'
 	overlay_state = "undertow"
 	releasedrain = 15
 	chargedrain = 0
@@ -180,7 +182,8 @@
 /obj/effect/proc_holder/spell/invoked/abyssheal
 	name = "Abyssal Healing"
 	desc = "Heals target over time, more if there is water around you."
-	icon = 'icons/mob/actions/abyssormiracles.dmi'
+	overlay_icon = 'icons/mob/actions/abyssormiracles.dmi'
+	action_icon = 'icons/mob/actions/abyssormiracles.dmi'
 	overlay_state = "deepheal"
 	releasedrain = 15
 	chargedrain = 0
@@ -241,7 +244,8 @@
 /obj/effect/proc_holder/spell/invoked/call_mossback
 	name = "Call Mossback"
 	desc = "Calls a Mossback that is friendly to you and that you can command."
-	icon = 'icons/mob/actions/abyssormiracles.dmi'
+	overlay_icon = 'icons/mob/actions/abyssormiracles.dmi'
+	action_icon = 'icons/mob/actions/abyssormiracles.dmi'
 	overlay_state = "crab"
 	range = 7
 	no_early_release = TRUE

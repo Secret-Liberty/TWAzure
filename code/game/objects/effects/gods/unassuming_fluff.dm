@@ -19,7 +19,7 @@
 	if(!ishuman(user))
 		return
 
-	if(user.patron == /datum/patron/divine/abyssor)
+	if(user.patron.type == /datum/patron/divine/abyssor)
 		probability *= 5
 
 	if(!prob(probability))
