@@ -62,13 +62,13 @@
 //Puncture (Stab -- not Pick) Omniwounds
 //Vaguely: Not nearly as painful, higher bleed cap, easier to sew / heal.
 
-#define PUNC_UPG_BLEEDRATE 0.5	//Caps out at 12 STR and penetrative damage if clamp is 3
+#define PUNC_UPG_BLEEDRATE 0.5
 #define PUNC_UPG_WHPRATE 0.5
 #define PUNC_UPG_SEWRATE 0.65
 #define PUNC_UPG_PAINRATE 0.05
-#define PUNC_UPG_CLAMP_ARMORED 1.5
-#define PUNC_UPG_CLAMP_RAW 2.5
-#define PUNC_ARMORED_BLEED_CLAMP 7
+#define PUNC_UPG_CLAMP_ARMORED 0.75
+#define PUNC_UPG_CLAMP_RAW 1.5
+#define PUNC_ARMORED_BLEED_CLAMP 6
 
 /datum/wound/dynamic/puncture/upgrade(dam, armor)
 	whp += (dam * PUNC_UPG_WHPRATE)
@@ -113,13 +113,13 @@
 //Vaguely: Not very painful, not very bleedy, no difference if it's armored or not, but you can't cauterize them. You're still better off using stab every time.
 //Addendum: This was made with the assumption that pick intent penetrates most armors (and being able to crit through them).
 
-#define GOUGE_UPG_BLEEDRATE 0.03
+#define GOUGE_UPG_BLEEDRATE 0.025
 #define GOUGE_UPG_WHPRATE 1
 #define GOUGE_UPG_SEWRATE 0.3
 #define GOUGE_UPG_PAINRATE 0.01
 #define GOUGE_UPG_CLAMP_ARMORED 1
 #define GOUGE_UPG_CLAMP_RAW 2
-#define GOUGE_ARMORED_BLEED_CLAMP 7
+#define GOUGE_ARMORED_BLEED_CLAMP 5
 
 /datum/wound/dynamic/gouge/upgrade(dam, armor)
 	whp += (dam * GOUGE_UPG_WHPRATE)
