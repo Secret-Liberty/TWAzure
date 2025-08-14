@@ -78,6 +78,8 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 	var/qdel_on_droplimb = FALSE
 	/// Severity names, assoc list.
 	var/list/severity_names = list()
+	/// Whether miracles heal it.
+	var/healable_by_miracles = TRUE
 
 /datum/wound/Destroy(force)
 	if(bodypart_owner)
@@ -355,7 +357,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/dynamic
 	var/is_maxed = FALSE
 	var/is_armor_maxed = FALSE
-	clotting_rate = 0.3
+	clotting_rate = 0.4
 	clotting_threshold = 0
 
 /datum/wound/dynamic/sew_wound()
@@ -364,13 +366,12 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /datum/wound/dynamic/proc/armor_check(armor, cap)
 	if(armor)
 		if(!bodypart_owner.unlimited_bleeding)
-			if(bleed_rate >= cap && !is_armor_maxed)
-				playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
-				owner.visible_message(span_crit("The wound tears open from [bodypart_owner.owner]'s <b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>, the armor won't let it go any further!"))
-				is_armor_maxed = TRUE
+			if(bleed_rate >= cap)
 				bleed_rate = cap
-			else if(bleed_rate >= cap)
-				bleed_rate = cap
+				if(!is_armor_maxed)
+					playsound(owner, 'sound/combat/armored_wound.ogg', 100, TRUE)
+					owner.visible_message(span_crit("The wound tears open from [bodypart_owner.owner]'s <b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>, the armor won't let it go any further!"))
+					is_armor_maxed = TRUE
 
 /// Make sure this is called AFTER your child upgrade proc, unless you have a reason for the bleed rate to be above artery on a regular wound.
 /datum/wound/dynamic/upgrade(dam as num)

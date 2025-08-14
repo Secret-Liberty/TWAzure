@@ -479,10 +479,11 @@
 		var/foundwound = FALSE
 		if(length(affecting.wounds))
 			for(var/datum/wound/wound in affecting.wounds)
-				if(!isnull(wound))
+				if(!isnull(wound) && wound.healable_by_miracles)
 					wound.heal_wound(wound.whp)
 					foundwound = TRUE
-					user.visible_message(("<font color = '#488f33'>[capitalize(wound.name)] oozes a clear fluid and closes shut!</font>"))
+					user.visible_message(("<font color = '#488f33'>[capitalize(wound.name)] oozes a clear fluid and closes shut, forming into a sore bruise!</font>"))
+					affecting.add_wound(/datum/wound/bruise/woundheal)
 			if(foundwound)
 				playsound(target, 'sound/magic/woundheal_crunch.ogg', 100, TRUE)
 			affecting.change_bodypart_status(BODYPART_ORGANIC, heal_limb = TRUE)

@@ -27,6 +27,16 @@
 	clotting_threshold = 0.3
 	woundpain = 25
 
+/datum/wound/bruise/woundheal
+	name = "healed hematoma"
+	whp = 240	//2 mins passively, quicker w/ a miracle
+	bleed_rate = 0
+	clotting_rate = 0
+	clotting_threshold = 0
+	passive_healing = 1
+	woundpain = 100	//lesser miracles reduce woundpain, presumably the receiver will have this on them
+	healable_by_miracles = FALSE
+
 /datum/wound/dynamic/bruise
 	name = "hematoma"
 	whp = 5
