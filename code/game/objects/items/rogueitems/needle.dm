@@ -200,7 +200,7 @@
 		var/bleedreduction = max((medskill / 2), 1)	//Half of medicine skill, or 1, whichever is higher.
 		target_wound.bleed_rate = max( (target_wound.bleed_rate - bleedreduction), 0)
 		if(target_wound.bleed_rate == 0 && !informed)
-			patient.visible_message(span_smallgreen("[capitalize(target_wound.name)] trickles out the last drop and stops bleeding."), span_smallgreen("The throbbing warmth coming out of [target_wound.name] soothes and stops. It no longer bleeds."))
+			patient.visible_message(span_smallgreen("[capitalize(target_wound.name)] trickles out the last drop from [patient]'s [affecting] and stops bleeding."), span_smallgreen("The throbbing warmth coming out of [target_wound.name] soothes and stops. It no longer bleeds."))
 			informed = TRUE
 		if(istype(target_wound, /datum/wound/dynamic))
 			var/datum/wound/dynamic/dynwound = target_wound
