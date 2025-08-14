@@ -373,6 +373,11 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 					owner.visible_message(span_crit("The wound tears open from [bodypart_owner.owner]'s <b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>, the armor won't let it go any further!"))
 					is_armor_maxed = TRUE
 
+#define CLOT_THRESHOLD_INCREASE_PER_HIT 0.1	//This raises the MINIMUM bleed the wound can clot to.
+#define CLOT_DECREASE_PER_HIT 0.05	//This reduces the amount of clotting the wound has.
+#define CLOT_RATE_ARTERY 0.01	//Artery exceptions. Essentially overrides.
+#define CLOT_THRESHOLD_ARTERY 2
+
 /// Make sure this is called AFTER your child upgrade proc, unless you have a reason for the bleed rate to be above artery on a regular wound.
 /datum/wound/dynamic/upgrade(dam as num)
 	if(!bodypart_owner.unlimited_bleeding)
@@ -382,12 +387,17 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 				playsound(owner, 'sound/combat/wound_tear.ogg', 100, TRUE)
 				owner.visible_message(span_crit("The wound gushes open from [bodypart_owner.owner]'s <b>[bodyzone2readablezone(bodypart_to_zone(bodypart_owner))]</b>, nicking an artery!"))
 				is_maxed = TRUE
-				clotting_rate = 0.01
-				clotting_threshold = 2
+				clotting_rate = CLOT_RATE_ARTERY
+				clotting_threshold = CLOT_THRESHOLD_ARTERY
 		else
-			clotting_rate = max(0.01, (clotting_rate - 0.05))
-			clotting_threshold += 0.25
+			clotting_rate = max(0.01, (clotting_rate - CLOT_DECREASE_PER_HIT))
+			clotting_threshold += CLOT_THRESHOLD_INCREASE_PER_HIT
 	else
-		clotting_rate = max(0.01, (clotting_rate - 0.05))
-		clotting_threshold += 0.25
+		clotting_rate = max(0.01, (clotting_rate - CLOT_DECREASE_PER_HIT))
+		clotting_threshold += CLOT_THRESHOLD_INCREASE_PER_HIT
 	..()
+
+#undef CLOT_THRESHOLD_INCREASE_PER_HIT
+#undef CLOT_DECREASE_PER_HIT
+#undef CLOT_RATE_ARTERY
+#undef CLOT_THRESHOLD_ARTERY
