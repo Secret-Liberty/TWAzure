@@ -45,3 +45,49 @@
 /obj/item/clothing/cloak/captain/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
+
+/obj/item/clothing/cloak/half/knight
+	name = "champion's halfcloak"
+	desc = "A halfcloak of the Grand Duke's most loyal champion."
+	color = CLOTHING_AZURE
+
+/obj/item/clothing/cloak/half/knight/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	GLOB.lordcolor += src
+
+/obj/item/clothing/cloak/half/knight/lordcolor(primary,secondary)
+	color = primary
+	detail_color = secondary
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_cloak()
+
+/obj/item/clothing/cloak/half/knight/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
+
+/obj/item/clothing/cloak/raincloak/furcloak/knight
+	name = "champion's cloak"
+	desc = "A cloak of the Grand Duke's most loyal champion."
+	color = CLOTHING_AZURE
+
+/obj/item/clothing/cloak/raincloak/furcloak/knight/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	GLOB.lordcolor += src
+
+/obj/item/clothing/cloak/raincloak/furcloak/knight/lordcolor(primary,secondary)
+	color = primary
+	detail_color = secondary
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_cloak()
+
+/obj/item/clothing/cloak/half/knight/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
