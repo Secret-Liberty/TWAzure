@@ -67,7 +67,7 @@
 #define PUNC_UPG_SEWRATE 0.65
 #define PUNC_UPG_PAINRATE 0.05
 #define PUNC_UPG_CLAMP_ARMORED 0.75	//This number will always be met, so it's pretty much static increase per-attack regardless of damage.
-#define PUNC_UPG_CLAMP_RAW 1.5	//Ditto. Easier to tweak, but by no means a hard-set rule for these.
+#define PUNC_UPG_CLAMP_RAW 1.2	//Ditto. Easier to tweak, but by no means a hard-set rule for these.
 #define PUNC_ARMORED_BLEED_CLAMP 6
 
 /datum/wound/dynamic/puncture/upgrade(dam, armor)

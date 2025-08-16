@@ -64,6 +64,8 @@
 		remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 
 	bleed_rate = get_bleed_rate()
+	if(HAS_TRAIT(src, TRAIT_BLEED_IMMUNE))
+		bleed_rate = FALSE
 	if(bleed_rate)
 		bleed(bleed_rate)
 	else if(blood_volume < BLOOD_VOLUME_NORMAL)
@@ -140,6 +142,8 @@
 
 	//Bleeding out
 	bleed_rate = get_bleed_rate()
+	if(HAS_TRAIT(src, TRAIT_BLEED_IMMUNE))
+		bleed_rate = FALSE
 	if(bleed_rate)
 		for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 			bodypart.try_bandage_expire()
