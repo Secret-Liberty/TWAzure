@@ -2569,6 +2569,7 @@
 #include "modular_twilight_axis\code\modules\cargo\packsrogue\alcohols.dm"
 #include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\adventurer\types\wretch\lunacyembracer.dm"
 #include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\church\templar.dm"
+#include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\nobility\knight.dm"
 #include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\youngfolk\mage_apprentice.dm"
 #include "modular_twilight_axis\code\modules\cargo\packsrogue\instruments.dm"
 #include "modular_twilight_axis\code\modules\cargo\packsrogue\luxury.dm"

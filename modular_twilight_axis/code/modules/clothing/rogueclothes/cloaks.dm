@@ -46,6 +46,52 @@
 	GLOB.lordcolor -= src
 	return ..()
 
+/obj/item/clothing/cloak/half/knight
+	name = "champion's halfcloak"
+	desc = "A halfcloak of the Grand Duke's most loyal champion."
+	color = CLOTHING_AZURE
+
+/obj/item/clothing/cloak/half/knight/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	GLOB.lordcolor += src
+
+/obj/item/clothing/cloak/half/knight/lordcolor(primary,secondary)
+	color = primary
+	detail_color = secondary
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_cloak()
+
+/obj/item/clothing/cloak/half/knight/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
+
+/obj/item/clothing/cloak/raincloak/furcloak/knight
+	name = "champion's cloak"
+	desc = "A cloak of the Grand Duke's most loyal champion."
+	color = CLOTHING_AZURE
+
+/obj/item/clothing/cloak/raincloak/furcloak/knight/Initialize()
+	. = ..()
+	if(GLOB.lordprimary)
+		lordcolor(GLOB.lordprimary,GLOB.lordsecondary)
+	GLOB.lordcolor += src
+
+/obj/item/clothing/cloak/raincloak/furcloak/knight/lordcolor(primary,secondary)
+	color = primary
+	detail_color = secondary
+	update_icon()
+	if(ismob(loc))
+		var/mob/L = loc
+		L.update_inv_cloak()
+
+/obj/item/clothing/cloak/half/knight/Destroy()
+	GLOB.lordcolor -= src
+	return ..()
+
 /obj/item/clothing/cloak/fauld
 	name = "fauld"
 	desc = "A piece of cloth usually worn to cover the hips and part of the legs."
@@ -78,3 +124,4 @@
 	desc = "A skirt usually worn on battle with the colors of the wearer."
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
+
