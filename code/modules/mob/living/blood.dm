@@ -64,7 +64,7 @@
 		remove_status_effect(/datum/status_effect/debuff/bleedingworst)
 
 	bleed_rate = get_bleed_rate()
-	if(HAS_TRAIT(src, TRAIT_BLEED_IMMUNE))
+	if(HAS_TRAIT(src, TRAIT_ADRENALINE_RUSH))
 		bleed_rate = FALSE
 	if(bleed_rate)
 		bleed(bleed_rate)
@@ -142,7 +142,7 @@
 
 	//Bleeding out
 	bleed_rate = get_bleed_rate()
-	if(HAS_TRAIT(src, TRAIT_BLEED_IMMUNE))
+	if(HAS_TRAIT(src, TRAIT_ADRENALINE_RUSH))
 		bleed_rate = FALSE
 	if(bleed_rate)
 		for(var/obj/item/bodypart/bodypart as anything in bodyparts)

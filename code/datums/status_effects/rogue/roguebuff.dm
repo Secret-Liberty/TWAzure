@@ -1193,7 +1193,8 @@
 
 /datum/status_effect/buff/adrenaline_rush/on_apply()
 	. = ..()
-	ADD_TRAIT(owner, TRAIT_BLEED_IMMUNE, INNATE_TRAIT)
+	ADD_TRAIT(owner, TRAIT_ADRENALINE_RUSH, INNATE_TRAIT)
+	ADD_TRAIT(owner, TRAIT_NOPAINSTUN, INNATE_TRAIT)
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		H.playsound_local(get_turf(H), 'sound/misc/adrenaline_rush.ogg', 100, TRUE)
@@ -1202,4 +1203,5 @@
 
 /datum/status_effect/buff/adrenaline_rush/on_remove()
 	. = ..()
-	REMOVE_TRAIT(owner, TRAIT_BLEED_IMMUNE, INNATE_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_ADRENALINE_RUSH, INNATE_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_NOPAINSTUN, INNATE_TRAIT)
