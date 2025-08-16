@@ -127,7 +127,7 @@
 	switch(bclass)
 		if(BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PUNCH)
 			acheck_dflag = "blunt"
-		if(BCLASS_CHOP, BCLASS_CUT, BCLASS_LASHING)
+		if(BCLASS_CHOP, BCLASS_CUT, BCLASS_LASHING, BCLASS_PUNISH)
 			acheck_dflag = "slash"
 		if(BCLASS_PICK, BCLASS_STAB)
 			acheck_dflag = "stab"
