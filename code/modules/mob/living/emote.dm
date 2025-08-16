@@ -45,6 +45,7 @@
 	var/follower_ident = "[follower.key]/([follower.real_name]) (follower of [patron])"
 	message_admins("[follower_ident] [ADMIN_SM(follower)] [ADMIN_FLW(follower)] prays: [span_info(prayer)]")
 	user.log_message("(follower of [patron]) prays: [prayer]", LOG_GAME)
+	GLOB.azure_round_stats[STATS_PRAYERS_MADE]++
 
 	follower.whisper(prayer)
 
