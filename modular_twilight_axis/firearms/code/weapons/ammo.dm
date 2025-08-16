@@ -1,6 +1,7 @@
 /obj/projectile/bullet
 	var/silver = FALSE
 	var/critfactor = 1
+	var/gunpowder
 
 /**
  * Special runelock ammo
@@ -93,10 +94,30 @@
 	critfactor = 0.67
 
 /obj/projectile/bullet/on_hit(atom/target, blocked = FALSE)
+	if(isliving(target))
+		var/mob/living/T = target
+		switch(gunpowder) //Hande gunpowder types
+			if("fyrepowder")
+				T.adjust_fire_stacks(round(10 * (damage / 100)))
+				T.IgniteMob()
+			if("thunderpowder")
+				T.Immobilize(30)
+			if("corrosive gunpowder")
+				playsound(src, 'sound/misc/drink_blood.ogg', 100)
+				T.apply_status_effect(/datum/status_effect/buff/acidsplash)
+				new /obj/effect/temp_visual/acidsplash(get_turf(T))
+			if("arcyne gunpowder")
+				if(ishuman(T))
+					var/mob/living/carbon/human/H = T
+					if(istype(H.wear_ring, /obj/item/clothing/ring/fate_weaver))
+						H.wear_ring.obj_break()
+					H.set_silence(5 SECONDS)
+			if("terrorpowder")
+				npc_damage_mult = 2
 	. = ..()
 	if(isliving(firer) && (istype(fired_from, /obj/item/gun/ballistic/twilight_firearm) || istype(fired_from, /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock)))
 		var/mob/living/M = firer
-//		var/obj/item/gun/G = fired_from
+	//	var/obj/item/gun/G = fired_from
 		var/skill = (M?.mind ? M.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
 		if(isliving(target))
 			var/mob/living/T = target
@@ -150,7 +171,32 @@
 /obj/projectile/bullet/twilight_cannonball/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	var/turf/T = get_turf(target)
-	explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+	switch(gunpowder)
+		if("fyrepowder")
+			explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 1, flame_range = 2, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+		if("corrosive gunpowder")
+			explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+			for(var/mob/living/L in range(1, T)) //apply damage over time to mobs
+				if(!(L == target))
+					var/mob/living/carbon/M = L
+					M.apply_status_effect(/datum/status_effect/buff/acidsplash)
+					new /obj/effect/temp_visual/acidsplash(get_turf(M))
+			for(var/turf/turfs_in_range in range(2, T)) //make a splash
+				new /obj/effect/temp_visual/acidsplash(turfs_in_range)
+		if("thunderpowder")
+			explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+			for(var/mob/living/L in range(2, T))
+				if(!(L == target))
+					L.Immobilize(30)
+		if("arcyne gunpowder")
+			explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
+			for(var/mob/living/carbon/human/L in range(2, T))
+				if(!(L == target))
+					if(istype(L.wear_ring, /obj/item/clothing/ring/fate_weaver))
+						L.wear_ring.obj_break()
+					L.set_silence(5 SECONDS)
+		else
+			explosion(T, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 
 /obj/item/ammo_casing/caseless/twilight_lead
 	name = "lead sphere"

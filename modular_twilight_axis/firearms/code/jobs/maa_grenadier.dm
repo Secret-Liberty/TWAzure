@@ -7,7 +7,7 @@
 
 /datum/outfit/job/roguetown/manorguard/twilight_grenadier/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE) 		// Still have a cugel.
 	H.adjust_skillrank(/datum/skill/combat/twilight_firearms, 4, TRUE)	
@@ -36,8 +36,9 @@
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
 		/obj/item/rope/chain = 1,
-		/obj/item/storage/keyring/guardcastle,
-		/obj/item/twilight_powderflask = 1,
+		/obj/item/storage/keyring/guardcastle = 1,
+		/obj/item/rogueweapon/scabbard/sheath = 1,
+		/obj/item/twilight_powderflask = 1
 		)
 
 	H.adjust_blindness(-3)
